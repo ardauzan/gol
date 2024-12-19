@@ -6,6 +6,7 @@
 ```sh
 gleam add gol@1
 ```
+
 ```gleam
 import gol
 

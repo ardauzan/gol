@@ -1,13 +1,12 @@
 {
-  "recommendations": [
-    "esbenp.prettier-vscode",
-    "foxundermoon.shell-format",
-    "davidanson.vscode-markdownlint",
-    "redhat.vscode-yaml",
-    "tamasfe.even-better-toml",
-    "gleam.gleam",
-    "eamodio.gitlens",
-    "github.vscode-github-actions",
-    "github.vscode-pull-request-github"
-  ]
+    "recommendations": [
+        "esbenp.prettier-vscode",
+        "foxundermoon.shell-format",
+        "davidanson.vscode-markdownlint",
+        "tamasfe.even-better-toml",
+        "gleam.gleam",
+        "eamodio.gitlens",
+        "github.vscode-github-actions",
+        "github.vscode-pull-request-github"
+    ]
 }
