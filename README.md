@@ -1,23 +1,11 @@
-# gol
+# GOL
 
-[![Package Version](https://img.shields.io/hexpm/v/gol)](https://hex.pm/packages/gol)
-[![Hex Docs](https://img.shields.io/badge/hex-docs-ffaff3)](https://hexdocs.pm/gol/)
+## Dependencies
 
-```sh
-gleam add gol@1
-```
+1- gleam: <https://gleam.run>
+2- vscode: <https://code.visualstudio.com>
 
-```gleam
-import gol
-
-pub fn main() {
-  // TODO: An example of the project in use
-}
-```
-
-Further documentation can be found at <https://hexdocs.pm/gol>.
-
-## Development
+### Development
 
 ```sh
 gleam run   # Run the project
