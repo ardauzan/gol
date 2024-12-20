@@ -22,9 +22,9 @@ pub fn get_population(raw_grid: Grid) -> Int {
   let grid = produce_proper_grid(raw_grid)
   list.fold(grid, 0, fn(acc: Int, cell: cell.Cell) -> Int {
     acc
-    + case cell {
-      cell.Alive(_, _) -> 1
-      cell.Dead(_, _) -> 0
+    + case cell.is_alive(cell) {
+      True -> 1
+      False -> 0
     }
   })
 }

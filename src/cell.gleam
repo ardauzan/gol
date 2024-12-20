@@ -19,8 +19,8 @@ pub fn new(x: Int, y: Int, is_alive: Bool) -> Cell {
 // Get if a cell is alive
 pub fn is_alive(cell: Cell) -> Bool {
   case cell {
-    Alive(_, _) -> True
-    Dead(_, _) -> False
+    Alive(_x, _y) -> True
+    Dead(_x, _y) -> False
   }
 }
 
