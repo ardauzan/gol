@@ -45,7 +45,9 @@ pub fn is_empty(grid: Grid) -> Bool {
 // Get the state of a cell, (can be used with proper and transient grids)
 pub fn get_cell(grid: Grid, x: Int, y: Int) -> c.Cell {
   let res =
-    l.filter(grid, fn(cell: c.Cell) -> Bool { cell.x == x && cell.y == y })
+    l.filter(grid, fn(cell: c.Cell) -> Bool {
+      c.get_x(cell) == x && c.get_y(cell) == y
+    })
   case res {
     [] -> c.Dead(x, y)
     [cell, ..] -> cell
@@ -87,8 +89,8 @@ fn produce_proper_grid(raw_grid: Grid) -> Grid {
 fn produce_transient_grid(grid: Grid) -> Grid {
   let neighbours =
     l.map(grid, fn(cell: c.Cell) -> Grid {
-      let x = cell.x
-      let y = cell.y
+      let x = c.get_x(cell)
+      let y = c.get_y(cell)
       get_neighbours(grid, x, y)
     })
   let res_redundant = l.flatten([grid, l.flatten(neighbours)])
