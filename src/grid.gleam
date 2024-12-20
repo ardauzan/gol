@@ -53,19 +53,8 @@ pub fn get_cell(grid: Grid, x: Int, y: Int) -> c.Cell {
   }
 }
 
-// Private
-// Remove redundant cells meaning cells with the same x, y and state
-fn remove_redundant_cells(raw_grid: Grid) -> Grid {
-  l.unique(raw_grid)
-}
-
-// Remove dead cells meaning cells that are not alive
-fn remove_dead_cells(raw_grid: Grid) -> Grid {
-  l.filter(raw_grid, fn(cell: c.Cell) -> Bool { c.is_alive(cell) })
-}
-
 // Get the neighbourhood of a cell in the form of a proper grid
-fn get_neighbours(grid: Grid, x: Int, y: Int) -> Grid {
+pub fn get_neighbours(grid: Grid, x: Int, y: Int) -> Grid {
   [
     get_cell(grid, x - 1, y - 1),
     get_cell(grid, x - 1, y),
@@ -76,4 +65,16 @@ fn get_neighbours(grid: Grid, x: Int, y: Int) -> Grid {
     get_cell(grid, x + 1, y),
     get_cell(grid, x + 1, y + 1),
   ]
+}
+
+// Private
+// Using the following two functions we sanitize the input data
+// Remove redundant cells meaning cells with the same x, y and state
+fn remove_redundant_cells(raw_grid: Grid) -> Grid {
+  l.unique(raw_grid)
+}
+
+// Remove dead cells meaning cells that are not alive
+fn remove_dead_cells(raw_grid: Grid) -> Grid {
+  l.filter(raw_grid, fn(cell: c.Cell) -> Bool { c.is_alive(cell) })
 }
