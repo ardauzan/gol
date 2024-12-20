@@ -18,14 +18,17 @@ import cell
 pub type Grid =
   List(cell.Cell)
 
-// Function to create a new grid, accounting for conflicts and redundancy
+// Function to create a new grid, we assume it has both conflicts and redundancy to sanitize the input data, it is important to not define an instance of a grid outs-
+// ide this function
+// Other public functions in this module will assume that you have created your grid with this function, additional checks wont be performed for conflicts and this m-
+// ay cause undefined behaviour if not followed
 pub fn new(raw_grid: Grid) -> Grid {
-  produce_proper_grid(raw_grid)
+  let grid1 = remove_redundant_cells(raw_grid)
+  remove_dead_cells(grid1)
 }
 
-// Get alive cell count
-pub fn get_population(raw_grid: Grid) -> Int {
-  let grid = produce_proper_grid(raw_grid)
+// Get alive cell count, (can be used with proper and transient grids)
+pub fn get_population(grid: Grid) -> Int {
   list.fold(grid, 0, fn(acc: Int, cell: cell.Cell) -> Int {
     acc
     + case cell.is_alive(cell) {
@@ -35,15 +38,13 @@ pub fn get_population(raw_grid: Grid) -> Int {
   })
 }
 
-// Get if the grid is empty
-pub fn is_empty(raw_grid: Grid) -> Bool {
-  let grid = produce_proper_grid(raw_grid)
+// Get if the grid is empty, (can be used with proper and transient grids)
+pub fn is_empty(grid: Grid) -> Bool {
   get_population(grid) == 0
 }
 
-// Get the state of a cell
-pub fn get_cell(raw_grid: Grid, x: Int, y: Int) -> cell.Cell {
-  let grid = produce_proper_grid(raw_grid)
+// Get the state of a cell, (can be used with proper and transient grids)
+pub fn get_cell(grid: Grid, x: Int, y: Int) -> cell.Cell {
   let res =
     list.filter(grid, fn(cell: cell.Cell) -> Bool { cell.x == x && cell.y == y })
   case res {
@@ -63,32 +64,16 @@ fn remove_dead_cells(raw_grid: Grid) -> Grid {
   list.filter(raw_grid, fn(cell: cell.Cell) -> Bool { cell.is_alive(cell) })
 }
 
-// Add neighbours of the cells in the grid to the grid
-fn add_neighbours(raw_grid: Grid) -> Grid {
-  let get_neighbours = fn(cell: cell.Cell) -> Grid {
-    let x = cell.x
-    let y = cell.y
-    [
-      get_cell(raw_grid, x - 1, y - 1),
-      get_cell(raw_grid, x - 1, y),
-      get_cell(raw_grid, x - 1, y + 1),
-      get_cell(raw_grid, x, y - 1),
-      get_cell(raw_grid, x, y + 1),
-      get_cell(raw_grid, x + 1, y - 1),
-      get_cell(raw_grid, x + 1, y),
-      get_cell(raw_grid, x + 1, y + 1),
-    ]
-  }
-  let res =
-    list.map(raw_grid, fn(cell: cell.Cell) -> Grid { get_neighbours(cell) })
-  let raw_neighbours = list.flatten(res)
-  let unique_neighbours = remove_redundant_cells(raw_neighbours)
-  list.flatten([raw_grid, unique_neighbours])
-}
-
-// Produce a proper grid, accounting for conflicts and redundancy
-fn produce_proper_grid(raw_grid: Grid) -> Grid {
-  let grid1 = remove_redundant_cells(raw_grid)
-  let grid2 = remove_dead_cells(grid1)
-  add_neighbours(grid2)
+// Get the neighbourhood of a cell in the form of a proper grid
+fn get_neighbours(grid: Grid, x: Int, y: Int) -> Grid {
+  [
+    get_cell(grid, x - 1, y - 1),
+    get_cell(grid, x - 1, y),
+    get_cell(grid, x - 1, y + 1),
+    get_cell(grid, x, y - 1),
+    get_cell(grid, x, y + 1),
+    get_cell(grid, x + 1, y - 1),
+    get_cell(grid, x + 1, y),
+    get_cell(grid, x + 1, y + 1),
+  ]
 }
