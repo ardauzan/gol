@@ -1,6 +1,8 @@
 import gleeunit
 import gleeunit/should
 
+import grid
+
 pub fn main() {
   gleeunit.main()
 }
