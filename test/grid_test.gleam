@@ -10,12 +10,12 @@ import grid
 
 // Public
 // Setup
-pub fn main() {
+pub fn main() -> Nil {
   gleeunit.main()
 }
 
 // Test create new grid
-pub fn new_test() {
+pub fn new_test() -> Nil {
   let raw_grid = [
     cell.new(1, 2, True),
     cell.new(3, 4, False),
