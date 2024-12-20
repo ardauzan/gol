@@ -13,7 +13,7 @@ import cell as c
 // 1. Proper grid: A grid without any dead cells and no redundancy
 // 2. Transient grid: A grid without redundancy but with relevant dead cells (neighbourhood added)
 // 3. CorruptedGrid: A grid with conflicts and/or redundancy, this is an error state as it has multiple cells with the same location and they are possibly conflictin-
-// g as in the case of a live cell and a dead cell with the same location
+// g as in the case of a live cell and a dead cell at the same location
 // We cant enforce constraints on values in the gleam typesystem therefore we define the type as a list of cells and check for conflicts and redundancy in the runtime
 pub type Grid =
   List(c.Cell)
@@ -85,5 +85,12 @@ fn produce_proper_grid(raw_grid: Grid) -> Grid {
 
 // Produce a transient grid from a proper grid to be able to process it and get the next generation
 fn produce_transient_grid(grid: Grid) -> Grid {
-  todo
+  let neighbours =
+    l.map(grid, fn(cell: c.Cell) -> Grid {
+      let x = cell.x
+      let y = cell.y
+      get_neighbours(grid, x, y)
+    })
+  let res_redundant = l.flatten([grid, l.flatten(neighbours)])
+  l.unique(res_redundant)
 }

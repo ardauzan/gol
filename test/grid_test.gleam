@@ -23,8 +23,7 @@ pub fn new_test() -> Nil {
     c.new(5, 6, True),
     c.new(5, 6, False),
   ]
-  let grid = g.new(raw_grid)
-  grid
+  g.new(raw_grid)
   |> shld.equal([c.Alive(1, 2), c.Alive(5, 6)])
 }
 
@@ -100,21 +99,50 @@ pub fn get_neighbours_test() -> Nil {
 
 // Test add neighbours
 pub fn add_neighbours_test() -> Nil {
-  let raw_grid = [
+  let raw_grid1 = [
     c.new(1, 2, True),
     c.new(3, 4, False),
     c.new(5, 6, True),
     c.new(5, 6, True),
     c.new(5, 6, False),
   ]
-  let grid = g.new(raw_grid)
-  let transient_grid = g.add_neighbours(grid)
-  transient_grid
+  let grid1 = g.new(raw_grid1)
+  let raw_grid2 = [c.new(0, 0, True), c.new(1, 0, True)]
+  let grid2 = g.new(raw_grid2)
+  g.add_neighbours(grid1)
   |> shld.equal([
     c.Alive(1, 2),
-    c.Dead(3, 4),
     c.Alive(5, 6),
-    c.Alive(5, 6),
-    c.Dead(5, 6),
+    c.Dead(0, 1),
+    c.Dead(0, 2),
+    c.Dead(0, 3),
+    c.Dead(1, 1),
+    c.Dead(1, 3),
+    c.Dead(2, 1),
+    c.Dead(2, 2),
+    c.Dead(2, 3),
+    c.Dead(4, 5),
+    c.Dead(4, 6),
+    c.Dead(4, 7),
+    c.Dead(5, 5),
+    c.Dead(5, 7),
+    c.Dead(6, 5),
+    c.Dead(6, 6),
+    c.Dead(6, 7),
+  ])
+  g.add_neighbours(grid2)
+  |> shld.equal([
+    c.Alive(0, 0),
+    c.Alive(1, 0),
+    c.Dead(-1, -1),
+    c.Dead(-1, 0),
+    c.Dead(-1, 1),
+    c.Dead(0, -1),
+    c.Dead(0, 1),
+    c.Dead(1, -1),
+    c.Dead(1, 1),
+    c.Dead(2, -1),
+    c.Dead(2, 0),
+    c.Dead(2, 1),
   ])
 }
