@@ -1,7 +1,7 @@
 // src/grid.gleam
 
 // External imports
-import gleam/list
+import gleam/list as l
 
 // Local imports
 import cell as c
@@ -29,7 +29,7 @@ pub fn new(raw_grid: Grid) -> Grid {
 
 // Get alive cell count, (can be used with proper and transient grids)
 pub fn get_population(grid: Grid) -> Int {
-  list.fold(grid, 0, fn(acc: Int, cell: c.Cell) -> Int {
+  l.fold(grid, 0, fn(acc: Int, cell: c.Cell) -> Int {
     acc
     + case c.is_alive(cell) {
       True -> 1
@@ -46,7 +46,7 @@ pub fn is_empty(grid: Grid) -> Bool {
 // Get the state of a cell, (can be used with proper and transient grids)
 pub fn get_cell(grid: Grid, x: Int, y: Int) -> c.Cell {
   let res =
-    list.filter(grid, fn(cell: c.Cell) -> Bool { cell.x == x && cell.y == y })
+    l.filter(grid, fn(cell: c.Cell) -> Bool { cell.x == x && cell.y == y })
   case res {
     [] -> c.Dead(x, y)
     [cell, ..] -> cell
@@ -56,12 +56,12 @@ pub fn get_cell(grid: Grid, x: Int, y: Int) -> c.Cell {
 // Private
 // Remove redundant cells meaning cells with the same x, y and state
 fn remove_redundant_cells(raw_grid: Grid) -> Grid {
-  list.unique(raw_grid)
+  l.unique(raw_grid)
 }
 
 // Remove dead cells meaning cells that are not alive
 fn remove_dead_cells(raw_grid: Grid) -> Grid {
-  list.filter(raw_grid, fn(cell: c.Cell) -> Bool { c.is_alive(cell) })
+  l.filter(raw_grid, fn(cell: c.Cell) -> Bool { c.is_alive(cell) })
 }
 
 // Get the neighbourhood of a cell in the form of a proper grid

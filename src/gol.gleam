@@ -1,10 +1,10 @@
 // src/gol.gleam
 
 // External imports
-import gleam/io
+import gleam/io as i
 
 // Public
 // Entry point of the program
 pub fn main() -> Nil {
-  io.println("Hello from gol!")
+  i.println("Hello from gol!")
 }

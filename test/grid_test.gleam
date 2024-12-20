@@ -1,8 +1,8 @@
 // test/grid_test.gleam
 
 // External imports
-import gleeunit
-import gleeunit/should
+import gleeunit as glet
+import gleeunit/should as shld
 
 // Local imports
 import cell as c
@@ -11,7 +11,7 @@ import grid as g
 // Public
 // Setup
 pub fn main() -> Nil {
-  gleeunit.main()
+  glet.main()
 }
 
 // Test create new grid
@@ -25,5 +25,5 @@ pub fn new_test() -> Nil {
   ]
   let grid = g.new(raw_grid)
   grid
-  |> should.equal([c.Alive(1, 2), c.Alive(5, 6)])
+  |> shld.equal([c.Alive(1, 2), c.Alive(5, 6)])
 }
