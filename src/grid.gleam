@@ -79,7 +79,8 @@ fn remove_dead_cells(raw_grid: Grid) -> Grid {
 
 // Produce a proper grid from a transient grid or a corrupted grid
 fn produce_proper_grid(raw_grid: Grid) -> Grid {
-  remove_dead_cells(l.unique(raw_grid))
+  let unique_raw_grid = l.unique(raw_grid)
+  remove_dead_cells(unique_raw_grid)
 }
 
 // Produce a transient grid from a proper grid to be able to process it and get the next generation
