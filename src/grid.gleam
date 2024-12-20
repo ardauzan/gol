@@ -4,7 +4,7 @@
 import gleam/list
 
 // Local imports
-import cell
+import cell as c
 
 // Public
 // Grid type definition
@@ -16,7 +16,7 @@ import cell
 // state, which is not possible
 // We cant enforce constraints on values in the gleam typesystem therefore we define the type as a list of cells and check for conflicts and redundancy in the runtime
 pub type Grid =
-  List(cell.Cell)
+  List(c.Cell)
 
 // Function to create a new grid, we assume it has both conflicts and redundancy to sanitize the input data, it is important to not define an instance of a grid outs-
 // ide this function
@@ -29,9 +29,9 @@ pub fn new(raw_grid: Grid) -> Grid {
 
 // Get alive cell count, (can be used with proper and transient grids)
 pub fn get_population(grid: Grid) -> Int {
-  list.fold(grid, 0, fn(acc: Int, cell: cell.Cell) -> Int {
+  list.fold(grid, 0, fn(acc: Int, cell: c.Cell) -> Int {
     acc
-    + case cell.is_alive(cell) {
+    + case c.is_alive(cell) {
       True -> 1
       False -> 0
     }
@@ -44,11 +44,11 @@ pub fn is_empty(grid: Grid) -> Bool {
 }
 
 // Get the state of a cell, (can be used with proper and transient grids)
-pub fn get_cell(grid: Grid, x: Int, y: Int) -> cell.Cell {
+pub fn get_cell(grid: Grid, x: Int, y: Int) -> c.Cell {
   let res =
-    list.filter(grid, fn(cell: cell.Cell) -> Bool { cell.x == x && cell.y == y })
+    list.filter(grid, fn(cell: c.Cell) -> Bool { cell.x == x && cell.y == y })
   case res {
-    [] -> cell.Dead(x, y)
+    [] -> c.Dead(x, y)
     [cell, ..] -> cell
   }
 }
@@ -61,7 +61,7 @@ fn remove_redundant_cells(raw_grid: Grid) -> Grid {
 
 // Remove dead cells meaning cells that are not alive
 fn remove_dead_cells(raw_grid: Grid) -> Grid {
-  list.filter(raw_grid, fn(cell: cell.Cell) -> Bool { cell.is_alive(cell) })
+  list.filter(raw_grid, fn(cell: c.Cell) -> Bool { c.is_alive(cell) })
 }
 
 // Get the neighbourhood of a cell in the form of a proper grid

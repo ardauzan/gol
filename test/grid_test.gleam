@@ -5,8 +5,8 @@ import gleeunit
 import gleeunit/should
 
 // Local imports
-import cell
-import grid
+import cell as c
+import grid as g
 
 // Public
 // Setup
@@ -17,13 +17,13 @@ pub fn main() -> Nil {
 // Test create new grid
 pub fn new_test() -> Nil {
   let raw_grid = [
-    cell.new(1, 2, True),
-    cell.new(3, 4, False),
-    cell.new(5, 6, True),
-    cell.new(5, 6, True),
-    cell.new(5, 6, False),
+    c.new(1, 2, True),
+    c.new(3, 4, False),
+    c.new(5, 6, True),
+    c.new(5, 6, True),
+    c.new(5, 6, False),
   ]
-  let grid = grid.new(raw_grid)
+  let grid = g.new(raw_grid)
   grid
-  |> should.equal([])
+  |> should.equal([c.Alive(1, 2), c.Alive(5, 6)])
 }
