@@ -97,3 +97,24 @@ pub fn get_neighbours_test() -> Nil {
     c.Alive(2, 3),
   ])
 }
+
+// Test add neighbours
+pub fn add_neighbours_test() -> Nil {
+  let raw_grid = [
+    c.new(1, 2, True),
+    c.new(3, 4, False),
+    c.new(5, 6, True),
+    c.new(5, 6, True),
+    c.new(5, 6, False),
+  ]
+  let grid = g.new(raw_grid)
+  let transient_grid = g.add_neighbours(grid)
+  transient_grid
+  |> shld.equal([
+    c.Alive(1, 2),
+    c.Dead(3, 4),
+    c.Alive(5, 6),
+    c.Alive(5, 6),
+    c.Dead(5, 6),
+  ])
+}
