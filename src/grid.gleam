@@ -9,6 +9,12 @@ import cell
 // Public
 // Grid type definition
 // A grid is a one dimensional list of cells
+// A grid can be in three states:
+// 1. Proper grid: A grid without conflicts or redundancy, this is the starting and ending state
+// 2. Transient grid: A grid without conflicts but with redundancy, this is the intermediate state between proper grid states
+// 3. CorruptedGrid: A grid with conflicts and possibly redundancy, this is an error state as it has multiple cells with the same location and they are not the same -
+// state, which is not possible
+// We cant enforce constraints on values in the gleam typesystem therefore we define the type as a list of cells and check for conflicts and redundancy in the runtime
 pub type Grid =
   List(cell.Cell)
 
