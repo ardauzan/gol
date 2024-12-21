@@ -1,6 +1,6 @@
 # Game of Life (GOL)
 
-A simple implementation of Conway's Game of Life, written in Gleam.
+*A simple implementation of Conway's Game of Life, written in Gleam.*
 
 ## Overview
 
@@ -8,9 +8,9 @@ This project is a personal exercise in learning the Gleam programming language b
 
 ### Requirements
 
-- [Gleam](https://gleam.run) – The Gleam programming language
-- [Gleam Standard Library](https://hex.pm/packages/gleam_stdlib) – Gleam’s standard library
-- [VSCode](https://code.visualstudio.com) – Recommended development environment with relevant extensions (see `.vscode/extensions.json`)
+* [Gleam](https://gleam.run) – The Gleam programming language
+* [Gleam Standard Library](https://hex.pm/packages/gleam_stdlib) – Gleam’s standard library
+* [VSCode](https://code.visualstudio.com) – Recommended development environment with relevant extensions (see `.vscode/extensions.json`)
 
 #### Setup
 
