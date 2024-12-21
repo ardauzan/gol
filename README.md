@@ -33,3 +33,7 @@ Run tests:
 ```bash
 gleam test
 ```
+
+###### License
+
+See the [LICENSE.txt](LICENSE) file. Licensed under the **MIT License** [MIT License](https://github.com/ardauzan/gol/blob/main/LICENSE).
