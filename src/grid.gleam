@@ -45,9 +45,7 @@ pub fn is_empty(grid: Grid) -> Bool {
 // Get the state of a cell, (can be used with proper and transient grids)
 pub fn get_cell(grid: Grid, x: Int, y: Int) -> c.Cell {
   let res =
-    l.filter(grid, fn(cell: c.Cell) -> Bool {
-      c.get_x(cell) == x && c.get_y(cell) == y
-    })
+    l.filter(grid, fn(cell: c.Cell) -> Bool { cell.x == x && cell.y == y })
   case res {
     [] -> c.Dead(x, y)
     [cell, ..] -> cell
