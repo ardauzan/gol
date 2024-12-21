@@ -36,4 +36,4 @@ gleam test
 
 ###### License
 
-See the [LICENSE.txt](LICENSE) file. Licensed under the **MIT License** [MIT License](https://github.com/ardauzan/gol/blob/main/LICENSE).
+See the [**License file**](LICENSE.txt). Licensed under the [**MIT License**](https://wikipedia.org/wiki/MIT_License).
