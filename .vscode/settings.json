@@ -2,7 +2,7 @@
 
 {
     "editor.formatOnSave": true,
-    "prettier.requireConfig": false,
+    "prettier.requireConfig": true,
     "[json]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
