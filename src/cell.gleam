@@ -1,6 +1,7 @@
 // src/cell.gleam
 
 // Public
+
 // Cell type definition
 // A cell is either alive or dead and has an x and y position
 pub type Cell {

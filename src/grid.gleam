@@ -7,6 +7,7 @@ import gleam/list as l
 import cell as c
 
 // Public
+
 // Grid type definition
 // A grid is a one dimensional list of cells
 // A grid can be in one of three states:
@@ -24,6 +25,20 @@ pub type Grid =
 // ay cause undefined behaviour if not followed
 pub fn new(raw_grid: Grid) -> Grid {
   produce_proper_grid(raw_grid)
+}
+
+// Produce a proper grid from a transient grid or a corrupted grid
+pub fn produce_proper_grid(raw_grid: Grid) -> Grid {
+  let unique_raw_grid = remove_redundant_cells(raw_grid)
+  remove_dead_cells(unique_raw_grid)
+}
+
+// Produce a transient grid from a proper grid to be able to process it and get the next generation
+pub fn produce_transient_grid(grid: Grid) -> Grid {
+  let neighbours =
+    l.map(grid, fn(cell: c.Cell) -> Grid { get_neighbourhood(grid, cell) })
+  let res_redundant = l.flatten([grid, l.flatten(neighbours)])
+  remove_redundant_cells(res_redundant)
 }
 
 // Get alive cell count, (can be used with proper and transient grids)
@@ -53,7 +68,7 @@ pub fn get_cell_at_location(grid: Grid, x: Int, y: Int) -> c.Cell {
 }
 
 // Get the neighbourhood of a cell in the form of a proper grid
-pub fn get_neighbourhood_of(grid: Grid, cell: c.Cell) -> Grid {
+pub fn get_neighbourhood(grid: Grid, cell: c.Cell) -> Grid {
   let x = c.get_x(cell)
   let y = c.get_y(cell)
   [
@@ -68,33 +83,20 @@ pub fn get_neighbourhood_of(grid: Grid, cell: c.Cell) -> Grid {
   ]
 }
 
-// Add the neighbourhood of each cell to the grid to make a transient grid, (only use with proper grids)
-pub fn add_neighbours(grid: Grid) -> Grid {
-  produce_transient_grid(grid)
-}
-
 // Get the alive neighbour count of a cell.
 pub fn get_alive_neighbour_count(grid: Grid, cell: c.Cell) -> Int {
-  let neighbours = get_neighbours(grid, cell)
+  let neighbours = get_neighbourhood(grid, cell)
   get_population(neighbours)
 }
 
 // Private
-// Remove dead cells meaning cells that are not alive
+
+// Remove redundant cells
+fn remove_redundant_cells(raw_grid: Grid) -> Grid {
+  l.unique(raw_grid)
+}
+
+// Remove dead cells meaning cells
 fn remove_dead_cells(raw_grid: Grid) -> Grid {
   l.filter(raw_grid, fn(cell: c.Cell) -> Bool { c.is_alive(cell) })
-}
-
-// Produce a proper grid from a transient grid or a corrupted grid
-fn produce_proper_grid(raw_grid: Grid) -> Grid {
-  let unique_raw_grid = l.unique(raw_grid)
-  remove_dead_cells(unique_raw_grid)
-}
-
-// Produce a transient grid from a proper grid to be able to process it and get the next generation
-fn produce_transient_grid(grid: Grid) -> Grid {
-  let neighbours =
-    l.map(grid, fn(cell: c.Cell) -> Grid { get_neighbours(grid, cell) })
-  let res_redundant = l.flatten([grid, l.flatten(neighbours)])
-  l.unique(res_redundant)
 }

@@ -5,6 +5,7 @@ import gleeunit as glet
 import gleeunit/should as shld
 
 // Public
+
 // Setup
 pub fn main() -> Nil {
   glet.main()

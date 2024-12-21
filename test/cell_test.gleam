@@ -8,6 +8,7 @@ import gleeunit/should as shld
 import cell as c
 
 // Public
+
 // Setup
 pub fn main() -> Nil {
   glet.main()
