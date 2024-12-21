@@ -42,8 +42,8 @@ pub fn is_empty(grid: Grid) -> Bool {
   get_population(grid) == 0
 }
 
-// Get the state of a cell, (can be used with proper and transient grids)
-pub fn get_cell(grid: Grid, x: Int, y: Int) -> c.Cell {
+// Get the state of any cell in a grid from coordinates, (can be used with proper and transient grids)
+pub fn get_cell_at_location(grid: Grid, x: Int, y: Int) -> c.Cell {
   let res =
     l.filter(grid, fn(cell: c.Cell) -> Bool { cell.x == x && cell.y == y })
   case res {
@@ -53,22 +53,30 @@ pub fn get_cell(grid: Grid, x: Int, y: Int) -> c.Cell {
 }
 
 // Get the neighbourhood of a cell in the form of a proper grid
-pub fn get_neighbours(grid: Grid, x: Int, y: Int) -> Grid {
+pub fn get_neighbourhood_of(grid: Grid, cell: c.Cell) -> Grid {
+  let x = c.get_x(cell)
+  let y = c.get_y(cell)
   [
-    get_cell(grid, x - 1, y - 1),
-    get_cell(grid, x - 1, y),
-    get_cell(grid, x - 1, y + 1),
-    get_cell(grid, x, y - 1),
-    get_cell(grid, x, y + 1),
-    get_cell(grid, x + 1, y - 1),
-    get_cell(grid, x + 1, y),
-    get_cell(grid, x + 1, y + 1),
+    get_cell_at_location(grid, x - 1, y - 1),
+    get_cell_at_location(grid, x - 1, y),
+    get_cell_at_location(grid, x - 1, y + 1),
+    get_cell_at_location(grid, x, y - 1),
+    get_cell_at_location(grid, x, y + 1),
+    get_cell_at_location(grid, x + 1, y - 1),
+    get_cell_at_location(grid, x + 1, y),
+    get_cell_at_location(grid, x + 1, y + 1),
   ]
 }
 
 // Add the neighbourhood of each cell to the grid to make a transient grid, (only use with proper grids)
 pub fn add_neighbours(grid: Grid) -> Grid {
   produce_transient_grid(grid)
+}
+
+// Get the alive neighbour count of a cell.
+pub fn get_alive_neighbour_count(grid: Grid, cell: c.Cell) -> Int {
+  let neighbours = get_neighbours(grid, cell)
+  get_population(neighbours)
 }
 
 // Private
@@ -86,11 +94,7 @@ fn produce_proper_grid(raw_grid: Grid) -> Grid {
 // Produce a transient grid from a proper grid to be able to process it and get the next generation
 fn produce_transient_grid(grid: Grid) -> Grid {
   let neighbours =
-    l.map(grid, fn(cell: c.Cell) -> Grid {
-      let x = c.get_x(cell)
-      let y = c.get_y(cell)
-      get_neighbours(grid, x, y)
-    })
+    l.map(grid, fn(cell: c.Cell) -> Grid { get_neighbours(grid, cell) })
   let res_redundant = l.flatten([grid, l.flatten(neighbours)])
   l.unique(res_redundant)
 }

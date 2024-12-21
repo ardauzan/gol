@@ -26,5 +26,8 @@
     },
     "[gleam]": {
         "editor.defaultFormatter": "gleam.gleam"
+    },
+    "files.associations": {
+        "CODEOWNERS": "ignore"
     }
 }
