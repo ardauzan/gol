@@ -1,3 +1,5 @@
+# .github/workflows/test.yml
+
 name: test
 
 on:
@@ -21,4 +23,3 @@ jobs:
             - run: gleam deps download
             - run: gleam test
             - run: gleam format --check src test
- 

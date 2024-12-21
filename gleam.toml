@@ -1,3 +1,5 @@
+# gleam.toml
+
 name = "gol"
 version = "1.0.0"
 

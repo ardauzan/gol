@@ -1,5 +1,8 @@
+// .vscode/settings.json
+
 {
     "editor.formatOnSave": true,
+    "prettier.requireConfig": false,
     "[json]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
