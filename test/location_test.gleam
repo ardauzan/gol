@@ -1,6 +1,6 @@
-//// test/rule_test.gleam
+//// test/location_test.gleam
 //// 
-//// Module: rule_test
+//// Module: location_test
 //// API:
 //// * None
 //// Internal:

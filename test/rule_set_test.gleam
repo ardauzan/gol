@@ -1,6 +1,6 @@
-//// test/rule_test.gleam
+//// test/rule_set_test.gleam
 //// 
-//// Module: rule_test
+//// Module: rule_set_test
 //// API:
 //// * None
 //// Internal:

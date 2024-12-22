@@ -2,16 +2,16 @@
 //// 
 //// Module: gol (Main)
 //// API:
-//// - main() -> Nil
+//// * None
 //// Internal:
-//// None
+//// * None
 
-/// External imports
-import gleam/io as i
+// External imports
+import gleam/io
 
 // Public
 
 /// Entry point of the program
 pub fn main() -> Nil {
-  i.println("Hello from gol!")
+  io.println("todo")
 }

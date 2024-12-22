@@ -1,6 +1,6 @@
-//// test/rule_test.gleam
+//// test/cell_set_test.gleam
 //// 
-//// Module: rule_test
+//// Module: cell_set_test
 //// API:
 //// * None
 //// Internal:
