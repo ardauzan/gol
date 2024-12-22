@@ -3,7 +3,7 @@
 *A simple implementation of Conway's Game of Life, written in Gleam.*
 
 Donate:
-[![Ethereum](https://img.shields.io/badge/Ethereum-3C3C3D?style=for-the-badge&logo=Ethereum&logoColor=white)](copy("0x5dF4D4c4D4c4D4c4D4c4D4c4D4c4D4c4D4c4D4c4"))
+[(https://img.shields.io/badge/Ethereum-3C3C3D?style=for-the-badge&logo=Ethereum&logoColor=white)]
 
 ## Overview
 
