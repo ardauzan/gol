@@ -8,20 +8,11 @@ This project is a personal exercise in learning the Gleam programming language b
 
 ## Definitions
 
-**Cell**
-
-- A cell is either alive or dead and has an x and y position.
-
-Grid
-: A grid is a one-dimensional array of cells.
-: A grid is a two-dimensional array of cells.
-
-Neighbourhood
-: A cell's neighbourhood is the cells that are directly adjacent to it.
+todo
 
 ## Todo
 
-- [ ] Add tests
+todo
 
 ### Requirements
 
@@ -53,6 +44,6 @@ gleam test
 
 #### License
 
-See the [**License file**](LICENSE.txt). Licensed under the [**MIT Licensej**j](https://wikipedia.org/wiki/MIT_License).
+See the [**License file**](LICENSE.txt). Licensed under the [**MIT License**](https://wikipedia.org/wiki/MIT_License).
 
 **--** ***A. Uzan***
