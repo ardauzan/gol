@@ -53,6 +53,6 @@ gleam test
 
 #### License
 
-See the [**License file**](LICENSE.txt). Licensed under the [**MIT License**j](https://wikipedia.org/wiki/MIT_License).
+See the [**License file**](LICENSE.txt). Licensed under the [**MIT Licensej**j](https://wikipedia.org/wiki/MIT_License).
 
 **--** ***A. Uzan***
