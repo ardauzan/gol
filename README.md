@@ -35,23 +35,23 @@ And also the following test modules:
 
 ## Todo
 
-- [] Complete cell_set
-- [] Complete cell
-- [] Complete location_set
-- [] Complete location
-- [] Complete neighbourhood_set
-- [] Complete neighbourhood
-- [] Complete rule_set
-- [] Complete rule
-- [] Complete cell_set_test
-- [] Complete cell_test
-- [] Complete location_set_test
-- [] Complete location_test
-- [] Complete neighbourhood_set_test
-- [] Complete neighbourhood_test
-- [] Complete rule_set_test
-- [] Complete rule_test
-- [] Complete the project (GOL)
+- [ ] Complete cell_set
+- [ ] Complete cell
+- [ ] Complete location_set
+- [ ] Complete location
+- [ ] Complete neighbourhood_set
+- [ ] Complete neighbourhood
+- [ ] Complete rule_set
+- [ ] Complete rule
+- [ ] Complete cell_set_test
+- [ ] Complete cell_test
+- [ ] Complete location_set_test
+- [ ] Complete location_test
+- [ ] Complete neighbourhood_set_test
+- [ ] Complete neighbourhood_test
+- [ ] Complete rule_set_test
+- [ ] Complete rule_test
+- [ ] Complete the project (GOL)
 
 ### Requirements
 
