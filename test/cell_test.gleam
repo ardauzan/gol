@@ -1,4 +1,15 @@
-// test/cell_test.gleam
+//// test/cell_test.gleam
+//// 
+//// Module: cell_test
+//// API:
+//// - main() -> Nil
+//// - new_test() -> Nil
+//// - is_alive_test() -> Nil
+//// - is_dead_test() -> Nil
+//// - get_x_test() -> Nil
+//// - get_y_test() -> Nil
+//// Internal:
+//// * None
 
 // External imports
 import gleeunit as glet
@@ -9,12 +20,12 @@ import cell as c
 
 // Public
 
-// Setup
+/// Setup for testing
 pub fn main() -> Nil {
   glet.main()
 }
 
-// Test create new cell
+/// Test create new cell
 pub fn new_test() -> Nil {
   c.new(1, 2, True)
   |> shld.equal(c.Alive(1, 2))
@@ -22,21 +33,21 @@ pub fn new_test() -> Nil {
   |> shld.equal(c.Dead(3, 4))
 }
 
-// Test check if a cell is alive
+/// Test check if a cell is alive
 pub fn is_alive_test() -> Nil {
   let cell = c.Alive(0, 0)
   c.is_alive(cell)
   |> shld.equal(True)
 }
 
-// Test check if a cell is dead
+/// Test check if a cell is dead
 pub fn is_dead_test() -> Nil {
   let cell = c.Dead(0, 0)
   c.is_dead(cell)
   |> shld.equal(True)
 }
 
-// Test get x of cell
+/// Test get x of cell
 pub fn get_x_test() -> Nil {
   let cell1 = c.Alive(1, 0)
   let cell2 = c.Dead(0, 1)
@@ -52,7 +63,7 @@ pub fn get_x_test() -> Nil {
   |> shld.equal(1)
 }
 
-// Test get y of cell
+/// Test get y of cell
 pub fn get_y_test() -> Nil {
   let cell1 = c.Alive(0, 1)
   let cell2 = c.Dead(1, 0)

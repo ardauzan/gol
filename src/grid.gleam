@@ -1,4 +1,16 @@
-// src/grid.gleam
+//// src/grid.gleam
+//// 
+//// Module: grid
+//// API:
+//// - Cell
+//// - new(Int, Int, Bool) -> Cell
+//// - is_alive(Cell) -> Bool
+//// - is_dead(Cell) -> Bool
+//// - get_x(Cell) -> Int
+//// - get_y(Cell) -> Int
+//// Internal:
+//// - remove_redundant_cells(Grid) -> Grid
+//// - remove_dead_cells(Grid) -> Grid
 
 // External imports
 import gleam/list as l

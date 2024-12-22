@@ -1,4 +1,16 @@
-// test/grid_test.gleam
+//// test/grid_test.gleam
+//// 
+//// Module: grid_test
+//// API:
+//// - main() -> Nil
+//// - new_test() -> Nil
+//// - produce_proper_grid_test() -> Nil
+//// - produce_transient_grid_test() -> Nil
+//// - get_alive_neighbour_count_test() -> Nil
+//// - remove_redundant_cells_test() -> Nil
+//// - remove_dead_cells_test() -> Nil
+//// Internal:
+//// * None
 
 // External imports
 import gleeunit as glet
@@ -10,7 +22,7 @@ import grid as g
 
 // Public
 
-// Setup
+/// Setup for testing
 pub fn main() -> Nil {
   glet.main()
 }

@@ -1,4 +1,11 @@
-// src/rule.gleam
+//// src/rule.gleam
+//// 
+//// Module: rule
+//// API:
+//// - Rule
+//// - new() -> Rule
+//// Internal:
+//// * None
 
 // Local imports
 import grid as g

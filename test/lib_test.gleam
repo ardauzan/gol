@@ -1,1 +1,8 @@
-// test/lib_test.gleam
+//// test/lib_test.gleam
+//// 
+//// Module: lib_test
+//// API:
+//// * None
+//// Internal:
+//// * None
+
