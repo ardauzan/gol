@@ -1,17 +1,17 @@
-//// test/cell_set_test.gleam
+//// test/ruleset_test.gleam
 //// 
-//// Module: cell_set_test
+//// Module: ruleset_test
 //// API:
 //// * None
 //// Internal:
 //// * None
 
 // External imports
-import gleeunit as gleeui
+import gleeunit as gle
 
 // Public
 
 /// Setup for testing
 pub fn main() -> Nil {
-  gleeui.main()
+  gle.main()
 }

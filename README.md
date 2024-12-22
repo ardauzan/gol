@@ -10,47 +10,52 @@ This project is a personal exercise in learning the Gleam programming language b
 
 The project is divided into the following source modules:
 
-- [cell_set](src/cell_set.gleam)
 - [cell](src/cell.gleam)
 - [gol (Main)](src/gol.gleam)
+- [grid](src/grid.gleam)
 - [lib](src/lib.gleam)
-- [location_set](src/location_set.gleam)
 - [location](src/location.gleam)
-- [neighbourhood_set](src/neighbourhood_set.gleam)
 - [neighbourhood](src/neighbourhood.gleam)
-- [rule_set](src/rule_set.gleam)
+- [neighbourhoods](src/neighbourhoods.gleam)
 - [rule](src/rule.gleam)
+- [ruleset](src/ruleset.gleam)
 
 And also the following test modules:
 
 - [cell_test](test/cell_test.gleam)
 - [gol_test](test/gol_test.gleam)
+- [grid_test](test/grid_test.gleam)
 - [lib_test](test/lib_test.gleam)
-- [location_set_test](test/location_set_test.gleam)
 - [location_test](test/location_test.gleam)
-- [neighbourhood_set_test](test/neighbourhood_set_test.gleam)
 - [neighbourhood_test](test/neighbourhood_test.gleam)
-- [rule_set_test](test/rule_set_test.gleam)
-- [rule_test](test/rule_test.gleam)
+- [neighbourhoods_test](test/neighbourhoods_test.gleam)
+- [ruletest](test/rule_test.gleam)
+- [ruleset_test](test/ruleset_test.gleam)
 
 ## Todo
 
-- [ ] Complete cell_set
+Complete the source modules:
+
 - [ ] Complete cell
-- [ ] Complete location_set
+- [ ] Complete grid
 - [ ] Complete location
-- [ ] Complete neighbourhood_set
 - [ ] Complete neighbourhood
-- [ ] Complete rule_set
+- [ ] Complete neighbourhoods
 - [ ] Complete rule
-- [ ] Complete cell_set_test
+- [ ] Complete ruleset
+
+Complete the test modules:
+
 - [ ] Complete cell_test
-- [ ] Complete location_set_test
+- [ ] Complete grid_test
 - [ ] Complete location_test
-- [ ] Complete neighbourhood_set_test
 - [ ] Complete neighbourhood_test
-- [ ] Complete rule_set_test
+- [ ] Complete neighbourhoods_test
 - [ ] Complete rule_test
+- [ ] Complete ruleset_test
+
+Complete the everthing:
+
 - [ ] Complete the project (GOL)
 
 ### Requirements

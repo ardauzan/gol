@@ -1,6 +1,6 @@
-//// test/rule_test.gleam
+//// test/neighbourhoods_test.gleam
 //// 
-//// Module: rule_test
+//// Module: neighbourhoods_test
 //// API:
 //// * None
 //// Internal:
@@ -11,7 +11,7 @@ import gleeunit as gle
 
 // Public
 
-/// Setup for testing
+/// Setup for testing:
 pub fn main() -> Nil {
   gle.main()
 }

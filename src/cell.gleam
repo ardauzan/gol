@@ -7,12 +7,14 @@
 //// * None
 
 // Local imports
-import location as locati
+import location as loc
 
 // Public
 
-/// Cell type definition
+/// Cell type definition:
+/// A cell is either alive or dead.
+/// It also has a location.
 pub type Cell {
-  Alive(locati.Location)
-  Dead(locati.Location)
+  Alive(loc.Location)
+  Dead(loc.Location)
 }

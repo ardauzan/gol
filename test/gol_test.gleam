@@ -7,11 +7,11 @@
 //// * None
 
 // External imports
-import gleeunit as gleeui
+import gleeunit as gle
 
 // Public
 
-/// Setup for testing
+/// Setup for testing:
 pub fn main() -> Nil {
-  gleeui.main()
+  gle.main()
 }

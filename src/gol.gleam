@@ -11,7 +11,8 @@ import gleam/io
 
 // Public
 
-/// Entry point of the program
+/// Entry point of the program:
+/// print "todo"
 pub fn main() -> Nil {
   io.println("todo")
 }

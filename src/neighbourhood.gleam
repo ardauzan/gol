@@ -7,19 +7,21 @@
 //// * None
 
 // Local imports
-import cell
+import cell as cel
 
 // Public
 
-/// Neighbourhood type definition
+/// Neighbourhood type definition:
+/// A neighbourhood is a tuple of eight cells.
+/// It represents the cells around a cel which effects its next state.
 pub type Neighbourhood =
   #(
-    cell.Cell,
-    cell.Cell,
-    cell.Cell,
-    cell.Cell,
-    cell.Cell,
-    cell.Cell,
-    cell.Cell,
-    cell.Cell,
+    cel.Cell,
+    cel.Cell,
+    cel.Cell,
+    cel.Cell,
+    cel.Cell,
+    cel.Cell,
+    cel.Cell,
+    cel.Cell,
   )

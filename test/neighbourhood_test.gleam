@@ -1,17 +1,17 @@
-//// test/rule_set_test.gleam
+//// test/neighbourhood_test.gleam
 //// 
-//// Module: rule_set_test
+//// Module: neighbourhood_test
 //// API:
 //// * None
 //// Internal:
 //// * None
 
 // External imports
-import gleeunit as gleeui
+import gleeunit as gle
 
 // Public
 
 /// Setup for testing
 pub fn main() -> Nil {
-  gleeui.main()
+  gle.main()
 }
