@@ -30,7 +30,7 @@ Neighbourhood
 - [Gleam Standard Library](https://hex.pm/packages/gleam_stdlib) – Gleam’s standard library
 - [VSCode](https://code.visualstudio.com) – Recommended development environment with relevant extensions (see `.vscode/extensions.json`)
 
-#### Setup
+### Setup
 
 Install dependencies:
 
@@ -38,7 +38,7 @@ Install dependencies:
 gleam install
 ```
 
-##### Usage
+### Usage
 
 Run the project:
 
@@ -52,7 +52,7 @@ Run tests:
 gleam test
 ```
 
-###### License
+#### License
 
 See the [**License file**](LICENSE.txt). Licensed under the [**MIT License**](https://wikipedia.org/wiki/MIT_License).
 
