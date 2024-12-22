@@ -2,8 +2,8 @@
 
 *A simple implementation of Conway's Game of Life, written in Gleam.*
 
-Donate:
 [(https://img.shields.io/badge/Ethereum-3C3C3D?style=for-the-badge&logo=Ethereum&logoColor=white)]
+[(https://img.shields.io/badge/prettier-1A2C34?style=for-the-badge&logo=prettier&logoColor=F7BA3E)]
 
 ## Overview
 
