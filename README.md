@@ -12,6 +12,7 @@ Cell
 : A cell is either alive or dead and has an x and y position.
 
 Grid
+: A grid is a one-dimensional array of cells.
 : A grid is a two-dimensional array of cells.
 
 Neighbourhood
