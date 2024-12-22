@@ -17,7 +17,6 @@ pub type Location =
   #(Int, Int)
 
 /// Location constructor:
-/// A location is a point on a 2D plane of integer coordinates.
 pub fn new(x: Int, y: Int) -> Location {
   #(x, y)
 }
