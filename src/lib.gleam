@@ -3,8 +3,9 @@
 //// Module:lib
 //// API:
 //// - add_unique(List(value), value) -> List(value)
+//// - remove(List(value), value) -> List(value)
 //// Internal:
-//// - contains(List(value), value) -> Bool
+//// * None
 
 // External imports
 import gleam/list as lis
@@ -13,15 +14,13 @@ import gleam/list as lis
 
 /// Add item to list if it doesn't already exist.
 pub fn add_unique(list: List(value), item: value) -> List(value) {
-  case contains(list, item) {
+  case lis.contains(list, item) {
     True -> list
     False -> [item, ..list]
   }
 }
 
-// Private
-
-/// List contains item.
-fn contains(list: List(value), item: value) -> Bool {
-  lis.contains(list, item)
+/// Remove item from list.
+pub fn remove(list: List(value), item_outer: value) -> List(value) {
+  lis.filter(list, fn(item_inner: value) -> Bool { item_inner != item_outer })
 }
