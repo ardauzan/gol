@@ -12,6 +12,8 @@
 import cell as cel
 import neighbourhood as nei
 
+// IMPORTANT NOTE: In the traditional game of life, the next state is only determined by its current state and it's alive neighbour count. We instead determine the next state based on the current state and it's neighbourhood (exact equality so multiple versions of the neighbourhood can be differentiated even if they share the alive count).
+
 // Public
 
 /// Rule type definition

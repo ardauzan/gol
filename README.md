@@ -11,6 +11,7 @@ This project is a personal exercise in learning the Gleam programming language b
 The project is divided into the following source modules:
 
 - [cell](src/cell.gleam)
+- [definitions](src/definitions.gleam)
 - [gol (Main)](src/gol.gleam)
 - [grid](src/grid.gleam)
 - [lib](src/lib.gleam)
@@ -23,6 +24,7 @@ The project is divided into the following source modules:
 And also the following test modules:
 
 - [cell_test](test/cell_test.gleam)
+- [definitions_test](test/definitions_test.gleam)
 - [gol_test](test/gol_test.gleam)
 - [grid_test](test/grid_test.gleam)
 - [lib_test](test/lib_test.gleam)
@@ -37,6 +39,7 @@ And also the following test modules:
 Complete the source modules:
 
 - [x] Complete cell
+- [ ] Complete definitions
 - [ ] Complete grid
 - [x] Complete location
 - [ ] Complete neighbourhood
@@ -47,6 +50,7 @@ Complete the source modules:
 Complete the test modules:
 
 - [x] Complete cell_test
+- [ ] Complete definitions_test
 - [ ] Complete grid_test
 - [x] Complete location_test
 - [ ] Complete neighbourhood_test
