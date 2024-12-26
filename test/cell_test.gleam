@@ -53,6 +53,18 @@ pub fn is_dead_test() -> Nil {
   |> sho.equal(True)
 }
 
+/// Test the toggle function.
+pub fn toggle_test() -> Nil {
+  let x = 10
+  let y = -10
+  let location = loc.new(x, y)
+  let alive = True
+  cel.new(location, alive)
+  |> cel.toggle
+  |> cel.is_dead
+  |> sho.equal(True)
+}
+
 /// Test the get_location function.
 pub fn get_location_test() -> Nil {
   let x = 8

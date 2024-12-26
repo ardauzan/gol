@@ -36,9 +36,9 @@ And also the following test modules:
 
 Complete the source modules:
 
-- [ ] Complete cell
+- [x] Complete cell
 - [ ] Complete grid
-- [ ] Complete location
+- [x] Complete location
 - [ ] Complete neighbourhood
 - [ ] Complete neighbourhoods
 - [ ] Complete rule
@@ -46,9 +46,9 @@ Complete the source modules:
 
 Complete the test modules:
 
-- [ ] Complete cell_test
+- [x] Complete cell_test
 - [ ] Complete grid_test
-- [ ] Complete location_test
+- [x] Complete location_test
 - [ ] Complete neighbourhood_test
 - [ ] Complete neighbourhoods_test
 - [ ] Complete rule_test

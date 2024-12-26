@@ -3,19 +3,90 @@
 //// Module: grid
 //// API:
 //// - Grid
+//// - new() -> Grid
+//// - is_empty(Grid) -> Bool
+//// - add(Grid, Cell) -> Grid
+//// - get(Grid, Location) -> Cell
+//// - remove_at_location(Grid, Location) -> Grid
 //// Internal:
-//// * None
+//// - contains(Grid, Cell) -> Bool
+//// - remove(Grid, Cell) -> Grid
+//// - cell_conflicts(Grid, Cell) -> Bool
+
+// External imports
+import gleam/list as lis
 
 // Local imports
 import cell as cel
+import lib
+import location as loc
 
 // Public
 
 /// Grid type definition:
-/// A grid is a list of cells.
-/// It represents an infinite 2D array of cells.
-/// It has two forms:
-/// - Proper : It only contains unique alive cells.
-/// - Transient : It contains unique alive and dead cells.
 pub type Grid =
   List(cel.Cell)
+
+/// Grid constructor:
+pub fn new() -> Grid {
+  []
+}
+
+/// Get if the grid is empty.
+pub fn is_empty(grid: Grid) -> Bool {
+  case grid {
+    [] -> True
+    [_, ..] -> False
+  }
+}
+
+/// Add cell to grid.
+pub fn add(grid: Grid, cell: cel.Cell) -> Grid {
+  case cel.is_alive(cell), cell_conflicts(grid, cel.toggle(cell)) {
+    True, True -> grid
+    False, _conflict -> grid
+    True, False -> lib.add_unique(grid, cell)
+  }
+}
+
+/// Get cell from grid.
+pub fn get(grid: Grid, location: loc.Location) -> cel.Cell {
+  let cell_alive = cel.new(location, True)
+  let cell_dead = cel.new(location, False)
+  let grid_contains_location_alive = contains(grid, cell_alive)
+  case
+    grid_contains_location_alive || contains(grid, cell_dead),
+    grid_contains_location_alive
+  {
+    True, True -> cell_alive
+    True, False -> cell_dead
+    False, _state -> cel.Dead(location)
+  }
+}
+
+/// Remove cell from grid.
+pub fn remove_at_location(grid: Grid, location: loc.Location) -> Grid {
+  let cell = get(grid, location)
+  let grid_contains_cell = contains(grid, cell)
+  case grid_contains_cell {
+    True -> remove(grid, cell)
+    False -> grid
+  }
+}
+
+// Private
+
+/// Check if a grid contains a cell.
+fn contains(grid: Grid, cell: cel.Cell) -> Bool {
+  lis.contains(grid, cell)
+}
+
+/// Remove a cell from a grid.
+fn remove(grid: Grid, cell_outer: cel.Cell) -> Grid {
+  lis.filter(grid, fn(cell_inner: cel.Cell) -> Bool { cell_inner != cell_outer })
+}
+
+/// Check if a cell is conflicting with any cell in the grid.
+fn cell_conflicts(grid: Grid, cell: cel.Cell) -> Bool {
+  contains(grid, cel.toggle(cell))
+}
