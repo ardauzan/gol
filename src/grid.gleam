@@ -53,22 +53,21 @@ pub fn add(grid: Grid, cell: cel.Cell) -> Grid {
 pub fn get(grid: Grid, location: loc.Location) -> cel.Cell {
   let cell_alive = cel.new(location, True)
   let cell_dead = cel.new(location, False)
-  let grid_contains_location_alive = contains(grid, cell_alive)
+  let grid_contains_cell_alive = contains(grid, cell_alive)
   case
-    grid_contains_location_alive || contains(grid, cell_dead),
-    grid_contains_location_alive
+    grid_contains_cell_alive || contains(grid, cell_dead),
+    grid_contains_cell_alive
   {
     True, True -> cell_alive
     True, False -> cell_dead
-    False, _state -> cel.Dead(location)
+    False, _grid_contains_cell_alive -> cell_dead
   }
 }
 
 /// Remove cell from grid.
 pub fn remove_at_location(grid: Grid, location: loc.Location) -> Grid {
   let cell = get(grid, location)
-  let grid_contains_cell = contains(grid, cell)
-  case grid_contains_cell {
+  case contains(grid, cell) {
     True -> remove(grid, cell)
     False -> grid
   }
