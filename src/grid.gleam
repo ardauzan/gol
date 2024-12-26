@@ -41,6 +41,9 @@ pub fn is_empty(grid: Grid) -> Bool {
 }
 
 /// Add cell to grid.
+/// If the cell conflicts with another cell in the grid, the cell will not be added.
+/// If the cell is already in the grid, it will not be added.
+/// If the cell is dead, it will not be actually added.
 pub fn add(grid: Grid, cell: cel.Cell) -> Grid {
   case cel.is_alive(cell), cell_conflicts(grid, cel.toggle(cell)) {
     True, True -> grid
