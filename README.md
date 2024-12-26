@@ -29,7 +29,7 @@ And also the following test modules:
 - [location_test](test/location_test.gleam)
 - [neighbourhood_test](test/neighbourhood_test.gleam)
 - [neighbourhoods_test](test/neighbourhoods_test.gleam)
-- [ruletest](test/rule_test.gleam)
+- [rule_test](test/rule_test.gleam)
 - [ruleset_test](test/ruleset_test.gleam)
 
 ## Todo

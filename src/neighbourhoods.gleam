@@ -3,10 +3,13 @@
 //// Module: neighbourhoods
 //// API:
 //// - Neighbourhoods
+//// - get(Grid) -> Neighbourhoods
 //// Internal:
-//// * None
+//// - get_inner(Grid, Grid, Neighbourhoods) -> Neighbourhoods
 
 // Local imports
+import cell as cel
+import grid as gri
 import neighbourhood as nei
 
 // Public
@@ -16,3 +19,24 @@ import neighbourhood as nei
 /// It serves usefull to separate it from the singular neighbourhood as their purpose for existence is different, that is why this is here, in a different source file.
 pub type Neighbourhoods =
   List(nei.Neighbourhood)
+
+/// Get the neighbourhoods of a grid.
+pub fn get(grid: gri.Grid) -> Neighbourhoods {
+  let transient_grid = gri.make_transient(grid)
+  get_inner(transient_grid, transient_grid, [])
+}
+
+// Private
+
+/// Inner loop for getting the neighbourhoods.
+fn get_inner(
+  grid: gri.Grid,
+  temp1: gri.Grid,
+  temp2: Neighbourhoods,
+) -> Neighbourhoods {
+  case temp1 {
+    [] -> temp2
+    [head, ..tail] ->
+      get_inner(grid, tail, [nei.get(grid, cel.get_location(head)), ..temp2])
+  }
+}

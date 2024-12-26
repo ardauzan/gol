@@ -15,3 +15,8 @@ import gleeunit as gle
 pub fn main() -> Nil {
   gle.main()
 }
+
+/// Test the get function.
+pub fn get_test() -> Nil {
+  todo
+}
