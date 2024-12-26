@@ -15,3 +15,18 @@ import gleeunit as gle
 pub fn main() -> Nil {
   gle.main()
 }
+
+/// Test the rule constructor.
+pub fn new_test() -> Nil {
+  todo
+}
+
+/// Test the add_case function.
+pub fn add_case_test() -> Nil {
+  todo
+}
+
+/// Test the apply function.
+pub fn apply_test() -> Nil {
+  todo
+}

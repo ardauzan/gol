@@ -3,6 +3,8 @@
 //// Module: rule
 //// API:
 //// - Rule
+//// - add_case(Rule, Neighbourhood, Cell) -> Rule
+//// - apply(Rule, Neighbourhood) -> Cell
 //// Internal:
 //// * None
 
@@ -16,3 +18,32 @@ import neighbourhood as nei
 /// A rule is a function that takes a cell with it's neighbourhood and returns the next state of the cell after a tick.
 pub type Rule =
   fn(nei.Neighbourhood) -> cel.Cell
+
+/// Rule constructor:
+pub fn new() -> Rule {
+  fn(neighbourhood: nei.Neighbourhood) -> cel.Cell {
+    case neighbourhood {
+      #(_cell1, _cell2, _cell3, _cell4, cell5, _cell6, _cell7, _cell8, _cell9) ->
+        cell5
+    }
+  }
+}
+
+/// Add case to rule.
+pub fn add_case(
+  rule: Rule,
+  neighbourhood_outer: nei.Neighbourhood,
+  next_state: cel.Cell,
+) -> Rule {
+  fn(neighbourhood_inner: nei.Neighbourhood) -> cel.Cell {
+    case neighbourhood_inner {
+      any if any == neighbourhood_outer -> next_state
+      any -> rule(any)
+    }
+  }
+}
+
+// Apply rule to cell and it's neighbourhood.
+pub fn apply(rule: Rule, neighbourhood: nei.Neighbourhood) -> cel.Cell {
+  rule(neighbourhood)
+}
