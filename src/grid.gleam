@@ -1,6 +1,9 @@
 //// src/grid.gleam
-//// 
+////
 //// Module: grid
+////
+//// In this module, the Grid type and its functions are defined.
+////
 //// API:
 //// - Grid
 //// - new() -> Grid
@@ -15,17 +18,17 @@
 //// - remove_dead(Grid) -> Grid
 //// - make_transient_inner(Grid, Grid, Grid) -> Grid
 
-// External imports
+// External imports:
 import gleam/list as lis
 
-// Local imports
+// Local imports:
 import cell as cel
 import lib
 import location as loc
 
-// Public
+// Public:
 
-/// Grid type definition:
+/// Grid type definition.
 /// A grid is a list of cells.
 /// It can be in the form of three different states.
 /// 1. Proper     | Only contains unique alive cells or is empty.
@@ -34,7 +37,7 @@ import location as loc
 pub type Grid =
   List(cel.Cell)
 
-/// Grid constructor:
+/// Grid constructor.
 pub fn new() -> Grid {
   []
 }
@@ -102,7 +105,7 @@ pub fn get_neighbours(grid: Grid, location: loc.Location) -> Grid {
   ]
 }
 
-// Private
+// Private:
 
 /// Check if a cell is conflicting with any cell in the grid.
 fn cell_conflicts(grid: Grid, cell: cel.Cell) -> Bool {

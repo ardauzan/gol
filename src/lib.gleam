@@ -1,16 +1,19 @@
 //// src/lib.gleam
-//// 
+////
 //// Module:lib
+////
+//// In this module, the functions for manipulating lists are defined.
+////
 //// API:
 //// - add_unique(List(value), value) -> List(value)
 //// - remove(List(value), value) -> List(value)
 //// Internal:
 //// * None
 
-// External imports
+// External imports:
 import gleam/list as lis
 
-// Public
+// Public:
 
 /// Add item to list if it doesn't already exist.
 pub fn add_unique(list: List(value), item: value) -> List(value) {

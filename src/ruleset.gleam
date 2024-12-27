@@ -1,17 +1,20 @@
 //// src/ruleset.gleam
-//// 
+////
 //// Module: ruleset
+////
+//// In this module, the Ruleset type and its functions are defined.
+////
 //// API:
 //// - Ruleset
 //// Internal:
 //// * None
 
-// Local imports
+// Local imports:
 import rule as rul
 
-// Public
+// Public:
 
-/// Ruleset type definition
+/// Ruleset type definition.
 /// A ruleset is used to determine the next state of a cell based on it's current state and it's neighbourhood after a tick with any number of rules the ruleset contains applied to it.
 pub type Ruleset =
   List(rul.Rule)

@@ -1,20 +1,23 @@
 //// src/neighbourhood.gleam
-//// 
+////
 //// Module: neighbourhood
+////
+//// In this module, the Neighbourhood type and its functions are defined.
+////
 //// API:
 //// - Neighbourhood
 //// - get(Grid, Location) -> Neighbourhood
 //// Internal:
 //// * None
 
-// Local imports
+// Local imports:
 import cell as cel
 import grid as gri
 import location as loc
 
-// Public
+// Public:
 
-/// Neighbourhood type definition:
+/// Neighbourhood type definition.
 /// A neighbourhood is a tuple of eight cells.
 /// It represents the cell and the cells around a cell which effects its next state.
 pub type Neighbourhood =

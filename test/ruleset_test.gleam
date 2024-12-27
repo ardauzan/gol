@@ -1,17 +1,20 @@
 //// test/ruleset_test.gleam
-//// 
+////
 //// Module: ruleset_test
+////
+//// Test module for ruleset.
+////
 //// API:
 //// - main() -> Nil
 //// Internal:
 //// * None
 
-// External imports
+// External imports:
 import gleeunit as gle
 
-// Public
+// Public:
 
-/// Setup for testing
+/// Setup for testing.
 pub fn main() -> Nil {
   gle.main()
 }

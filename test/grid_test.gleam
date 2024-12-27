@@ -1,6 +1,9 @@
 //// test/grid_test.gleam
-//// 
+////
 //// Module: grid_test
+////
+//// Test module for grid.
+////
 //// API:
 //// - main() -> Nil
 //// - new_test() -> Nil
@@ -13,16 +16,16 @@
 //// Internal:
 //// * None
 
-// External imports
+// External imports:
 import gleeunit as gle
 import gleeunit/should as sho
 
-// Local imports
+// Local imports:
 import grid as gri
 
-// Public
+// Public:
 
-/// Setup for testing:
+/// Setup for testing.
 pub fn main() -> Nil {
   gle.main()
 }

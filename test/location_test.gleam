@@ -1,6 +1,9 @@
 //// test/location_test.gleam
-//// 
+////
 //// Module: location_test
+////
+//// Test module for location.
+////
 //// API:
 //// - main() -> Nil
 //// - new_test() -> Nil
@@ -9,16 +12,16 @@
 //// Internal:
 //// * None
 
-// External imports
+// External imports:
 import gleeunit as gle
 import gleeunit/should as sho
 
-// Local imports
+// Local imports:
 import location as loc
 
-// Public
+// Public:
 
-/// Setup for testing:
+/// Setup for testing.
 pub fn main() -> Nil {
   gle.main()
 }

@@ -1,6 +1,9 @@
 //// test/lib_test.gleam
-//// 
+////
 //// Module: lib_test
+////
+//// Test module for lib.
+////
 //// API:
 //// - main() -> Nil
 //// - add_unique_test() -> Nil
@@ -8,16 +11,16 @@
 //// Internal:
 //// * None
 
-// External imports
+// External imports:
 import gleeunit as gle
 import gleeunit/should as sho
 
-// Local imports
+// Local imports:
 import lib
 
-// Public
+// Public:
 
-/// Setup for testing:
+/// Setup for testing.
 pub fn main() -> Nil {
   gle.main()
 }

@@ -1,6 +1,9 @@
 //// test/cell_test.gleam
-//// 
+////
 //// Module: cell_test
+////
+//// Test module for cell.
+////
 //// API:
 //// - main() -> Nil
 //// - new_test() -> Nil
@@ -11,17 +14,17 @@
 //// Internal:
 //// * None
 
-// External imports
+// External imports:
 import gleeunit as gle
 import gleeunit/should as sho
 
-// Local imports
+// Local imports:
 import cell as cel
 import location as loc
 
-// Public
+// Public:
 
-/// Setup for testing:
+/// Setup for testing.
 pub fn main() -> Nil {
   gle.main()
 }

@@ -1,20 +1,23 @@
 //// src/neighbourhoods.gleam
-//// 
+////
 //// Module: neighbourhoods
+////
+//// In this module, the Neighbourhoods type and its functions are defined.
+////
 //// API:
 //// - Neighbourhoods
 //// - get(Grid) -> Neighbourhoods
 //// Internal:
 //// - get_inner(Grid, Grid, Neighbourhoods) -> Neighbourhoods
 
-// Local imports
+// Local imports:
 import cell as cel
 import grid as gri
 import neighbourhood as nei
 
-// Public
+// Public:
 
-/// Neighbourhoods type definition:
+/// Neighbourhoods type definition.
 /// Neighbourhoods type is represented by a list of neighbourhoods.
 /// It serves usefull to separate it from the singular neighbourhood as their purpose for existence is different, that is why this is here, in a different source file.
 pub type Neighbourhoods =
@@ -25,7 +28,7 @@ pub fn get(grid: gri.Grid) -> Neighbourhoods {
   get_inner(gri.make_proper(grid), gri.make_transient(grid), [])
 }
 
-// Private
+// Private:
 
 /// Inner loop for getting the neighbourhoods.
 fn get_inner(

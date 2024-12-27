@@ -1,6 +1,9 @@
 //// test/rule_test.gleam
-//// 
+////
 //// Module: rule_test
+////
+//// Test module for rule.
+////
 //// API:
 //// - main() -> Nil
 //// - new_test() -> Nil
@@ -9,12 +12,12 @@
 //// Internal:
 //// * None
 
-// External imports
+// External imports:
 import gleeunit as gle
 
-// Public
+// Public:
 
-/// Setup for testing
+/// Setup for testing.
 pub fn main() -> Nil {
   gle.main()
 }

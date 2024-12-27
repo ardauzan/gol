@@ -1,6 +1,9 @@
 //// src/location.gleam
-//// 
+////
 //// Module: location
+////
+//// In this module, the Location type and its functions are defined.
+////
 //// API:
 //// - Location
 //// - new(Int, Int) -> Location
@@ -9,14 +12,14 @@
 //// Internal:
 //// * None
 
-// Public
+// Public:
 
-/// Location type definition:
+/// Location type definition.
 /// Loction is two-dimensional, with x and y coordinates.
 pub type Location =
   #(Int, Int)
 
-/// Location constructor:
+/// Location constructor.
 pub fn new(x: Int, y: Int) -> Location {
   #(x, y)
 }

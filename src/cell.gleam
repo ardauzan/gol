@@ -1,6 +1,9 @@
 //// src/cell.gleam
-//// 
+////
 //// Module: cell
+////
+//// In this module, the Cell type and its functions are defined.
+////
 //// API:
 //// - Cell
 //// - new(Location, Bool) -> Cell
@@ -11,12 +14,12 @@
 //// Internal:
 //// * None
 
-// Local imports
+// Local imports:
 import location as loc
 
-// Public
+// Public:
 
-/// Cell type definition:
+/// Cell type definition.
 /// A cell is either alive or dead.
 /// It also has a location.
 pub type Cell {
@@ -24,7 +27,7 @@ pub type Cell {
   Dead(loc.Location)
 }
 
-/// Cell constructor:
+/// Cell constructor.
 pub fn new(location: loc.Location, alive: Bool) -> Cell {
   case alive {
     True -> Alive(location)

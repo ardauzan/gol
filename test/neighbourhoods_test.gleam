@@ -1,18 +1,21 @@
 //// test/neighbourhoods_test.gleam
-//// 
+////
 //// Module: neighbourhoods_test
+////
+//// Test module for neighbourhoods.
+////
 //// API:
 //// - main() -> Nil
 //// - get_test() -> Nil
 //// Internal:
 //// * None
 
-// External imports
+// External imports:
 import gleeunit as gle
 
-// Public
+// Public:
 
-/// Setup for testing:
+/// Setup for testing.
 pub fn main() -> Nil {
   gle.main()
 }
