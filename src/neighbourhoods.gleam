@@ -22,8 +22,7 @@ pub type Neighbourhoods =
 
 /// Get the neighbourhoods of a grid.
 pub fn get(grid: gri.Grid) -> Neighbourhoods {
-  let transient_grid = gri.make_transient(grid)
-  get_inner(transient_grid, transient_grid, [])
+  get_inner(gri.make_proper(grid), gri.make_transient(grid), [])
 }
 
 // Private

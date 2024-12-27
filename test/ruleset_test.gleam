@@ -2,7 +2,7 @@
 //// 
 //// Module: ruleset_test
 //// API:
-//// * None
+//// - main() -> Nil
 //// Internal:
 //// * None
 

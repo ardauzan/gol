@@ -2,7 +2,7 @@
 //// 
 //// Module: gol (Main)
 //// API:
-//// * None
+//// - main() -> Nil
 //// Internal:
 //// * None
 

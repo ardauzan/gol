@@ -2,7 +2,10 @@
 //// 
 //// Module: location_test
 //// API:
-//// * None
+//// - main() -> Nil
+//// - new_test() -> Nil
+//// - get_x_test() -> Nil
+//// - get_y_test() -> Nil
 //// Internal:
 //// * None
 

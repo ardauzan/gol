@@ -2,7 +2,10 @@
 //// 
 //// Module: rule_test
 //// API:
-//// * None
+//// - main() -> Nil
+//// - new_test() -> Nil
+//// - add_case_test() -> Nil
+//// - apply_test() -> Nil
 //// Internal:
 //// * None
 

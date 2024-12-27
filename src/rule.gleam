@@ -3,6 +3,7 @@
 //// Module: rule
 //// API:
 //// - Rule
+//// - new() -> Rule
 //// - add_case(Rule, Neighbourhood, Cell) -> Rule
 //// - apply(Rule, Neighbourhood) -> Cell
 //// Internal:

@@ -2,7 +2,7 @@
 //// 
 //// Module: definitions_test
 //// API:
-//// * None
+//// - main() -> Nil
 //// Internal:
 //// * None
 

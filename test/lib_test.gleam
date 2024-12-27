@@ -2,7 +2,9 @@
 //// 
 //// Module: lib_test
 //// API:
-//// * None
+//// - main() -> Nil
+//// - add_unique_test() -> Nil
+//// - remove_test() -> Nil
 //// Internal:
 //// * None
 

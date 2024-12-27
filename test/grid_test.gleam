@@ -2,7 +2,14 @@
 //// 
 //// Module: grid_test
 //// API:
-//// * None
+//// - main() -> Nil
+//// - new_test() -> Nil
+//// - make_proper_test() -> Nil
+//// - make_transient_test() -> Nil
+//// - add_test() -> Nil
+//// - get_test() -> Nil
+//// - remove_at_location_test() -> Nil
+//// - get_neighbours_test() -> Nil
 //// Internal:
 //// * None
 

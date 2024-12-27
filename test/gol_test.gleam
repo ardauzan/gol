@@ -2,7 +2,7 @@
 //// 
 //// Module: gol_test
 //// API:
-//// * None
+//// - main() -> Nil
 //// Internal:
 //// * None
 

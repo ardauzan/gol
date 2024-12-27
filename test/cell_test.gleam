@@ -2,7 +2,12 @@
 //// 
 //// Module: cell_test
 //// API:
-//// * None
+//// - main() -> Nil
+//// - new_test() -> Nil
+//// - is_alive_test() -> Nil
+//// - is_dead_test() -> Nil
+//// - toggle_test() -> Nil
+//// - get_location_test() -> Nil
 //// Internal:
 //// * None
 

@@ -2,7 +2,8 @@
 //// 
 //// Module: neighbourhoods_test
 //// API:
-//// * None
+//// - main() -> Nil
+//// - get_test() -> Nil
 //// Internal:
 //// * None
 
