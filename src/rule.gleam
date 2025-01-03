@@ -49,6 +49,37 @@ pub fn add_case(
   }
 }
 
+/// Add logic to  rule.
+pub fn add_logic(rule: Rule, logic: fn(nei.Neighbourhood) -> cel.Cell) -> Rule {
+  fn(neighbourhood: nei.Neighbourhood) -> cel.Cell {
+    case neighbourhood {
+      #(
+        cell1,
+        cell2,
+        cell3,
+        cell4,
+        cel.Alive(location),
+        cell6,
+        cell7,
+        cell8,
+        cell9,
+      ) ->
+        logic(#(
+          cell1,
+          cell2,
+          cell3,
+          cell4,
+          cel.new(location, True),
+          cell6,
+          cell7,
+          cell8,
+          cell9,
+        ))
+      any -> rule(any)
+    }
+  }
+}
+
 // Apply rule to cell and it's neighbourhood.
 pub fn apply(rule: Rule, neighbourhood: nei.Neighbourhood) -> cel.Cell {
   rule(neighbourhood)

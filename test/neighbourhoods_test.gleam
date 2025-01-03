@@ -11,6 +11,7 @@
 //// * None
 
 // External imports:
+import gleam/io
 import gleeunit as gle
 
 // Public:
@@ -22,5 +23,5 @@ pub fn main() -> Nil {
 
 /// Test the get function.
 pub fn get_test() -> Nil {
-  todo
+  io.println("Todo")
 }

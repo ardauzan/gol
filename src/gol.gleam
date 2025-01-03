@@ -12,9 +12,12 @@
 // External imports:
 import gleam/io
 
+// Local imports:
+import definitions
+
 // Public
 
 /// Entry point of the program.
 pub fn main() -> Nil {
-  io.println("todo")
+  io.println("Todo")
 }

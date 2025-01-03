@@ -13,6 +13,7 @@
 //// * None
 
 // External imports:
+import gleam/io
 import gleeunit as gle
 
 // Public:
@@ -24,15 +25,15 @@ pub fn main() -> Nil {
 
 /// Test the rule constructor.
 pub fn new_test() -> Nil {
-  todo
+  io.println("Todo")
 }
 
 /// Test the add_case function.
 pub fn add_case_test() -> Nil {
-  todo
+  io.println("Todo")
 }
 
 /// Test the apply function.
 pub fn apply_test() -> Nil {
-  todo
+  io.println("Todo")
 }

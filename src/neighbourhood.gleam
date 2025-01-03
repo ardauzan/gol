@@ -60,3 +60,27 @@ pub fn get(grid: gri.Grid, location: loc.Location) -> Neighbourhood {
     )
   }
 }
+
+/// Get the number of alive neighbours in a neighbourhood.
+pub fn alive_neighbour_count(neighbourhood: Neighbourhood) -> Int {
+  let #(cell1, cell2, cell3, cell4, _cell5, cell6, cell7, cell8, cell9) =
+    neighbourhood
+  count_cell(cell1)
+  + count_cell(cell2)
+  + count_cell(cell3)
+  + count_cell(cell4)
+  + count_cell(cell6)
+  + count_cell(cell7)
+  + count_cell(cell8)
+  + count_cell(cell9)
+}
+
+// Private:
+
+/// Count a cell.
+fn count_cell(cell: cel.Cell) -> Int {
+  case cel.is_alive(cell) {
+    True -> 1
+    False -> 0
+  }
+}
