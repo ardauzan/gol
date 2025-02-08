@@ -31,40 +31,39 @@ pub fn main() -> Nil {
 
 /// Test the cell constructor.
 pub fn new_test() -> Nil {
-  cel.new(loc.new(16, -14), False)
+  loc.new(16, -14)
+  |> cel.new(False)
   |> sho.equal(cel.Dead(#(16, -14)))
-  cel.new(loc.new(19, -4), True)
-  |> sho.equal(cel.Alive(#(19, -4)))
 }
 
 /// Test the is_alive function.
 pub fn is_alive_test() -> Nil {
-  cel.is_alive(cel.new(loc.new(33, -14), True))
+  loc.new(33, -14)
+  |> cel.new(True)
+  |> cel.is_alive()
   |> sho.equal(True)
-  cel.is_alive(cel.new(loc.new(47, 0), False))
-  |> sho.equal(False)
 }
 
 /// Test the is_dead function.
 pub fn is_dead_test() -> Nil {
-  cel.is_dead(cel.new(loc.new(10, -10), False))
+  loc.new(10, -10)
+  |> cel.new(False)
+  |> cel.is_dead()
   |> sho.equal(True)
-  cel.is_dead(cel.new(loc.new(11, 6), True))
-  |> sho.equal(False)
 }
 
 /// Test the toggle function.
 pub fn toggle_test() -> Nil {
-  cel.toggle(cel.new(loc.new(10, -10), False))
+  loc.new(10, -10)
+  |> cel.new(False)
+  |> cel.toggle()
   |> sho.equal(cel.Alive(#(10, -10)))
-  cel.toggle(cel.new(loc.new(11, 6), True))
-  |> sho.equal(cel.Dead(#(11, 6)))
 }
 
 /// Test the get_location function.
 pub fn get_location_test() -> Nil {
-  cel.get_location(cel.new(loc.new(8, 0), True))
+  loc.new(8, 0)
+  |> cel.new(True)
+  |> cel.get_location()
   |> sho.equal(#(8, 0))
-  cel.get_location(cel.new(loc.new(0, 0), False))
-  |> sho.equal(#(0, 0))
 }

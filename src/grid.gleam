@@ -34,6 +34,7 @@ import location as loc
 /// 1. Proper     | Only contains unique alive cells or is empty.
 /// 2. Transient  | Contains unique alive cells and their dead neighbours.
 /// 3. Invalid    | Any state that is not proper or transient.
+/// Only way for a grid to be invalid is if it was constructed manually, not through any of the functions in this module.
 pub type Grid =
   List(cel.Cell)
 
