@@ -2,7 +2,8 @@
 ////
 //// Module:lib
 ////
-//// In this module, the functions for manipulating lists are defined.
+//// In this module, the utility functions are defined.
+//// We separate them from the modules they are used in to be able to reuse them.
 ////
 //// API:
 //// - add_unique(List(value), value) -> List(value)

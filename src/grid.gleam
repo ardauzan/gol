@@ -3,6 +3,11 @@
 //// Module: grid
 ////
 //// In this module, the Grid type and its functions are defined.
+//// A grid is a continuous infinite two dimensional plane of locations.
+//// Each location has a single cell associated with it, either dead or alive.
+//// In oreder to represent infinite space we assume any location that is not accounted for has a dead cell.
+//// We only need to keep track of alive cells and their imidiate neighbours in order to determine the next state of the grid.
+//// We should also make it so that no two cells have the same location, if they conflict thats a logic error and if they dont it's redundant.
 ////
 //// API:
 //// - Grid
@@ -32,8 +37,8 @@ import location as loc
 /// A grid is a list of cells.
 /// It can be in the form of three different states.
 /// 1. Proper     | Only contains unique alive cells or is empty.
-/// 2. Transient  | Contains unique alive cells and their dead neighbours.
-/// 3. Invalid    | Any state that is not proper or transient.
+/// 2. Transient  | Contains alive or dead cells but no two cells have the same location.
+/// 3. Invalid    | Any state that is not proper or transient. (The grid either has conflicting or redundant data.)
 /// Only way for a grid to be invalid is if it was constructed manually, not through any of the functions in this module.
 pub type Grid =
   List(cel.Cell)
@@ -46,26 +51,19 @@ pub fn new() -> Grid {
 /// Add cell to grid.
 /// If the cell conflicts with another cell in the grid, the cell will not be added.
 /// If the cell is already in the grid, it will not be added.
-/// If the cell is dead, it will not be actually added.
 pub fn add(grid: Grid, cell: cel.Cell) -> Grid {
-  case cell_conflicts(grid, cel.toggle(cell)) {
+  case cell_conflicts(grid, cell) {
     True -> grid
     False -> lib.add_unique(grid, cell)
   }
 }
 
-/// Get cell from grid.
+/// Get cell at location.
 pub fn get(grid: Grid, location: loc.Location) -> cel.Cell {
   let cell_alive = cel.new(location, True)
-  let cell_dead = cel.new(location, False)
-  let grid_contains_cell_alive = lis.contains(grid, cell_alive)
-  case
-    grid_contains_cell_alive || lis.contains(grid, cell_dead),
-    grid_contains_cell_alive
-  {
-    True, True -> cell_alive
-    True, False -> cell_dead
-    False, _grid_contains_cell_alive -> cell_dead
+  case lis.contains(make_proper(grid), cell_alive) {
+    True -> cell_alive
+    False -> cel.new(location, False)
   }
 }
 
@@ -83,11 +81,7 @@ pub fn make_transient(grid: Grid) -> Grid {
 
 /// Remove cell from grid.
 pub fn remove_at_location(grid: Grid, location: loc.Location) -> Grid {
-  let cell = get(grid, location)
-  case lis.contains(grid, cell) {
-    True -> lib.remove(grid, cell)
-    False -> grid
-  }
+  lib.remove(grid, get(grid, location))
 }
 
 /// Get neighbours of cell at location.

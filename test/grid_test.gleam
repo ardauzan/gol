@@ -22,7 +22,9 @@ import gleeunit as gle
 import gleeunit/should as sho
 
 // Local imports:
+import cell as cel
 import grid as gri
+import location as loc
 
 // Public:
 
@@ -39,17 +41,27 @@ pub fn new_test() -> Nil {
 
 /// Test the add function.
 pub fn add_test() -> Nil {
-  io.println("Todo")
+  gri.new()
+  |> gri.add(cel.new(loc.new(1, 1), True))
+  |> gri.add(cel.new(loc.new(1, 1), True))
+  |> gri.add(cel.new(loc.new(0, 0), False))
+  |> sho.equal([cel.Dead(#(0, 0)), cel.Alive(#(1, 1))])
 }
 
 /// Test the get function.
 pub fn get_test() -> Nil {
-  io.println("Todo")
+  gri.new()
+  |> gri.add(cel.new(loc.new(1, 1), False))
+  |> gri.get(loc.new(1, 1))
+  |> sho.equal(cel.Dead(#(1, 1)))
 }
 
 /// Test the make_proper function.
 pub fn make_proper_test() -> Nil {
-  io.println("Todo")
+  gri.new()
+  |> gri.add(cel.new(loc.new(1, 1), False))
+  |> gri.make_proper()
+  |> sho.equal([])
 }
 
 /// Test the make_transient function.

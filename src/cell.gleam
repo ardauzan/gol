@@ -3,6 +3,7 @@
 //// Module: cell
 ////
 //// In this module, the Cell type and its functions are defined.
+//// A cell is either alive or dead and it has a location.
 ////
 //// API:
 //// - Cell
@@ -20,8 +21,6 @@ import location as loc
 // Public:
 
 /// Cell type definition.
-/// A cell is either alive or dead.
-/// It also has a location.
 pub type Cell {
   Alive(loc.Location)
   Dead(loc.Location)
