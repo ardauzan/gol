@@ -38,10 +38,10 @@ And also the following test modules:
 
 Complete the source modules:
 
-- [ ] Complete cell
+- [X] Complete cell
 - [ ] Complete definitions
 - [ ] Complete grid
-- [ ] Complete location
+- [X] Complete location
 - [ ] Complete neighbourhood
 - [ ] Complete neighbourhoods
 - [ ] Complete rule
@@ -49,10 +49,10 @@ Complete the source modules:
 
 Complete the test modules:
 
-- [ ] Complete cell_test
+- [X] Complete cell_test
 - [ ] Complete definitions_test
 - [ ] Complete grid_test
-- [ ] Complete location_test
+- [X] Complete location_test
 - [ ] Complete neighbourhood_test
 - [ ] Complete neighbourhoods_test
 - [ ] Complete rule_test
