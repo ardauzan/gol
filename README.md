@@ -64,7 +64,7 @@ Complete the project:
 
 ### Requirements
 
-1) [Gleam](https://gleam.run) – The Gleam programming language
+1) [Gleam](https://gleam.run) – The Gleam programming language, version 1.8.0 or later
 2) [VSCode Editor](https://code.visualstudio.com) – Recommended development environment with relevant extensions (see `.vscode/extensions.json`)
 
 ### Usage
