@@ -99,10 +99,11 @@ pub fn remove_at_location_test() -> Nil {
 pub fn get_neighbours_test() -> Nil {
   gri.new()
   |> gri.add(cel.new(loc.new(1, 1), True))
+  |> gri.add(cel.new(loc.new(0, 1), True))
   |> gri.get_neighbours(loc.new(1, 1))
   |> sho.equal([
     cel.Dead(#(0, 0)),
-    cel.Dead(#(0, 1)),
+    cel.Alive(#(0, 1)),
     cel.Dead(#(0, 2)),
     cel.Dead(#(1, 0)),
     cel.Dead(#(1, 2)),
