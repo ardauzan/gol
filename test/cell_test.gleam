@@ -44,11 +44,11 @@ pub fn is_alive_test() -> Nil {
   loc.new(33, -14)
   |> cel.new(True)
   |> cel.is_alive()
-  |> sho.equal(True)
+  |> sho.be_true()
   loc.new(0, 0)
   |> cel.new(False)
   |> cel.is_alive()
-  |> sho.equal(False)
+  |> sho.be_false()
 }
 
 /// Test the is_dead function.
@@ -56,11 +56,11 @@ pub fn is_dead_test() -> Nil {
   loc.new(10, -10)
   |> cel.new(False)
   |> cel.is_dead()
-  |> sho.equal(True)
+  |> sho.be_true()
   loc.new(9, 0)
   |> cel.new(True)
   |> cel.is_dead()
-  |> sho.equal(False)
+  |> sho.be_false()
 }
 
 /// Test the get_location function.
