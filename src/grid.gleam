@@ -7,10 +7,10 @@
 //// API:
 //// - Grid
 //// - new() -> Grid
-//// - make_proper(Grid) -> Grid
-//// - make_transient(Grid) -> Grid
 //// - add(Grid, Cell) -> Grid
 //// - get(Grid, Location) -> Cell
+//// - make_proper(Grid) -> Grid
+//// - make_transient(Grid) -> Grid
 //// - remove_at_location(Grid, Location) -> Grid
 //// - get_neighbours(Grid, Location) -> Grid
 //// Internal:
@@ -43,18 +43,6 @@ pub fn new() -> Grid {
   []
 }
 
-/// Make the grid proper.
-pub fn make_proper(grid: Grid) -> Grid {
-  lis.unique(remove_dead(grid))
-}
-
-/// Make the grid transient.
-/// We first make the grid proper and then add the dead neighbours of the alive cells.
-pub fn make_transient(grid: Grid) -> Grid {
-  let proper_grid = make_proper(grid)
-  lis.flatten([proper_grid, make_transient_inner(proper_grid, proper_grid, [])])
-}
-
 /// Add cell to grid.
 /// If the cell conflicts with another cell in the grid, the cell will not be added.
 /// If the cell is already in the grid, it will not be added.
@@ -79,6 +67,18 @@ pub fn get(grid: Grid, location: loc.Location) -> cel.Cell {
     True, False -> cell_dead
     False, _grid_contains_cell_alive -> cell_dead
   }
+}
+
+/// Make the grid proper.
+pub fn make_proper(grid: Grid) -> Grid {
+  lis.unique(remove_dead(grid))
+}
+
+/// Make the grid transient.
+/// We first make the grid proper and then add the dead neighbours of the alive cells.
+pub fn make_transient(grid: Grid) -> Grid {
+  let proper_grid = make_proper(grid)
+  lis.flatten([proper_grid, make_transient_inner(proper_grid, proper_grid, [])])
 }
 
 /// Remove cell from grid.

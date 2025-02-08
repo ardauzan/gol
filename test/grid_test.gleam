@@ -7,10 +7,10 @@
 //// API:
 //// - main() -> Nil
 //// - new_test() -> Nil
-//// - make_proper_test() -> Nil
-//// - make_transient_test() -> Nil
 //// - add_test() -> Nil
 //// - get_test() -> Nil
+//// - make_proper_test() -> Nil
+//// - make_transient_test() -> Nil
 //// - remove_at_location_test() -> Nil
 //// - get_neighbours_test() -> Nil
 //// Internal:
@@ -37,16 +37,6 @@ pub fn new_test() -> Nil {
   |> sho.equal([])
 }
 
-/// Test the make_proper function.
-pub fn make_proper_test() -> Nil {
-  io.println("Todo")
-}
-
-/// Test the make_transient function.
-pub fn make_transient_test() -> Nil {
-  io.println("Todo")
-}
-
 /// Test the add function.
 pub fn add_test() -> Nil {
   io.println("Todo")
@@ -54,6 +44,16 @@ pub fn add_test() -> Nil {
 
 /// Test the get function.
 pub fn get_test() -> Nil {
+  io.println("Todo")
+}
+
+/// Test the make_proper function.
+pub fn make_proper_test() -> Nil {
+  io.println("Todo")
+}
+
+/// Test the make_transient function.
+pub fn make_transient_test() -> Nil {
   io.println("Todo")
 }
 
