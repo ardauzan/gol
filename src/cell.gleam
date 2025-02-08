@@ -9,8 +9,8 @@
 //// - new(Location, Bool) -> Cell
 //// - is_alive(Cell) -> Bool
 //// - is_dead(Cell) -> Bool
-//// - toggle(Cell) -> Cell
 //// - get_location(Cell) -> Location
+//// - toggle(Cell) -> Cell
 //// Internal:
 //// * None
 
@@ -48,18 +48,18 @@ pub fn is_dead(cell: Cell) -> Bool {
   !is_alive(cell)
 }
 
-/// Toggle the state of the cell.
-pub fn toggle(cell: Cell) -> Cell {
-  case cell {
-    Alive(location) -> Dead(location)
-    Dead(location) -> Alive(location)
-  }
-}
-
 /// Get the location of the cell.
 pub fn get_location(cell: Cell) -> loc.Location {
   case cell {
     Alive(location) -> location
     Dead(location) -> location
+  }
+}
+
+/// Toggle the state of the cell.
+pub fn toggle(cell: Cell) -> Cell {
+  case cell {
+    Alive(location) -> Dead(location)
+    Dead(location) -> Alive(location)
   }
 }

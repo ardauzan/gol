@@ -9,8 +9,8 @@
 //// - new_test() -> Nil
 //// - is_alive_test() -> Nil
 //// - is_dead_test() -> Nil
-//// - toggle_test() -> Nil
 //// - get_location_test() -> Nil
+//// - toggle_test() -> Nil
 //// Internal:
 //// * None
 
@@ -52,18 +52,18 @@ pub fn is_dead_test() -> Nil {
   |> sho.equal(True)
 }
 
-/// Test the toggle function.
-pub fn toggle_test() -> Nil {
-  loc.new(10, -10)
-  |> cel.new(False)
-  |> cel.toggle()
-  |> sho.equal(cel.Alive(#(10, -10)))
-}
-
 /// Test the get_location function.
 pub fn get_location_test() -> Nil {
   loc.new(8, 0)
   |> cel.new(True)
   |> cel.get_location()
   |> sho.equal(#(8, 0))
+}
+
+/// Test the toggle function.
+pub fn toggle_test() -> Nil {
+  loc.new(10, -10)
+  |> cel.new(False)
+  |> cel.toggle()
+  |> sho.equal(cel.Alive(#(10, -10)))
 }
