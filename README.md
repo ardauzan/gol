@@ -38,10 +38,10 @@ And also the following test modules:
 
 Complete the source modules:
 
-- [x] Complete cell
+- [ ] Complete cell
 - [ ] Complete definitions
 - [ ] Complete grid
-- [x] Complete location
+- [ ] Complete location
 - [ ] Complete neighbourhood
 - [ ] Complete neighbourhoods
 - [ ] Complete rule
@@ -49,32 +49,23 @@ Complete the source modules:
 
 Complete the test modules:
 
-- [x] Complete cell_test
+- [ ] Complete cell_test
 - [ ] Complete definitions_test
 - [ ] Complete grid_test
-- [x] Complete location_test
+- [ ] Complete location_test
 - [ ] Complete neighbourhood_test
 - [ ] Complete neighbourhoods_test
 - [ ] Complete rule_test
 - [ ] Complete ruleset_test
 
-Complete the everthing:
+Complete the project:
 
 - [ ] Complete the project (GOL)
 
 ### Requirements
 
 1) [Gleam](https://gleam.run) – The Gleam programming language
-2) [Gleam Standard Library](https://hex.pm/packages/gleam_stdlib) – Gleam’s standard library
-3) [VSCode](https://code.visualstudio.com) – Recommended development environment with relevant extensions (see `.vscode/extensions.json`)
-
-### Setup
-
-Install dependencies:
-
-```bash
-gleam install
-```
+2) [VSCode Editor](https://code.visualstudio.com) – Recommended development environment with relevant extensions (see `.vscode/extensions.json`)
 
 ### Usage
 
