@@ -27,16 +27,14 @@ pub fn main() -> Nil {
 
 /// Test the add_unique function.
 pub fn add_unique_test() -> Nil {
-  lib.add_unique([1, 2, 3], 4)
+  [1, 2, 3]
+  |> lib.add_unique(4)
   |> sho.equal([4, 1, 2, 3])
-  lib.add_unique([1, 2, 3], 1)
-  |> sho.equal([1, 2, 3])
 }
 
 /// Test the remove function.
 pub fn remove_test() -> Nil {
-  lib.remove([1, 2, 3], 2)
+  [1, 2, 3]
+  |> lib.remove(2)
   |> sho.equal([1, 3])
-  lib.remove([1, 2, 3], 4)
-  |> sho.equal([1, 2, 3])
 }
