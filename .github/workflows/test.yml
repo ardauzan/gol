@@ -5,7 +5,6 @@ name: test
 on:
     push:
         branches:
-            - master
             - main
     pull_request:
 
@@ -17,9 +16,8 @@ jobs:
             - uses: erlef/setup-beam@v1
               with:
                   otp-version: '27.1.2'
-                  gleam-version: '1.6.3'
+                  gleam-version: '1.8.0'
                   rebar3-version: '3'
-                  # elixir-version: "1.15.4"
             - run: gleam deps download
             - run: gleam test
             - run: gleam format --check src test
