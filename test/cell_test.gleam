@@ -55,10 +55,10 @@ pub fn is_dead_test() -> Nil {
 
 /// Test the toggle function.
 pub fn toggle_test() -> Nil {
-  cel.is_alive(cel.toggle(cel.new(loc.new(10, -10), False)))
-  |> sho.equal(True)
-  cel.is_dead(cel.toggle(cel.new(loc.new(11, 6), True)))
-  |> sho.equal(True)
+  cel.toggle(cel.new(loc.new(10, -10), False))
+  |> sho.equal(cel.Alive(#(10, -10)))
+  cel.toggle(cel.new(loc.new(11, 6), True))
+  |> sho.equal(cel.Dead(#(11, 6)))
 }
 
 /// Test the get_location function.
