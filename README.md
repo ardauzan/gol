@@ -8,7 +8,7 @@ This project is a personal exercise in learning the Gleam programming language b
 
 ## Modules
 
-The project is divided into the following source modules:
+:pushpin: The project is divided into the following source modules:
 
 - [cell](src/cell.gleam)
 - [definitions](src/definitions.gleam)
@@ -21,7 +21,7 @@ The project is divided into the following source modules:
 - [rule](src/rule.gleam)
 - [ruleset](src/ruleset.gleam)
 
-And also the following test modules:
+:pushpin: And also the following test modules:
 
 - [cell_test](test/cell_test.gleam)
 - [definitions_test](test/definitions_test.gleam)
@@ -77,13 +77,13 @@ And also the following test modules:
 
 #### Usage
 
-Run the project:
+:pushpin: Run the project:
 
 ```bash
 gleam run
 ```
 
-Run tests:
+:pushpin: Run tests:
 
 ```bash
 gleam test
