@@ -99,4 +99,6 @@ gleam test
 
 See the [**License file**](LICENSE.txt). Licensed under the [**MIT License**](https://wikipedia.org/wiki/MIT_License).
 
+###### Have a nice day! :smile:
+
 **--** ***A. Uzan***
