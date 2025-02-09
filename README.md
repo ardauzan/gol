@@ -1,4 +1,4 @@
-# Game of Life (GOL)
+# Game of Life (GOL) :space_invader:
 
 *A simple implementation of Conway's Game of Life, written in Gleam.*
 
@@ -36,7 +36,7 @@ And also the following test modules:
 
 ### Todo
 
-Complete the source modules:
+:pushpin: Complete the source modules:
 
 - [X] Complete cell
 - [ ] Complete definitions
@@ -49,7 +49,7 @@ Complete the source modules:
 - [ ] Complete rule
 - [ ] Complete ruleset
 
-Complete the test modules:
+:pushpin: Complete the test modules:
 
 - [X] Complete cell_test
 - [ ] Complete definitions_test
@@ -62,18 +62,18 @@ Complete the test modules:
 - [ ] Complete rule_test
 - [ ] Complete ruleset_test
 
-Complete the documentation:
+:pushpin: Complete the documentation:
 
 - [X] Complete the README
 
-Complete the project:
+:pushpin: Complete the project:
 
 - [ ] Complete the project (GOL)
 
 #### Requirements
 
 1) [Gleam](https://gleam.run) – The Gleam programming language, version 1.8.0 or later
-2) [VSCode Editor](https://code.visualstudio.com) – Recommended development environment with relevant extensions (see `.vscode/extensions.json`)
+2) [VSCode Editor](https://code.visualstudio.com) – Recommended development environment with relevant extensions (see [`.vscode/extensions.json`](.vscode/extensions.json))
 
 #### Usage
 
@@ -89,7 +89,13 @@ Run tests:
 gleam test
 ```
 
-##### License
+##### Notes
+
+- I'm on Linux and I found that the easiest way to install and keep Gleam updated is via [Homebrew](https://brew.sh). It also works for Mac too, if you are on Windows the official docs [here](https://gleam.run/getting-started/installing) say that you should use [Scoop](https://scoop.sh).
+- The project will include a web application in the future, which will be accessible at [https://ardauzan.github.io/gol](https://ardauzan.github.io/gol).
+- As I learn more about Gleam, I'll consider using different types, right now I'm using either `List` or `Tuple` for item collections which might not be the best choice.
+
+###### License
 
 See the [**License file**](LICENSE.txt). Licensed under the [**MIT License**](https://wikipedia.org/wiki/MIT_License).
 
