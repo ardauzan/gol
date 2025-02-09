@@ -97,7 +97,7 @@ gleam test
 
 ##### License
 
-See the [**License file**](LICENSE.txt). Licensed under the [**MIT License**](https://wikipedia.org/wiki/MIT_License).
+See the [**License file**](LICENSE.txt). Licensed under the [**MIT License**](https://wikipedia.org/wiki/MIT_License). **© 2025 A. Arda Uzan**
 
 ###### Have a nice day! :smile:
 
