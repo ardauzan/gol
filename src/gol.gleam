@@ -17,4 +17,5 @@ import gleam/io
 /// Entry point of the program.
 pub fn main() -> Nil {
   io.println("Todo")
+  Nil
 }

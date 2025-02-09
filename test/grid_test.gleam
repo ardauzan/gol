@@ -30,44 +30,53 @@ import location as loc
 /// Setup for testing.
 pub fn main() -> Nil {
   gle.main()
+  Nil
 }
 
 /// Test the grid constructor.
 pub fn new_test() -> Nil {
   gri.new()
   |> sho.equal([])
+  Nil
 }
 
 /// Test the add function.
 pub fn add_test() -> Nil {
   gri.new()
   |> gri.add(cel.new(loc.new(1, 1), True))
+  |> sho.be_ok()
   |> gri.add(cel.new(loc.new(1, 1), True))
-  |> gri.add(cel.new(loc.new(0, 0), False))
-  |> sho.equal([cel.Dead(#(0, 0)), cel.Alive(#(1, 1))])
+  |> sho.be_error()
+  Nil
 }
 
 /// Test the get function.
 pub fn get_test() -> Nil {
   gri.new()
   |> gri.add(cel.new(loc.new(1, 1), False))
+  |> sho.be_ok()
   |> gri.get(loc.new(1, 1))
   |> sho.equal(cel.Dead(#(1, 1)))
+  Nil
 }
 
 /// Test the make_proper function.
 pub fn make_proper_test() -> Nil {
   gri.new()
   |> gri.add(cel.new(loc.new(1, 1), False))
+  |> sho.be_ok()
   |> gri.make_proper()
   |> sho.equal([])
+  Nil
 }
 
 /// Test the make_transient function.
 pub fn make_transient_test() -> Nil {
   gri.new()
   |> gri.add(cel.new(loc.new(1, 1), True))
+  |> sho.be_ok()
   |> gri.add(cel.new(loc.new(0, 0), True))
+  |> sho.be_ok()
   |> gri.make_transient()
   |> sho.equal([
     cel.Alive(#(0, 0)),
@@ -85,21 +94,26 @@ pub fn make_transient_test() -> Nil {
     cel.Dead(#(2, 1)),
     cel.Dead(#(2, 2)),
   ])
+  Nil
 }
 
 /// Test the remove_at_location function.
 pub fn remove_at_location_test() -> Nil {
   gri.new()
   |> gri.add(cel.new(loc.new(1, 1), True))
+  |> sho.be_ok()
   |> gri.remove_at_location(loc.new(1, 1))
-  |> sho.equal([])
+  |> sho.equal(Ok([]))
+  Nil
 }
 
 /// Test the get_neighbours_test function.
 pub fn get_neighbours_test() -> Nil {
   gri.new()
   |> gri.add(cel.new(loc.new(1, 1), True))
+  |> sho.be_ok()
   |> gri.add(cel.new(loc.new(0, 1), True))
+  |> sho.be_ok()
   |> gri.get_neighbours(loc.new(1, 1))
   |> sho.equal([
     cel.Dead(#(0, 0)),
@@ -111,4 +125,5 @@ pub fn get_neighbours_test() -> Nil {
     cel.Dead(#(2, 1)),
     cel.Dead(#(2, 2)),
   ])
+  Nil
 }

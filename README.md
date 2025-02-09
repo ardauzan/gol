@@ -34,13 +34,15 @@ And also the following test modules:
 - [rule_test](test/rule_test.gleam)
 - [ruleset_test](test/ruleset_test.gleam)
 
-## Todo
+### Todo
 
 Complete the source modules:
 
 - [X] Complete cell
 - [ ] Complete definitions
-- [ ] Complete grid
+- [ ] Complete gol (Main)
+- [X] Complete grid
+- [X] Complete lib
 - [X] Complete location
 - [ ] Complete neighbourhood
 - [ ] Complete neighbourhoods
@@ -51,37 +53,43 @@ Complete the test modules:
 
 - [X] Complete cell_test
 - [ ] Complete definitions_test
-- [ ] Complete grid_test
+- [ ] Complete gol_test
+- [X] Complete grid_test
+- [X] Complete lib_test
 - [X] Complete location_test
 - [ ] Complete neighbourhood_test
 - [ ] Complete neighbourhoods_test
 - [ ] Complete rule_test
 - [ ] Complete ruleset_test
 
+Complete the documentation:
+
+- [X] Complete the README
+
 Complete the project:
 
 - [ ] Complete the project (GOL)
 
-### Requirements
+#### Requirements
 
 1) [Gleam](https://gleam.run) – The Gleam programming language, version 1.8.0 or later
 2) [VSCode Editor](https://code.visualstudio.com) – Recommended development environment with relevant extensions (see `.vscode/extensions.json`)
 
-### Usage
+#### Usage
 
 Run the project:
 
 ```bash
-gleam run
+gleam run 
 ```
 
 Run tests:
 
 ```bash
-gleam test
+gleam test 
 ```
 
-#### License
+##### License
 
 See the [**License file**](LICENSE.txt). Licensed under the [**MIT License**](https://wikipedia.org/wiki/MIT_License).
 

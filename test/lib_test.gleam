@@ -6,7 +6,6 @@
 ////
 //// API:
 //// - main() -> Nil
-//// - add_unique_test() -> Nil
 //// - remove_test() -> Nil
 //// Internal:
 //// * None
@@ -23,13 +22,7 @@ import lib
 /// Setup for testing.
 pub fn main() -> Nil {
   gle.main()
-}
-
-/// Test the add_unique function.
-pub fn add_unique_test() -> Nil {
-  [1, 2, 3]
-  |> lib.add_unique(4)
-  |> sho.equal([4, 1, 2, 3])
+  Nil
 }
 
 /// Test the remove function.
@@ -37,4 +30,5 @@ pub fn remove_test() -> Nil {
   [1, 2, 3]
   |> lib.remove(2)
   |> sho.equal([1, 3])
+  Nil
 }

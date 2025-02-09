@@ -27,6 +27,7 @@ import location as loc
 /// Setup for testing.
 pub fn main() -> Nil {
   gle.main()
+  Nil
 }
 
 /// Test the cell constructor.
@@ -37,6 +38,7 @@ pub fn new_test() -> Nil {
   loc.new(28, 12)
   |> cel.new(True)
   |> sho.equal(cel.Alive(#(28, 12)))
+  Nil
 }
 
 /// Test the is_alive function.
@@ -49,6 +51,7 @@ pub fn is_alive_test() -> Nil {
   |> cel.new(False)
   |> cel.is_alive()
   |> sho.be_false()
+  Nil
 }
 
 /// Test the is_dead function.
@@ -61,6 +64,7 @@ pub fn is_dead_test() -> Nil {
   |> cel.new(True)
   |> cel.is_dead()
   |> sho.be_false()
+  Nil
 }
 
 /// Test the get_location function.
@@ -73,6 +77,7 @@ pub fn get_location_test() -> Nil {
   |> cel.new(False)
   |> cel.get_location()
   |> sho.equal(#(0, 99))
+  Nil
 }
 
 /// Test the toggle function.
@@ -85,4 +90,5 @@ pub fn toggle_test() -> Nil {
   |> cel.new(True)
   |> cel.toggle()
   |> sho.equal(cel.Dead(#(2, 2)))
+  Nil
 }

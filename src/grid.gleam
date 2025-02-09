@@ -10,6 +10,7 @@
 //// We should also make it so that no two cells have the same location, if they conflict thats a logic error and if they dont it's redundant.
 ////
 //// API:
+//// - GridError
 //// - Grid
 //// - new() -> Grid
 //// - add(Grid, Cell) -> Grid
@@ -33,6 +34,14 @@ import location as loc
 
 // Public:
 
+/// GridError type definition.
+/// A grid error is an error that occurs when a grid gets acted on incorrectly.
+pub type GridError {
+  ConflictingCellExistsError
+  RedundantCellExistsError
+  CellNotFoundError
+}
+
 /// Grid type definition.
 /// A grid is a list of cells.
 /// It can be in the form of three different states.
@@ -49,12 +58,17 @@ pub fn new() -> Grid {
 }
 
 /// Add cell to grid.
-/// If the cell conflicts with another cell in the grid, the cell will not be added.
-/// If the cell is already in the grid, it will not be added.
-pub fn add(grid: Grid, cell: cel.Cell) -> Grid {
+/// If the cell conflicts with another cell in the grid, an error will be thrown.
+/// If the cell is already in the grid, an error will be thrown.
+/// If the cell is not conflicting and not in the grid, it will be added.
+pub fn add(grid: Grid, cell: cel.Cell) -> Result(Grid, GridError) {
   case cell_conflicts(grid, cell) {
-    True -> grid
-    False -> lib.add_unique(grid, cell)
+    True -> Error(ConflictingCellExistsError)
+    False ->
+      case lis.contains(grid, cell) {
+        True -> Error(RedundantCellExistsError)
+        False -> Ok(lis.append(grid, [cell]))
+      }
   }
 }
 
@@ -85,8 +99,21 @@ pub fn make_transient(grid: Grid) -> Grid {
 }
 
 /// Remove cell from grid.
-pub fn remove_at_location(grid: Grid, location: loc.Location) -> Grid {
-  lib.remove(grid, get(grid, location))
+/// If the cell is not in the grid, an error will be thrown.
+pub fn remove_at_location(
+  grid: Grid,
+  location: loc.Location,
+) -> Result(Grid, GridError) {
+  let alive_cell = cel.new(location, True)
+  let dead_cell = cel.new(location, False)
+  case lis.contains(grid, alive_cell) {
+    True -> Ok(lib.remove(grid, alive_cell))
+    False ->
+      case lis.contains(grid, dead_cell) {
+        True -> Ok(lib.remove(grid, dead_cell))
+        False -> Error(CellNotFoundError)
+      }
+  }
 }
 
 /// Get neighbours of cell at location.
