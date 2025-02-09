@@ -80,13 +80,13 @@ Complete the project:
 Run the project:
 
 ```bash
-gleam run 
+gleam run
 ```
 
 Run tests:
 
 ```bash
-gleam test 
+gleam test
 ```
 
 ##### License
