@@ -42,7 +42,7 @@ pub type Neighbourhood =
     cel.Cell,
   )
 
-/// Get neighbourhood of a location.
+/// Get neighbourhood of a location on a grid.
 pub fn new(
   grid: gri.Grid,
   location: loc.Location,
