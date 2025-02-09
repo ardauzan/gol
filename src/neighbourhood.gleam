@@ -61,6 +61,7 @@ pub fn new(
         cell9,
       ))
     _other -> Error(InvalidNeighboursGivenError)
+    // Should never happen! We still need to handle it to satisfy Gleam's type system. (Exhaustive pattern matching.)
   }
 }
 

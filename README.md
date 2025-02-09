@@ -44,7 +44,7 @@ Complete the source modules:
 - [X] Complete grid
 - [X] Complete lib
 - [X] Complete location
-- [ ] Complete neighbourhood
+- [X] Complete neighbourhood
 - [ ] Complete neighbourhoods
 - [ ] Complete rule
 - [ ] Complete ruleset
@@ -57,7 +57,7 @@ Complete the test modules:
 - [X] Complete grid_test
 - [X] Complete lib_test
 - [X] Complete location_test
-- [ ] Complete neighbourhood_test
+- [X] Complete neighbourhood_test
 - [ ] Complete neighbourhoods_test
 - [ ] Complete rule_test
 - [ ] Complete ruleset_test
