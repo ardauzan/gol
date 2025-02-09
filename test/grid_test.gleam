@@ -47,26 +47,46 @@ pub fn add_test() -> Nil {
   |> sho.be_ok()
   |> gri.add(cel.new(loc.new(1, 1), True))
   |> sho.be_error()
+  gri.new()
+  |> gri.add(cel.new(loc.new(3, 1), True))
+  |> sho.be_ok()
+  |> gri.add(cel.new(loc.new(3, 1), False))
+  |> sho.be_error()
+  gri.new()
+  |> gri.add(cel.new(loc.new(9, 9), False))
+  |> sho.be_ok()
+  |> gri.add(cel.new(loc.new(9, 8), True))
+  |> sho.equal(Ok([cel.Dead(#(9, 9)), cel.Alive(#(9, 8))]))
   Nil
 }
 
 /// Test the get function.
 pub fn get_test() -> Nil {
   gri.new()
-  |> gri.add(cel.new(loc.new(1, 1), False))
-  |> sho.be_ok()
   |> gri.get(loc.new(1, 1))
   |> sho.equal(cel.Dead(#(1, 1)))
+  gri.new()
+  |> gri.add(cel.new(loc.new(12, 15), False))
+  |> sho.be_ok()
+  |> gri.get(loc.new(12, 15))
+  |> sho.equal(cel.Dead(#(12, 15)))
+  gri.new()
+  |> gri.add(cel.new(loc.new(-1, 8), True))
+  |> sho.be_ok()
+  |> gri.get(loc.new(-1, 8))
+  |> sho.equal(cel.Alive(#(-1, 8)))
   Nil
 }
 
 /// Test the make_proper function.
 pub fn make_proper_test() -> Nil {
   gri.new()
-  |> gri.add(cel.new(loc.new(1, 1), False))
+  |> gri.add(cel.new(loc.new(7, 4), False))
+  |> sho.be_ok()
+  |> gri.add(cel.new(loc.new(3, 6), True))
   |> sho.be_ok()
   |> gri.make_proper()
-  |> sho.equal([])
+  |> sho.equal([cel.Alive(#(3, 6))])
   Nil
 }
 
@@ -79,20 +99,20 @@ pub fn make_transient_test() -> Nil {
   |> sho.be_ok()
   |> gri.make_transient()
   |> sho.equal([
-    cel.Alive(#(0, 0)),
     cel.Alive(#(1, 1)),
-    cel.Dead(#(-1, -1)),
-    cel.Dead(#(-1, 0)),
-    cel.Dead(#(-1, 1)),
-    cel.Dead(#(0, -1)),
+    cel.Alive(#(0, 0)),
     cel.Dead(#(0, 1)),
-    cel.Dead(#(1, -1)),
-    cel.Dead(#(1, 0)),
     cel.Dead(#(0, 2)),
+    cel.Dead(#(1, 0)),
     cel.Dead(#(1, 2)),
     cel.Dead(#(2, 0)),
     cel.Dead(#(2, 1)),
     cel.Dead(#(2, 2)),
+    cel.Dead(#(-1, -1)),
+    cel.Dead(#(-1, 0)),
+    cel.Dead(#(-1, 1)),
+    cel.Dead(#(0, -1)),
+    cel.Dead(#(1, -1)),
   ])
   Nil
 }
@@ -100,10 +120,13 @@ pub fn make_transient_test() -> Nil {
 /// Test the remove_at_location function.
 pub fn remove_at_location_test() -> Nil {
   gri.new()
-  |> gri.add(cel.new(loc.new(1, 1), True))
+  |> gri.add(cel.new(loc.new(18, 6), True))
   |> sho.be_ok()
-  |> gri.remove_at_location(loc.new(1, 1))
+  |> gri.remove_at_location(loc.new(18, 6))
   |> sho.equal(Ok([]))
+  gri.new()
+  |> gri.remove_at_location(loc.new(21, 0))
+  |> sho.be_error()
   Nil
 }
 

@@ -90,12 +90,10 @@ pub fn make_proper(grid: Grid) -> Grid {
 /// We first make the grid proper and then add the dead neighbours of the alive cells.
 pub fn make_transient(grid: Grid) -> Grid {
   let proper_grid = make_proper(grid)
-  lis.unique(
-    lis.flatten([
-      proper_grid,
-      make_transient_inner(proper_grid, proper_grid, []),
-    ]),
-  )
+  lis.unique(lis.append(
+    proper_grid,
+    make_transient_inner(proper_grid, proper_grid, []),
+  ))
 }
 
 /// Remove cell from grid.
@@ -152,12 +150,7 @@ fn make_transient_inner(proper_grid: Grid, temp1: Grid, temp2: Grid) -> Grid {
       make_transient_inner(
         proper_grid,
         tail,
-        lis.unique(
-          lis.flatten([
-            temp2,
-            get_neighbours(proper_grid, cel.get_location(head)),
-          ]),
-        ),
+        lis.append(temp2, get_neighbours(proper_grid, cel.get_location(head))),
       )
   }
 }
