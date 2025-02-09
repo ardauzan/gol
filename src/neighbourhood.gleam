@@ -3,12 +3,17 @@
 //// Module: neighbourhood
 ////
 //// In this module, the Neighbourhood type and its functions are defined.
+//// A neighbourhood is a tuple of nine cells.
+//// It represents the cell and the cells around a cell which effects its next state.
 ////
 //// API:
+//// - NeighbourhoodError
 //// - Neighbourhood
-//// - get(Grid, Location) -> Neighbourhood
+//// - new(Grid, Location) -> Neighbourhood
+//// - get_center_state(Neighbourhood) -> Bool
+//// - get_alive_neighbour_count(Neighbourhood) -> Int
 //// Internal:
-//// * None
+//// - count_cell(Cell) -> Int
 
 // Local imports:
 import cell as cel
@@ -17,9 +22,13 @@ import location as loc
 
 // Public:
 
+/// NeighbourhoodError type definition.
+/// A neighbourhood error is an error that occurs when a neighbourhood gets acted on incorrectly.
+pub type NeighbourhoodError {
+  InvalidNeighboursGivenError
+}
+
 /// Neighbourhood type definition.
-/// A neighbourhood is a tuple of eight cells.
-/// It represents the cell and the cells around a cell which effects its next state.
 pub type Neighbourhood =
   #(
     cel.Cell,
@@ -34,35 +43,36 @@ pub type Neighbourhood =
   )
 
 /// Get neighbourhood of a location.
-pub fn get(grid: gri.Grid, location: loc.Location) -> Neighbourhood {
+pub fn new(
+  grid: gri.Grid,
+  location: loc.Location,
+) -> Result(Neighbourhood, NeighbourhoodError) {
   case gri.get_neighbours(grid, location) {
-    [cell1, cell2, cell3, cell4, cell6, cell7, cell8, cell9] -> #(
-      cell1,
-      cell2,
-      cell3,
-      cell4,
-      gri.get(grid, location),
-      cell6,
-      cell7,
-      cell8,
-      cell9,
-    )
-    _other -> #(
-      cel.new(loc.new(-1, -1), False),
-      cel.new(loc.new(-1, 0), False),
-      cel.new(loc.new(-1, 1), False),
-      cel.new(loc.new(0, -1), False),
-      cel.new(loc.new(0, 0), False),
-      cel.new(loc.new(0, 1), False),
-      cel.new(loc.new(1, -1), False),
-      cel.new(loc.new(1, 0), False),
-      cel.new(loc.new(1, 1), False),
-    )
+    [cell1, cell2, cell3, cell4, cell6, cell7, cell8, cell9] ->
+      Ok(#(
+        cell1,
+        cell2,
+        cell3,
+        cell4,
+        gri.get(grid, location),
+        cell6,
+        cell7,
+        cell8,
+        cell9,
+      ))
+    _other -> Error(InvalidNeighboursGivenError)
   }
 }
 
+/// Get the center state of a neighbourhood.
+pub fn get_center_state(neighbourhood: Neighbourhood) -> Bool {
+  let #(_cell1, _cell2, _cell3, _cell4, cell5, _cell6, _cell7, _cell8, _cell9) =
+    neighbourhood
+  cel.is_alive(cell5)
+}
+
 /// Get the number of alive neighbours in a neighbourhood.
-pub fn alive_neighbour_count(neighbourhood: Neighbourhood) -> Int {
+pub fn get_alive_neighbour_count(neighbourhood: Neighbourhood) -> Int {
   let #(cell1, cell2, cell3, cell4, _cell5, cell6, cell7, cell8, cell9) =
     neighbourhood
   count_cell(cell1)

@@ -143,6 +143,7 @@ fn remove_dead(grid: Grid) -> Grid {
 }
 
 /// Inner loop for making the grid transient.
+/// This function is recursive.
 fn make_transient_inner(proper_grid: Grid, temp1: Grid, temp2: Grid) -> Grid {
   case temp1 {
     [] -> temp2

@@ -6,22 +6,41 @@
 ////
 //// API:
 //// - main() -> Nil
-//// - get_test() -> Nil
+//// - new_test() -> Nil
+//// - get_center_state_test() -> Nil
+//// - get_alive_neighbour_count_test() -> Nil
 //// Internal:
 //// * None
 
 // External imports:
-import gleam/io
 import gleeunit as gle
+import gleeunit/should as sho
+
+// Local imports:
+import neighbourhood as nei
 
 // Public:
 
 /// Setup for testing.
 pub fn main() -> Nil {
   gle.main()
+  Nil
 }
 
-/// Test the get function.
-pub fn get_test() -> Nil {
-  io.println("Todo")
+/// Test the neighbourhood constructor.
+pub fn new_test() -> Nil {
+  todo
+  Nil
+}
+
+/// Test the get_center_state function.
+pub fn get_center_state_test() -> Nil {
+  todo
+  Nil
+}
+
+/// Test the get_alive_neighbour_count function.
+pub fn get_alive_neighbour_count_test() -> Nil {
+  todo
+  Nil
 }

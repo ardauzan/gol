@@ -6,12 +6,10 @@
 ////
 //// API:
 //// - main() -> Nil
-//// - get_test() -> Nil
 //// Internal:
 //// * None
 
 // External imports:
-import gleam/io
 import gleeunit as gle
 
 // Public:
@@ -19,9 +17,5 @@ import gleeunit as gle
 /// Setup for testing.
 pub fn main() -> Nil {
   gle.main()
-}
-
-/// Test the get function.
-pub fn get_test() -> Nil {
-  io.println("Todo")
+  Nil
 }
