@@ -7,7 +7,7 @@
 //// Each location has a single cell associated with it, either dead or alive.
 //// In oreder to represent infinite space we assume any location that is not accounted for has a dead cell.
 //// We only need to keep track of alive cells and their imidiate neighbours in order to determine the next state of the grid.
-//// We should also make it so that no two cells have the same location, if they conflict thats a logic error and if they dont it's redundant.
+//// We should also make it so that no two cells have the same location, if they conflict thats a logic error and if they don't it's redundant.
 ////
 //// API:
 //// - GridError

@@ -16,12 +16,12 @@
 import cell as cel
 import neighbourhood as nei
 
-// IMPORTANT NOTE: In the traditional game of life, the next state is only determined by its current state and it's alive neighbour count. We instead determine the next state based on the current state and it's neighbourhood (exact equality so multiple versions of the neighbourhood can be differentiated even if they share the alive count).
+// IMPORTANT NOTE: In the traditional game of life, the next state is only determined by its current state and its alive neighbour count. We instead determine the next state based on the current state and its neighbourhood (exact equality so multiple versions of the neighbourhood can be differentiated even if they share the alive count).
 
 // Public:
 
 /// Rule type definition.
-/// A rule is a function that takes a cell with it's neighbourhood and returns the next state of the cell after a tick.
+/// A rule is a function that takes a cell with its neighbourhood and returns the next state of the cell after a tick.
 pub type Rule =
   fn(nei.Neighbourhood) -> cel.Cell
 
@@ -80,7 +80,7 @@ pub fn add_logic(rule: Rule, logic: fn(nei.Neighbourhood) -> cel.Cell) -> Rule {
   }
 }
 
-// Apply rule to cell and it's neighbourhood.
+// Apply rule to cell and its neighbourhood.
 pub fn apply(rule: Rule, neighbourhood: nei.Neighbourhood) -> cel.Cell {
   rule(neighbourhood)
 }
