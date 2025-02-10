@@ -49,6 +49,11 @@ pub type GridError {
 /// 2. Transient  | Contains alive or dead cells but no two cells have the same location.
 /// 3. Invalid    | Any state that is not proper or transient. (The grid either has conflicting or redundant data.)
 /// Only way for a grid to be invalid is if it was constructed manually, not through any of the functions in this module.
+/// I thought about validating that the grid is not in an invalid state in each functions definition that takes a grid as an argument but decided not to do that;
+/// It would be a waste of resources and time, just use the new function to create a grid and then use the appropriate functions to manipulate it.
+/// The api was designed with the idea that in future, different operations could be done while the functions are running, an example would be adding logging functionality to keep track of things;
+/// So even if the newly created grid is just an empty list, still use the constructor to create it. This is why some very simple functions are defined in this module or the project in general.
+/// I didn't want to repeat the explanation above for every simple function I wrote, here it is, won't be mentioned again.
 pub type Grid =
   List(cel.Cell)
 
