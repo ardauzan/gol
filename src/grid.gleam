@@ -35,7 +35,7 @@ import location as loc
 // Public:
 
 /// GridError type definition.
-/// A grid error is an error that occurs when a grid gets acted on incorrectly.
+/// A grid error is an error that occurs when any of the functions exported by this module gets called with invalid arguments or when the state of the grid is tried to be changed to invalid.
 pub type GridError {
   ConflictingCellExistsError
   RedundantCellExistsError

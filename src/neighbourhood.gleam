@@ -23,7 +23,10 @@ import location as loc
 // Public:
 
 /// NeighbourhoodError type definition.
-/// A neighbourhood error is thrown only if the result of the get_neighbours function is invalid, which should never happen.
+/// A neighbourhood error (specifically the sole one defined below) is thrown only if the result of the get_neighbours function has a shape other than [8], which would never happen.
+/// It is defined in order not to return a default neighbourhood when pattern matching.
+/// Directly destructuring the result of get_neighbours as a list of length 8 doesn't work for obvious reasons.
+/// Returning a default neighbourhood would change no functionality but make the code more difficult to read.
 pub type NeighbourhoodError {
   InvalidNeighboursGivenError
 }
@@ -61,7 +64,7 @@ pub fn new(
         cell9,
       ))
     _other -> Error(InvalidNeighboursGivenError)
-    // Should never happen! We still need to handle it to satisfy Gleam's type system. (Exhaustive pattern matching.)
+    // Would never happen! We still need to handle it to satisfy Gleam's type system. (Exhaustive pattern matching.)
   }
 }
 
