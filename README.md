@@ -91,11 +91,12 @@ gleam test
 
 ##### Notes
 
-- I'm on Linux and I found that the easiest way to install and keep Gleam updated is via [Homebrew](https://brew.sh). It also works for Mac too, if you are on Windows the official docs [here](https://gleam.run/getting-started/installing) say that you should use [Scoop](https://scoop.sh).
-- The project will include a web application in the future, which will be accessible at [https://ardauzan.github.io/gol](https://ardauzan.github.io/gol).
-- As I learn more about Gleam, I'll consider using different types, right now I'm using either `List` or `Tuple` for item collections which might not be the best choice.
-- Memoization is not implemented yet but will be eventually.
 - I will be exploring other kinds of cellular automata in future projects.
+- I'm on Linux and I found that the easiest way to install and keep Gleam updated is via [Homebrew](https://brew.sh). It also works for Mac too, if you are on Windows the official docs [here](https://gleam.run/getting-started/installing) say that you should use [Scoop](https://scoop.sh).
+- As I learn more about Gleam, I'll consider using different types, right now I'm using either `List` or `Tuple` for item collections which might not be the best choice, if I become sure that the types picked for use are the optimal ones, I will update or remove this note.
+- Memoization is not implemented yet but will be eventually, when it is, I will update or remove this note.
+- The project will include a web application in the future, which will be accessible at [https://ardauzan.github.io/gol](https://ardauzan.github.io/gol), when it is, I will remove this note.
+- The [`lib`](src/lib.gleam) module is kind of empty and seems to serve no purpose at the moment as no logic is re-used so far, but I keep it as a good practice, when it starts getting used I will remove this note.
 
 ##### License
 
