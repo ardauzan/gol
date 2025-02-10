@@ -4,7 +4,7 @@
 
 ## Overview
 
-This project is a personal exercise in learning the Gleam programming language by implementing the Game of Life from scratch, using as little third-party libraries as possible. It is a learning tool and **not intended for production use**. The code is **licensed under MIT License** and is available at [GitHub](https://github.com/ardauzan/gol). Contributions and usage are welcome, but please credit the project if you find it helpful. Don't forget to give it a star if you like it! :star:
+This project is a personal exercise in learning the Gleam programming language by implementing the Game of Life from scratch, using as little third-party libraries as possible. The code is aimed to be beginner friendly and is explained in fine detail in the comments (some could say over-explained). This is a learning tool and **not intended for production use**. The code is **licensed under MIT License** and is available at [GitHub](https://github.com/ardauzan/gol). Contributions and usage are welcome, but please credit the project if you find it helpful. Don't forget to give it a star if you like it! :star:
 
 ## Modules
 
@@ -91,6 +91,7 @@ gleam test
 
 ##### Notes
 
+- I over-explained a lot of things in the comments, this is because I wanted the codebase to be beginner friendly. Even an absolute noob can understand what's going on, but if you are a seasoned dev you might get annoyed by this, try to ignore it.
 - I will be exploring other kinds of cellular automata in future projects.
 - I'm on Linux and I found that the easiest way to install and keep Gleam updated is via [Homebrew](https://brew.sh). It also works for Mac too, if you are on Windows the official docs [here](https://gleam.run/getting-started/installing) say that you should use [Scoop](https://scoop.sh).
 - As I learn more about Gleam, I'll consider using different types, right now I'm using either `List` or `Tuple` for item collections which might not be the best choice, if I become sure that the types picked for use are the optimal ones, I will update or remove this note.
