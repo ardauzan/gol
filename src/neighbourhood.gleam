@@ -23,7 +23,7 @@ import location as loc
 // Public:
 
 /// NeighbourhoodError type definition.
-/// A neighbourhood error is an error that occurs when a neighbourhood gets acted on incorrectly.
+/// A neighbourhood error is thrown only if the result of the get_neighbours function is invalid, which should never happen.
 pub type NeighbourhoodError {
   InvalidNeighboursGivenError
 }

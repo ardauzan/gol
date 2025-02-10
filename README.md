@@ -4,7 +4,7 @@
 
 ## Overview
 
-This project is a personal exercise in learning the Gleam programming language by implementing the Game of Life from scratch, without third-party libraries. It is a learning tool and **not intended for production use**. The code is **licensed under MIT** and is available at [GitHub](https://github.com/ardauzan/gol). Contributions and usage are welcome, but please credit the project if you find it helpful. Don't forget to give it a star if you like it! :star:
+This project is a personal exercise in learning the Gleam programming language by implementing the Game of Life from scratch, using as little third-party libraries as possible. It is a learning tool and **not intended for production use**. The code is **licensed under MIT License** and is available at [GitHub](https://github.com/ardauzan/gol). Contributions and usage are welcome, but please credit the project if you find it helpful. Don't forget to give it a star if you like it! :star:
 
 ## Modules
 
@@ -94,6 +94,7 @@ gleam test
 - I'm on Linux and I found that the easiest way to install and keep Gleam updated is via [Homebrew](https://brew.sh). It also works for Mac too, if you are on Windows the official docs [here](https://gleam.run/getting-started/installing) say that you should use [Scoop](https://scoop.sh).
 - The project will include a web application in the future, which will be accessible at [https://ardauzan.github.io/gol](https://ardauzan.github.io/gol).
 - As I learn more about Gleam, I'll consider using different types, right now I'm using either `List` or `Tuple` for item collections which might not be the best choice.
+- Memoization is not implemented yet but will be eventually.
 
 ##### License
 
