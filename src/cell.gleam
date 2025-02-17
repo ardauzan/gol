@@ -7,8 +7,8 @@
 ////
 //// API:
 //// - Cell
-//// - is_alive(Cell) -> Bool
 //// - toggle(Cell) -> Cell
+//// - is_alive(Cell) -> Bool
 //// Internal:
 //// * None
 
@@ -23,18 +23,18 @@ pub type Cell {
   Dead(location: Location)
 }
 
-/// Get if the cell is alive.
-pub fn is_alive(cell: Cell) -> Bool {
-  case cell {
-    Alive(_) -> True
-    Dead(_) -> False
-  }
-}
-
 /// Toggle the state of the cell.
 pub fn toggle(cell: Cell) -> Cell {
   case cell {
     Alive(location) -> Dead(location)
     Dead(location) -> Alive(location)
+  }
+}
+
+/// Get if the cell is alive.
+pub fn is_alive(cell: Cell) -> Bool {
+  case cell {
+    Alive(_) -> True
+    Dead(_) -> False
   }
 }

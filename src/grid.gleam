@@ -11,15 +11,15 @@
 //// API:
 //// - GridState
 //// - Grid
-//// - get_state(Grid) -> GridState
 //// - new(Option(GridState)) -> Grid
-//// - get_cell(Grid, Location) -> Cell
 //// - add_cell(Grid, Cell) -> Grid
-//// - get_neighbours(Grid, Location) -> GridState
+//// - get_state(Grid) -> GridState
+//// - get_neighbours_from_grid(Grid, Location) -> GridState
+//// - get_neighbours_from_state(GridState, Location) -> GridState
 //// - get_transient_state(Grid) -> GridState
+//// - get_cell_from_grid(Grid, Location) -> Cell
+//// - get_cell_from_state(GridState, Location) -> Cell
 //// Internal:
-//// - get_cell_inner(GridState, Location) -> Cell
-//// - get_neighbours_inner(GridState, Location) -> GridState
 //// - revive(Grid, Location) -> Grid
 //// - kill(Grid, Location) -> Grid
 //// - get_transient_state_inner(GridState, GridState, GridState) -> GridState
@@ -45,23 +45,12 @@ pub opaque type Grid {
   Grid(state: GridState)
 }
 
-/// Get the state of the grid.
-/// As the Grid type is opaque, this is the only way to get the state.
-pub fn get_state(grid: Grid) -> GridState {
-  grid.state
-}
-
 /// Create a new grid.
 pub fn new(state: Option(GridState)) -> Grid {
   case state {
     opt.Some(state) -> Grid(make_proper(state))
     opt.None -> Grid([])
   }
-}
-
-/// Get a cell at a location in the grid.
-pub fn get_cell(grid: Grid, location: Location) -> Cell {
-  get_cell_inner(grid.state, location)
 }
 
 /// Add a cell to the grid and return a new grid with the cell added.
@@ -73,9 +62,34 @@ pub fn add_cell(grid: Grid, cell: Cell) -> Grid {
   }
 }
 
-/// Get neighbours of a cell.
-pub fn get_neighbours(grid: Grid, location: Location) -> GridState {
-  get_neighbours_inner(grid.state, location)
+/// Get the state of the grid.
+/// As the Grid type is opaque, this is the only way to get the state.
+pub fn get_state(grid: Grid) -> GridState {
+  grid.state
+}
+
+/// Get neighbours of a cell in a grid.
+pub fn get_neighbours_from_grid(grid: Grid, location: Location) -> GridState {
+  get_neighbours_from_state(grid.state, location)
+}
+
+/// Get neighbours of a cell in a state.
+pub fn get_neighbours_from_state(
+  state: GridState,
+  location: Location,
+) -> GridState {
+  let x = location.x
+  let y = location.y
+  [
+    get_cell_from_state(state, loc.Location(x - 1, y + 1)),
+    get_cell_from_state(state, loc.Location(x, y + 1)),
+    get_cell_from_state(state, loc.Location(x + 1, y + 1)),
+    get_cell_from_state(state, loc.Location(x - 1, y)),
+    get_cell_from_state(state, loc.Location(x + 1, y)),
+    get_cell_from_state(state, loc.Location(x - 1, y - 1)),
+    get_cell_from_state(state, loc.Location(x, y - 1)),
+    get_cell_from_state(state, loc.Location(x + 1, y - 1)),
+  ]
 }
 
 /// Get the grid with all the cells that are alive and their imidiate dead neighbours.
@@ -88,32 +102,21 @@ pub fn get_transient_state(grid: Grid) -> GridState {
   ))
 }
 
-// Private:
+/// Get a cell at a location in the grid.
+pub fn get_cell_from_grid(grid: Grid, location: Location) -> Cell {
+  get_cell_from_state(grid.state, location)
+}
 
-/// Inner function for getting a cell.
-fn get_cell_inner(state: GridState, location: Location) -> Cell {
+/// Get a cell at a location in the state.
+pub fn get_cell_from_state(state: GridState, location: Location) -> Cell {
   let alive_cell = cel.Alive(location)
-  case lis.contains(state, alive_cell) {
+  case lis.contains(make_proper(state), alive_cell) {
     True -> alive_cell
     False -> cel.Dead(location)
   }
 }
 
-/// Inner function for getting the neighbours of a cell.
-fn get_neighbours_inner(state: GridState, location: Location) -> GridState {
-  let x = location.x
-  let y = location.y
-  [
-    get_cell_inner(state, loc.Location(x - 1, y - 1)),
-    get_cell_inner(state, loc.Location(x - 1, y)),
-    get_cell_inner(state, loc.Location(x - 1, y + 1)),
-    get_cell_inner(state, loc.Location(x, y - 1)),
-    get_cell_inner(state, loc.Location(x, y + 1)),
-    get_cell_inner(state, loc.Location(x + 1, y - 1)),
-    get_cell_inner(state, loc.Location(x + 1, y)),
-    get_cell_inner(state, loc.Location(x + 1, y + 1)),
-  ]
-}
+// Private:
 
 /// Inner function for reviving a cell.
 fn revive(grid: Grid, location: Location) -> Grid {
@@ -146,7 +149,7 @@ fn get_transient_state_inner(
       get_transient_state_inner(
         state,
         tail,
-        lis.append(temp2, get_neighbours_inner(state, head.location)),
+        lis.append(temp2, get_neighbours_from_state(state, head.location)),
       )
   }
 }
