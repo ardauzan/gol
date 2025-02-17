@@ -12,9 +12,6 @@
 // External imports:
 import gleam/io
 
-// Local imports:
-import grid as gri
-
 // Public
 
 /// Entry point of the program.
