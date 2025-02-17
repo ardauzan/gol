@@ -82,7 +82,7 @@ pub fn get_neighbours_from_grid_test() -> Nil {
 
 /// Test the get_neighbours_from_state function.
 pub fn get_neighbours_from_state_test() -> Nil {
-  [cel.Alive(loc.Location(0, 0))]
+  [cel.Alive(loc.Location(0, 0)), cel.Dead(loc.Location(0, 0))]
   |> gri.get_neighbours_from_state(loc.Location(0, 0))
   |> sho.equal([
     cel.Dead(loc.Location(-1, 1)),
@@ -132,7 +132,7 @@ pub fn get_cell_from_grid_test() -> Nil {
 
 /// Test the get_cell_from_state function.
 pub fn get_cell_from_state_test() -> Nil {
-  [cel.Alive(loc.Location(0, 0))]
+  [cel.Alive(loc.Location(0, 0)), cel.Dead(loc.Location(0, 0))]
   |> gri.get_cell_from_state(loc.Location(0, 0))
   |> sho.equal(cel.Alive(loc.Location(0, 0)))
   []

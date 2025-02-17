@@ -11,7 +11,7 @@
 //// - get_center_state(Neighbourhood) -> Bool
 //// - get_alive_neighbour_count(Neighbourhood) -> Int
 //// Internal:
-//// * None
+//// - count(Cell) -> Int
 
 // Local imports:
 import cell.{type Cell} as cel
@@ -83,5 +83,23 @@ pub fn get_neighbourhood_from_state(
 pub fn get_center_state(neighbourhood: Neighbourhood) -> Bool {
   cel.is_alive(neighbourhood.center)
 }
+
 /// Get the number of alive neighbours in the neighbourhood.
+pub fn get_alive_neighbour_count(neighbourhood: Neighbourhood) -> Int {
+  count(neighbourhood.top_left)
+  + count(neighbourhood.top)
+  + count(neighbourhood.top_right)
+  + count(neighbourhood.left)
+  + count(neighbourhood.right)
+  + count(neighbourhood.bottom_left)
+  + count(neighbourhood.bottom)
+  + count(neighbourhood.bottom_right)
+}
+
 // Private:
+fn count(cell: Cell) -> Int {
+  case cell {
+    cel.Alive(_) -> 1
+    cel.Dead(_) -> 0
+  }
+}
