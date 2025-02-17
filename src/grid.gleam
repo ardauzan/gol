@@ -70,7 +70,18 @@ pub fn get_state(grid: Grid) -> GridState {
 
 /// Get neighbours of a cell in a grid.
 pub fn get_neighbours_from_grid(grid: Grid, location: Location) -> GridState {
-  get_neighbours_from_state(grid.state, location)
+  let x = location.x
+  let y = location.y
+  [
+    get_cell_from_grid(grid, loc.Location(x - 1, y + 1)),
+    get_cell_from_grid(grid, loc.Location(x, y + 1)),
+    get_cell_from_grid(grid, loc.Location(x + 1, y + 1)),
+    get_cell_from_grid(grid, loc.Location(x - 1, y)),
+    get_cell_from_grid(grid, loc.Location(x + 1, y)),
+    get_cell_from_grid(grid, loc.Location(x - 1, y - 1)),
+    get_cell_from_grid(grid, loc.Location(x, y - 1)),
+    get_cell_from_grid(grid, loc.Location(x + 1, y - 1)),
+  ]
 }
 
 /// Get neighbours of a cell in a state.
@@ -104,10 +115,14 @@ pub fn get_transient_state(grid: Grid) -> GridState {
 
 /// Get a cell at a location in the grid.
 pub fn get_cell_from_grid(grid: Grid, location: Location) -> Cell {
-  get_cell_from_state(grid.state, location)
+  let alive_cell = cel.Alive(location)
+  case lis.contains(grid.state, alive_cell) {
+    True -> alive_cell
+    False -> cel.Dead(location)
+  }
 }
 
-/// Get a cell at a location in the state.
+/// Get a cell at a location in the grid state.
 pub fn get_cell_from_state(state: GridState, location: Location) -> Cell {
   let alive_cell = cel.Alive(location)
   case lis.contains(make_proper(state), alive_cell) {

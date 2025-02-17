@@ -6,15 +6,16 @@
 ////
 //// API:
 //// - Neighbourhood
-//// - get_neighbourhood(GridState, Location) -> Neighbourhood
+//// - get_neighbourhood_from_grid(Grid, Location) -> Neighbourhood
+//// - get_neighbourhood_from_state(GridState, Location) -> Neighbourhood
 //// - get_center_state(Neighbourhood) -> Bool
 //// - get_alive_neighbour_count(Neighbourhood) -> Int
 //// Internal:
 //// * None
 
 // Local imports:
-import cell.{type Cell}
-import grid.{type GridState} as gri
+import cell.{type Cell} as cel
+import grid.{type Grid, type GridState} as gri
 import location.{type Location}
 
 // Public:
@@ -35,7 +36,32 @@ pub type Neighbourhood {
 }
 
 /// Get the neighbourhood of a cell in the grid.
-pub fn get_neighbourhood(state: GridState, location: Location) -> Neighbourhood {
+pub fn get_neighbourhood_from_grid(
+  grid: Grid,
+  location: Location,
+) -> Neighbourhood {
+  case gri.get_neighbours_from_grid(grid, location) {
+    [top_left, top, top_right, left, right, bottom_left, bottom, bottom_right] ->
+      Neighbourhood(
+        top_left,
+        top,
+        top_right,
+        left,
+        gri.get_cell_from_grid(grid, location),
+        right,
+        bottom_left,
+        bottom,
+        bottom_right,
+      )
+    _ -> panic as "Impossible state"
+  }
+}
+
+/// Get the neighbourhood of a cell in the grid state.
+pub fn get_neighbourhood_from_state(
+  state: GridState,
+  location: Location,
+) -> Neighbourhood {
   case gri.get_neighbours_from_state(state, location) {
     [top_left, top, top_right, left, right, bottom_left, bottom, bottom_right] ->
       Neighbourhood(
@@ -52,3 +78,10 @@ pub fn get_neighbourhood(state: GridState, location: Location) -> Neighbourhood 
     _ -> panic as "Impossible state"
   }
 }
+
+/// Get the center cell's state in the neighbourhood.
+pub fn get_center_state(neighbourhood: Neighbourhood) -> Bool {
+  cel.is_alive(neighbourhood.center)
+}
+/// Get the number of alive neighbours in the neighbourhood.
+// Private:
