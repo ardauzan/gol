@@ -1,21 +1,11 @@
 //// src/lib.gleam
 ////
-//// Module:lib
+//// Module: lib
 ////
-//// In this module, the utility functions are defined.
-//// We separate them from the modules they are used in to be able to reuse them.
+//// In this module, all of the shared functions and types are defined.
 ////
 //// API:
-//// - remove(List(value), value) -> List(value)
+//// * None
 //// Internal:
 //// * None
 
-// External imports:
-import gleam/list as lis
-
-// Public:
-
-/// Remove item from list.
-pub fn remove(list: List(value), item_outer: value) -> List(value) {
-  lis.filter(list, fn(item_inner: value) -> Bool { item_inner != item_outer })
-}

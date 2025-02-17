@@ -17,5 +17,4 @@ import gleeunit as gle
 /// Setup for testing.
 pub fn main() -> Nil {
   gle.main()
-  Nil
 }

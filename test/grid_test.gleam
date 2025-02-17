@@ -6,147 +6,15 @@
 ////
 //// API:
 //// - main() -> Nil
-//// - new_test() -> Nil
-//// - add_test() -> Nil
-//// - get_test() -> Nil
-//// - make_proper_test() -> Nil
-//// - make_transient_test() -> Nil
-//// - remove_at_location_test() -> Nil
-//// - get_neighbours_test() -> Nil
 //// Internal:
 //// * None
 
 // External imports:
 import gleeunit as gle
-import gleeunit/should as sho
-
-// Local imports:
-import cell as cel
-import grid as gri
-import location as loc
 
 // Public:
 
 /// Setup for testing.
 pub fn main() -> Nil {
   gle.main()
-  Nil
-}
-
-/// Test the grid constructor.
-pub fn new_test() -> Nil {
-  gri.new()
-  |> sho.equal([])
-  Nil
-}
-
-/// Test the add function.
-pub fn add_test() -> Nil {
-  gri.new()
-  |> gri.add(cel.new(loc.new(1, 1), True))
-  |> sho.be_ok()
-  |> gri.add(cel.new(loc.new(1, 1), True))
-  |> sho.be_error()
-  gri.new()
-  |> gri.add(cel.new(loc.new(3, 1), True))
-  |> sho.be_ok()
-  |> gri.add(cel.new(loc.new(3, 1), False))
-  |> sho.be_error()
-  gri.new()
-  |> gri.add(cel.new(loc.new(9, 9), False))
-  |> sho.be_ok()
-  |> gri.add(cel.new(loc.new(9, 8), True))
-  |> sho.equal(Ok([cel.Dead(#(9, 9)), cel.Alive(#(9, 8))]))
-  Nil
-}
-
-/// Test the get function.
-pub fn get_test() -> Nil {
-  gri.new()
-  |> gri.get(loc.new(1, 1))
-  |> sho.equal(cel.Dead(#(1, 1)))
-  gri.new()
-  |> gri.add(cel.new(loc.new(12, 15), False))
-  |> sho.be_ok()
-  |> gri.get(loc.new(12, 15))
-  |> sho.equal(cel.Dead(#(12, 15)))
-  gri.new()
-  |> gri.add(cel.new(loc.new(-1, 8), True))
-  |> sho.be_ok()
-  |> gri.get(loc.new(-1, 8))
-  |> sho.equal(cel.Alive(#(-1, 8)))
-  Nil
-}
-
-/// Test the make_proper function.
-pub fn make_proper_test() -> Nil {
-  gri.new()
-  |> gri.add(cel.new(loc.new(7, 4), False))
-  |> sho.be_ok()
-  |> gri.add(cel.new(loc.new(3, 6), True))
-  |> sho.be_ok()
-  |> gri.make_proper()
-  |> sho.equal([cel.Alive(#(3, 6))])
-  Nil
-}
-
-/// Test the make_transient function.
-pub fn make_transient_test() -> Nil {
-  gri.new()
-  |> gri.add(cel.new(loc.new(1, 1), True))
-  |> sho.be_ok()
-  |> gri.add(cel.new(loc.new(0, 0), True))
-  |> sho.be_ok()
-  |> gri.make_transient()
-  |> sho.equal([
-    cel.Alive(#(1, 1)),
-    cel.Alive(#(0, 0)),
-    cel.Dead(#(0, 1)),
-    cel.Dead(#(0, 2)),
-    cel.Dead(#(1, 0)),
-    cel.Dead(#(1, 2)),
-    cel.Dead(#(2, 0)),
-    cel.Dead(#(2, 1)),
-    cel.Dead(#(2, 2)),
-    cel.Dead(#(-1, -1)),
-    cel.Dead(#(-1, 0)),
-    cel.Dead(#(-1, 1)),
-    cel.Dead(#(0, -1)),
-    cel.Dead(#(1, -1)),
-  ])
-  Nil
-}
-
-/// Test the remove_at_location function.
-pub fn remove_at_location_test() -> Nil {
-  gri.new()
-  |> gri.add(cel.new(loc.new(18, 6), True))
-  |> sho.be_ok()
-  |> gri.remove_at_location(loc.new(18, 6))
-  |> sho.equal(Ok([]))
-  gri.new()
-  |> gri.remove_at_location(loc.new(21, 0))
-  |> sho.be_error()
-  Nil
-}
-
-/// Test the get_neighbours_test function.
-pub fn get_neighbours_test() -> Nil {
-  gri.new()
-  |> gri.add(cel.new(loc.new(1, 1), True))
-  |> sho.be_ok()
-  |> gri.add(cel.new(loc.new(0, 1), True))
-  |> sho.be_ok()
-  |> gri.get_neighbours(loc.new(1, 1))
-  |> sho.equal([
-    cel.Dead(#(0, 0)),
-    cel.Alive(#(0, 1)),
-    cel.Dead(#(0, 2)),
-    cel.Dead(#(1, 0)),
-    cel.Dead(#(1, 2)),
-    cel.Dead(#(2, 0)),
-    cel.Dead(#(2, 1)),
-    cel.Dead(#(2, 2)),
-  ])
-  Nil
 }

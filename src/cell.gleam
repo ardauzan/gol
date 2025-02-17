@@ -22,8 +22,8 @@ import location as loc
 
 /// Cell type definition.
 pub type Cell {
-  Alive(loc.Location)
-  Dead(loc.Location)
+  Alive(location: loc.Location)
+  Dead(location: loc.Location)
 }
 
 /// Cell constructor.
