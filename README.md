@@ -34,23 +34,23 @@ This project is a personal exercise in learning the Gleam programming language b
 
 :pushpin: Complete the source modules:
 
-- [ ] Complete cell
+- [X] Complete cell
 - [ ] Complete gol (Main)
-- [ ] Complete grid
-- [ ] Complete lib
-- [ ] Complete location
-- [ ] Complete neighbourhood
+- [X] Complete grid
+- [X] Complete lib
+- [X] Complete location
+- [X] Complete neighbourhood
 - [ ] Complete rule
 - [ ] Complete ruleset
 
 :pushpin: Complete the test modules:
 
-- [ ] Complete cell_test
+- [X] Complete cell_test
 - [ ] Complete gol_test
-- [ ] Complete grid_test
-- [ ] Complete lib_test
-- [ ] Complete location_test
-- [ ] Complete neighbourhood_test
+- [X] Complete grid_test
+- [X] Complete lib_test
+- [X] Complete location_test
+- [X] Complete neighbourhood_test
 - [ ] Complete rule_test
 - [ ] Complete ruleset_test
 
