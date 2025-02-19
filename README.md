@@ -8,7 +8,7 @@ This project is a personal exercise in learning the Gleam programming language b
 
 I want to add that I did not look at any of the other implementations of the Game of Life or other cellular automata, so I am not sure if there are any similarities or known non-idealities between this implementation and the others. If you find any, please let me know!
 
-I referred to [this wiki](https://conwaylife.com/wiki) to review some of the known rules and grid states of the Game of Life.
+I referred to [this wiki](https://conwaylife.com/wiki) to review some of the known rules and grid states of the Game of Life and other related life-like cellular automata.
 
 ## Modules
 
