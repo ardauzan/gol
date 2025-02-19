@@ -4,11 +4,11 @@
 
 ## Overview
 
-This project is a personal exercise in learning the Gleam programming language by implementing a framework to simulate the **Game of Life** and other variants of life from scratch, using as few third-party libraries as possible. This is a learning tool and **not intended for production use**. The code is **licensed under the MIT License** and is available at [GitHub](https://github.com/ardauzan/gol). Contributions and usage are welcome, but please credit the project if you find it helpful. Don't forget to give it a star if you like it! :star:
+This project is a personal exercise in learning the Gleam programming language by implementing a framework to simulate the Game of Life and other variants of life from scratch, using as few third-party libraries as possible. This is a learning tool and **not intended for production use**. The code is **licensed under the MIT License** and is available at [GitHub](https://github.com/ardauzan/gol). Contributions and usage are welcome, but please credit the project if you find it helpful. Don't forget to give it a star if you like it! :star:
 
-I want to add that I did not look at any of the other implementations of the **Game of Life** or other cellular automata, so I am not sure if there are any similarities or known non-idealities between this implementation and the others. If you find any, please let me know!
+I want to add that I did not look at any of the other implementations of the Game of Life or other cellular automata, so I am not sure if there are any similarities or known non-idealities between this implementation and the others. If you find any, please let me know!
 
-I referred to [this wiki](https://conwaylife.com/wiki) to review some of the known rules and grid states of the **Game of Life**.
+I referred to [this wiki](https://conwaylife.com/wiki) to review some of the known rules and grid states of the Game of Life.
 
 ## Modules
 
