@@ -40,8 +40,8 @@ This project is a personal exercise in learning the Gleam programming language b
 - [X] Complete lib
 - [X] Complete location
 - [X] Complete neighbourhood
-- [ ] Complete rule
-- [ ] Complete ruleset
+- [X] Complete rule
+- [X] Complete ruleset
 
 :pushpin: Complete the test modules:
 
@@ -51,8 +51,8 @@ This project is a personal exercise in learning the Gleam programming language b
 - [X] Complete lib_test
 - [X] Complete location_test
 - [X] Complete neighbourhood_test
-- [ ] Complete rule_test
-- [ ] Complete ruleset_test
+- [X] Complete rule_test
+- [X] Complete ruleset_test
 
 :pushpin: Complete the documentation:
 
