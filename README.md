@@ -1,4 +1,4 @@
-# **Game of Life** (GOL) :space_invader:
+# Game of Life (GOL) and Related Cellular Automata Framework :space_invader:
 
 *A simple implementation of a framework to define and interact with life-like cellular automata, written in Gleam.*
 
