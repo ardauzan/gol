@@ -6,7 +6,7 @@
 ////
 //// API:
 //// - tick(Grid, Ruleset) -> Grid
-//// - tick_to(Grid, Ruleset, Int) -> Result(Grid, GOLError)
+//// - tick_to(Grid, Ruleset, Int) -> Grid
 //// - main() -> Nil
 //// Internal:
 //// - tick_inner(Ruleset, Grid, GridState, Grid) -> Grid
