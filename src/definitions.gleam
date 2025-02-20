@@ -55,7 +55,7 @@ pub const classic_ruleset: Ruleset = [classic_birth_rule, classic_survival_rule]
 
 // Grid states:
 
-pub const copperhead: GridState = [
+pub const copperhead_t0: GridState = [
   cel.Alive(loc.Location(0, 3)),
   cel.Alive(loc.Location(0, 4)),
   cel.Alive(loc.Location(1, 3)),

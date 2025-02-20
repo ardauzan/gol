@@ -13,7 +13,6 @@
 
 // External imports:
 import gleam/io
-import gleam/option as opt
 
 // Local imports:
 import grid.{type Grid, type GridState} as gri
@@ -25,7 +24,7 @@ import ruleset.{type Ruleset} as rus
 /// Tick function.
 /// This function takes a grid and a ruleset and returns the next state of the grid after one tick.
 pub fn tick(grid: Grid, ruleset: Ruleset) -> Grid {
-  tick_inner(ruleset, grid, gri.get_transient_state(grid), gri.new(opt.None))
+  tick_inner(ruleset, grid, gri.get_transient_state(grid), grid)
 }
 
 /// Tick to function.
