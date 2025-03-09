@@ -1,10 +1,10 @@
 # manifest.toml
 
 packages = [
-  { name = "gleam_stdlib", version = "0.54.0", build_tools = [
+  { name = "gleam_stdlib", version = "0.55.0", build_tools = [
     "gleam",
   ], requirements = [
-  ], otp_app = "gleam_stdlib", source = "hex", outer_checksum = "723BA61A2BAE8D67406E59DD88CEA1B3C3F266FC8D70F64BE9FEC81B4505B927" },
+  ], otp_app = "gleam_stdlib", source = "hex", outer_checksum = "32D8F4AE03771516950047813A9E359249BD9FBA5C33463FDB7B953D6F8E896B" },
   { name = "gleeunit", version = "1.3.0", build_tools = [
     "gleam",
   ], requirements = [
