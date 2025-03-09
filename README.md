@@ -23,6 +23,7 @@ I referred to [this wiki](https://conwaylife.com/wiki) to review some of the kno
 - [neighbourhood](src/neighbourhood.gleam)
 - [rule](src/rule.gleam)
 - [ruleset](src/ruleset.gleam)
+- [tick](src/tick.gleam)
 
 :pushpin: And also the following test modules:
 
@@ -35,6 +36,7 @@ I referred to [this wiki](https://conwaylife.com/wiki) to review some of the kno
 - [neighbourhood_test](test/neighbourhood_test.gleam)
 - [rule_test](test/rule_test.gleam)
 - [ruleset_test](test/ruleset_test.gleam)
+- [tick_test](test/tick_test.gleam)
 
 ### Todo
 
@@ -43,24 +45,23 @@ I referred to [this wiki](https://conwaylife.com/wiki) to review some of the kno
 - [X] Complete cell
 - [ ] Complete definitions
 - [ ] Complete gol (Main)
-- [X] Complete grid
-- [X] Complete lib
+- [ ] Complete grid
 - [X] Complete location
-- [X] Complete neighbourhood
-- [X] Complete rule
-- [X] Complete ruleset
+- [ ] Complete neighbourhood
+- [ ] Complete rule
+- [ ] Complete ruleset
+- [ ] Complete tick
 
 :pushpin: Complete the test modules:
 
 - [X] Complete cell_test
-- [ ] Complete definitions_test
-- [ ] Complete gol_test
-- [X] Complete grid_test
+- [ ] Complete grid_test
 - [X] Complete lib_test
 - [X] Complete location_test
-- [X] Complete neighbourhood_test
-- [X] Complete rule_test
-- [X] Complete ruleset_test
+- [ ] Complete neighbourhood_test
+- [ ] Complete rule_test
+- [ ] Complete ruleset_test
+- [ ] Complete tick_test
 
 :pushpin: Complete the documentation:
 
