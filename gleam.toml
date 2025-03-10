@@ -2,6 +2,9 @@
 
 name = "gol"
 version = "1.0.0"
+licences = ["MIT"]
+description = "A simple implementation of a framework to define and interact with life-like cellular automata, written in Gleam."
+repository = { type = "github", user = "ardauzan", repo = "gol" }
 
 [dependencies]
 gleam_stdlib = ">= 0.44.0 and < 2.0.0"
