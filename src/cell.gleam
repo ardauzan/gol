@@ -2,13 +2,12 @@
 ////
 //// Module: cell
 ////
-//// In this module, the Cell type and its functions are defined.
-//// A cell is either alive or dead and it has a location.
+//// In this module, the Cell object and its functions are defined.
 ////
 //// API:
-//// - Cell
-//// - toggle(Cell) -> Cell
+//// - Cell: Alive(Location) | Dead(Location)
 //// - is_alive(Cell) -> Bool
+//// - toggle(Cell) -> Cell
 //// Internal:
 //// * None
 
@@ -17,24 +16,25 @@ import location.{type Location}
 
 // Public:
 
-/// Cell type definition.
+/// A Cell is either alive or dead.
+/// It also has a Location associated with it.
 pub type Cell {
   Alive(location: Location)
   Dead(location: Location)
 }
 
-/// Toggle the state of the cell.
-pub fn toggle(cell: Cell) -> Cell {
-  case cell {
-    Alive(location) -> Dead(location)
-    Dead(location) -> Alive(location)
-  }
-}
-
-/// Get if the cell is alive.
+/// Checks if the Cell is alive.
 pub fn is_alive(cell: Cell) -> Bool {
   case cell {
     Alive(_) -> True
     Dead(_) -> False
+  }
+}
+
+/// Toggles the state of the Cell, keeping the same Location.
+pub fn toggle(cell: Cell) -> Cell {
+  case cell {
+    Alive(location) -> Dead(location)
+    Dead(location) -> Alive(location)
   }
 }

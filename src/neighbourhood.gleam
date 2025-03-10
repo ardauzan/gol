@@ -57,28 +57,6 @@ pub fn get_neighbourhood_from_grid(
   }
 }
 
-/// Get the neighbourhood of a cell in the grid state.
-pub fn get_neighbourhood_from_state(
-  state: GridState,
-  location: Location,
-) -> Neighbourhood {
-  case gri.get_neighbours_from_state(state, location) {
-    [top_left, top, top_right, left, right, bottom_left, bottom, bottom_right] ->
-      Neighbourhood(
-        top_left,
-        top,
-        top_right,
-        left,
-        gri.get_cell_from_state(state, location),
-        right,
-        bottom_left,
-        bottom,
-        bottom_right,
-      )
-    _ -> panic as "Impossible state"
-  }
-}
-
 /// Get the center cell's state in the neighbourhood.
 pub fn get_center_state(neighbourhood: Neighbourhood) -> Bool {
   cel.is_alive(neighbourhood.center)
