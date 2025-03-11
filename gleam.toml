@@ -1,6 +1,6 @@
 # gleam.toml
 
-name = "gol"
+name = "GOL"
 version = "1.0.0"
 licences = ["MIT"]
 description = "A simple implementation of a framework to define and interact with life-like cellular automata, written in Gleam."
