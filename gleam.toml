@@ -1,7 +1,7 @@
 # gleam.toml
 
-name = "GOL"
-version = "2.0.0"
+name = "gol"
+version = "2.0.1"
 licences = ["MIT"]
 description = "A simple implementation of a framework to define and interact with life-like cellular automata, written in Gleam."
 repository = { type = "github", user = "ardauzan", repo = "gol" }
