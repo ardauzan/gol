@@ -27,7 +27,6 @@ pub fn tick(grid: Grid, ruleset: Ruleset) -> Grid {
 }
 
 /// Tick to function.
-/// This function is recursive.
 /// It takes a grid, a ruleset and the number of steps, if the number is negative or 0 it returns the grid.
 /// Normally the steps will not go to negative unless the function is called with a negative number;
 /// In that case we return the grid as is, same as if the number was 0.

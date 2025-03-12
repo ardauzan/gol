@@ -38,7 +38,7 @@ I referred to [this wiki](https://conwaylife.com/wiki) to review some of the kno
 
 :pushpin: Complete the source modules:
 
-- [ ] Complete cell
+- [X] Complete cell
 - [ ] Complete definitions
 - [ ] Complete gol (Main)
 - [ ] Complete grid
@@ -50,7 +50,7 @@ I referred to [this wiki](https://conwaylife.com/wiki) to review some of the kno
 
 :pushpin: Complete the test modules:
 
-- [ ] Complete cell_test
+- [X] Complete cell_test
 - [ ] Complete grid_test
 - [ ] Complete location_test
 - [ ] Complete neighbourhood_test

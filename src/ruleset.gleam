@@ -37,7 +37,6 @@ pub fn apply(ruleset: Ruleset, neighbourhood: Neighbourhood) -> Cell {
 // Private:
 
 /// Inner logic for applying a Ruleset to a Neighbourhood.
-/// This function is recursive.
 fn apply_inner(
   ruleset: Ruleset,
   neighbourhood: Neighbourhood,
