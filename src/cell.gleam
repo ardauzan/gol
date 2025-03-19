@@ -7,12 +7,16 @@
 //// API:
 //// - Cell: Alive(Location) | Dead(Location)
 //// - is_alive(Cell) -> Bool
+//// - compare(Cell, Cell) -> Order
 //// - toggle(Cell) -> Cell
 //// Internal:
 //// * None
 
+// Non-local imports:
+import gleam/order.{type Order}
+
 // Local imports:
-import location.{type Location}
+import location.{type Location} as loc
 
 // Public:
 
@@ -29,6 +33,12 @@ pub fn is_alive(cell: Cell) -> Bool {
     Alive(_) -> True
     Dead(_) -> False
   }
+}
+
+/// Compares two Cells.
+/// The result is based on the Location of the Cells.
+pub fn compare(cell_1: Cell, cell_2: Cell) -> Order {
+  loc.compare(cell_1.location, cell_2.location)
 }
 
 /// Toggles the state of the Cell, keeping the same Location.

@@ -212,7 +212,7 @@ fn get_transient_state_inner(
 /// Sorts a GridState.
 /// The result is sorted from top to bottom, left to right.
 fn sort(state: GridState) -> GridState {
-  todo
+  lis.sort(state, cel.compare)
 }
 
 /// Inner function for reviving a Cell.
