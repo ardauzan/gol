@@ -3,6 +3,8 @@
 //// Module: cell
 ////
 //// In this module, the Cell object and its functions are defined.
+//// A Cell is either alive or dead.
+//// It also has a Location associated with it.
 ////
 //// API:
 //// - Cell: Alive(Location) | Dead(Location)
@@ -37,7 +39,7 @@ pub fn is_alive(cell: Cell) -> Bool {
 
 /// Compares two Cells.
 /// The result is based on the Cell's state primarily and then its Location.
-/// Alive is greater than Dead, if the state is the same, the Location is compared.
+/// Alive is greater than dead, if the state is the same, the Location is compared.
 pub fn compare(cell_1: Cell, cell_2: Cell) -> Order {
   case cell_1, cell_2 {
     Alive(location_1), Alive(location_2) -> loc.compare(location_1, location_2)

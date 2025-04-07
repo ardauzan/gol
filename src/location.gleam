@@ -3,6 +3,8 @@
 //// Module: location
 ////
 //// In this module, the Location object and its functions are defined.
+//// Locations are comparable, two-dimensional points.
+//// The first coordinate is the x coordinate and the second coordinate is the y coordinate.
 ////
 //// API:
 //// - Location: Location(Int, Int)
@@ -15,14 +17,14 @@ import gleam/order.{type Order} as ord
 
 // Public:
 
-/// Location type definition.
-/// It is two dimensional.
+/// Locations are comparable, two-dimensional points.
+/// The first coordinate is the x coordinate and the second coordinate is the y coordinate.
 pub type Location {
   Location(x: Int, y: Int)
 }
 
 /// Compares two locations.
-/// It is from bottom to top primairly an then left to right.
+/// It is from bottom to top primairly and then left to right.
 /// If the y coordinates are equal, x coordinates are compared.
 pub fn compare(location_1: Location, location_2: Location) -> Order {
   case location_1.x, location_1.y, location_2.x, location_2.y {

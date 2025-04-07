@@ -2,8 +2,15 @@
 ////
 //// Module: grid
 ////
-//// In this module, Grid and GridState objects, their functions and error types are defined (GridError).
-//// A default max_alive_cell_count is defined too.
+//// In this module, Grid object, its functions and errors are defined.
+//// A Grid has a state that is a proper GridState.
+//// It also has a max_alive_cell_count value which is the maximum number of alive cells in the Grid;
+//// This is put in place to be able to cap the growth of the Grid.
+//// The max_alive_cell_count value can be any integer greater than or equal to -1;
+//// If it is set to -1, there is no limit on the number of alive cells in the Grid (dangerous).
+//// If it is set to any integer greater than -1, the Grid will be capped at that number of alive cells.
+//// It is defined as an opaque type to prevent direct access to the state so that it can be safely managed and kept in the proper form.
+//// 
 ////
 //// API:
 //// - GridError: InvalidMaxAliveCellCount | MaxAliveCellCountExceeded
@@ -47,7 +54,7 @@ pub type GridError {
 /// If it is proper, that means it contains no duplicates, no conflicts, only alive cells and is sorted from bottom to top, left to right.
 /// If it is not proper, It might have duplicates, conflicts, unrelated dead cells or could be unsorted.
 /// It could also be transient which means that it contains only unique Cells which are alive cells with their dead neighbours and is sorted or unsorted.
-/// Any proper or transient GridState represents an infinite amount of cells, one at each location on a 2D plane, any unincluded cells are considered dead.
+/// Any proper or transient GridState represents an infinite amount of cells, one at each Location on a 2D plane, any unincluded cells are considered dead.
 pub type GridState =
   List(Cell)
 
