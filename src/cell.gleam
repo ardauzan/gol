@@ -13,7 +13,7 @@
 //// * None
 
 // Non-local imports:
-import gleam/order.{type Order}
+import gleam/order.{type Order} as ord
 
 // Local imports:
 import location.{type Location} as loc
@@ -36,12 +36,18 @@ pub fn is_alive(cell: Cell) -> Bool {
 }
 
 /// Compares two Cells.
-/// The result is based on the Location of the Cells.
+/// The result is based on the Cell's state primarily and then its Location.
+/// Alive is greater than Dead, if the state is the same, the Location is compared.
 pub fn compare(cell_1: Cell, cell_2: Cell) -> Order {
-  loc.compare(cell_1.location, cell_2.location)
+  case cell_1, cell_2 {
+    Alive(location_1), Alive(location_2) -> loc.compare(location_1, location_2)
+    Dead(location_1), Dead(location_2) -> loc.compare(location_1, location_2)
+    Alive(_), Dead(_) -> ord.Gt
+    Dead(_), Alive(_) -> ord.Lt
+  }
 }
 
-/// Toggles the state of the Cell, keeping the same Location.
+/// Toggles the state of the Cell, keeping the Location the same.
 pub fn toggle(cell: Cell) -> Cell {
   case cell {
     Alive(location) -> Dead(location)

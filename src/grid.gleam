@@ -21,8 +21,7 @@
 //// - default_max_alive_cell_count: Int
 //// - get_cell_inner(GridState, Location) -> Cell
 //// - get_neighbours_inner(GridState, Location) -> GridState
-//// - TransientStateVersion: Sorted | Unsorted
-//// - get_transient_state_inner(GridState, GridState, GridState, TransientStateVersion) -> GridState
+//// - get_transient_state_inner(GridState, GridState, GridState) -> GridState
 //// - sort(GridState) -> GridState
 //// - revive(Grid, Location) -> Result(Grid, GridError)
 //// - kill(Grid, Location) -> Grid
@@ -45,10 +44,10 @@ pub type GridError {
 
 /// A GridState is any list of Cells.
 /// It might be considered proper or not.
-/// If it is proper, that means it contains no duplicates, no conflicts, only alive cells and is sorted from top to bottom, left to right.
+/// If it is proper, that means it contains no duplicates, no conflicts, only alive cells and is sorted from bottom to top, left to right.
 /// If it is not proper, It might have duplicates, conflicts, unrelated dead cells or could be unsorted.
-/// It could also be transient which means that it contains only unique alive cells with their dead neighbours and is sorted or unsorted.
-/// Any proper or transient GridState represents an infinite amount of cells at every location, any unincluded cells are considered dead.
+/// It could also be transient which means that it contains only unique Cells which are alive cells with their dead neighbours and is sorted or unsorted.
+/// Any proper or transient GridState represents an infinite amount of cells, one at each location on a 2D plane, any unincluded cells are considered dead.
 pub type GridState =
   List(Cell)
 
@@ -111,7 +110,7 @@ pub fn get_cell(grid: Grid, location: Location) -> Cell {
 
 /// Gets neighbours of a Cell in a Grid.
 /// The result does not include the Cell itself only its neighbours!
-/// The result is sorted from top to bottom, left to right.
+/// The result is sorted from bottom to top, left to right.
 pub fn get_neighbours(grid: Grid, location: Location) -> GridState {
   get_neighbours_inner(grid.state, location)
 }
@@ -119,18 +118,16 @@ pub fn get_neighbours(grid: Grid, location: Location) -> GridState {
 /// Gets the transient GridState of the Grid as unsorted.
 /// The transient GridState is the list of cells that has a chance of getting toggled after a tick.
 /// We don't need it to be sorted to work with it thats why this function exists.
-/// There is no point in sorting the list for no reason in the tick function as the processed results are sorted as they get inserted into the grid.
+/// There is no point in sorting the list for no reason in the tick function as the processed results are sorted as they get inserted into the Grid.
 pub fn get_transient_state_unsorted(grid: Grid) -> GridState {
-  get_transient_state_inner(grid.state, grid.state, [], Unsorted)
+  get_transient_state_inner(grid.state, grid.state, [])
 }
 
 /// Gets the transient GridState of the Grid as sorted.
 /// The transient GridState is the list of cells that has a chance of getting toggled after a tick.
-/// The order of elements in the list are un-important and two lists with exactly same elements with different indexes will be considered equal.
-/// In order to make it like so we sort it before returning it, so if needed it can be compared with another transient GridState on equality.
-/// The list is sorted from top to bottom, left to right.
+/// If for some reason you want this sorted, this is the function to use.
 pub fn get_transient_state_sorted(grid: Grid) -> GridState {
-  get_transient_state_inner(grid.state, grid.state, [], Sorted)
+  sort(get_transient_state_inner(grid.state, grid.state, []))
 }
 
 /// Adds a Cell to the Grid and returns the resulting Grid.
@@ -161,56 +158,35 @@ fn get_cell_inner(state: GridState, location: Location) -> Cell {
 /// Inner function to get neighbours of a Cell in a GridState.
 fn get_neighbours_inner(state: GridState, location: Location) -> GridState {
   [
-    get_cell_inner(state, loc.Location(location.x - 1, location.y + 1)),
-    get_cell_inner(state, loc.Location(location.x, location.y + 1)),
-    get_cell_inner(state, loc.Location(location.x + 1, location.y + 1)),
-    get_cell_inner(state, loc.Location(location.x - 1, location.y)),
-    get_cell_inner(state, loc.Location(location.x + 1, location.y)),
     get_cell_inner(state, loc.Location(location.x - 1, location.y - 1)),
     get_cell_inner(state, loc.Location(location.x, location.y - 1)),
     get_cell_inner(state, loc.Location(location.x + 1, location.y - 1)),
+    get_cell_inner(state, loc.Location(location.x - 1, location.y)),
+    get_cell_inner(state, loc.Location(location.x + 1, location.y)),
+    get_cell_inner(state, loc.Location(location.x - 1, location.y + 1)),
+    get_cell_inner(state, loc.Location(location.x, location.y + 1)),
+    get_cell_inner(state, loc.Location(location.x + 1, location.y + 1)),
   ]
 }
 
-/// A transient GridState's versions.
-/// It could be of the version Sorted or Unsorted.
-type TransientStateVersion {
-  Sorted
-  Unsorted
-}
-
-/// Gets the transient GridState of the Grid.
 /// Inner function for making the GridState transient.
-/// It could be the either Sorted or Unsorted version depending on the sorted parameter.
 fn get_transient_state_inner(
   original_state: GridState,
   unprocessed_part_of_the_original_state: GridState,
   result: GridState,
-  sorted: TransientStateVersion,
 ) -> GridState {
-  let finalize: fn(GridState) -> GridState = fn(current) {
-    let process: fn(GridState) -> GridState = fn(pre_final) {
-      lis.unique(lis.append(original_state, pre_final))
-    }
-    case sorted {
-      Sorted -> sort(process(current))
-      Unsorted -> process(current)
-    }
-  }
   case unprocessed_part_of_the_original_state {
-    [] -> finalize(result)
+    [] -> lis.unique(lis.append(original_state, result))
     [head, ..tail] ->
       get_transient_state_inner(
         original_state,
         tail,
         lis.append(result, get_neighbours_inner(original_state, head.location)),
-        sorted,
       )
   }
 }
 
 /// Sorts a GridState.
-/// The result is sorted from top to bottom, left to right.
 fn sort(state: GridState) -> GridState {
   lis.sort(state, cel.compare)
 }
@@ -234,12 +210,8 @@ fn revive(grid: Grid, location: Location) -> Result(Grid, GridError) {
 /// Inner function for killing a Cell.
 fn kill(grid: Grid, location: Location) -> Grid {
   let alive_version: Cell = cel.Alive(location)
-  case lis.contains(grid.state, alive_version) {
-    True ->
-      Grid(
-        ..grid,
-        state: lis.filter(grid.state, fn(e: Cell) -> Bool { e != alive_version }),
-      )
-    False -> grid
-  }
+  Grid(
+    ..grid,
+    state: lis.filter(grid.state, fn(e: Cell) -> Bool { e != alive_version }),
+  )
 }

@@ -42,7 +42,7 @@ I referred to [this wiki](https://conwaylife.com/wiki) to review some of the kno
 - [ ] Complete definitions
 - [ ] Complete gol (Main)
 - [ ] Complete grid
-- [ ] Complete location
+- [X] Complete location
 - [ ] Complete neighbourhood
 - [ ] Complete rule
 - [ ] Complete ruleset
@@ -52,7 +52,7 @@ I referred to [this wiki](https://conwaylife.com/wiki) to review some of the kno
 
 - [X] Complete cell_test
 - [ ] Complete grid_test
-- [ ] Complete location_test
+- [X] Complete location_test
 - [ ] Complete neighbourhood_test
 - [ ] Complete rule_test
 - [ ] Complete ruleset_test

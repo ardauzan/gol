@@ -9,13 +9,13 @@
 //// Internal:
 //// * None
 
-// External imports:
+// Non-local imports:
 import gleeunit as gle
 
 // Public:
 
-/// Setup for testing.
+/// Sets up the testing environment.
 pub fn main() -> Nil {
   gle.main()
 }
-// Nothing to test yet.
+// TODO

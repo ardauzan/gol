@@ -3,7 +3,7 @@
 //// Module: rule
 ////
 //// In this module, the Rule type and its functions are defined.
-//// A rule is a function that takes a Neighbourhood and returns a Cell.
+//// A Rule is a function that takes a Neighbourhood and returns a Cell.
 //// The return can be either a valid Cell or None.
 //// None means that the cell should not change state.
 ////

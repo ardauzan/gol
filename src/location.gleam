@@ -16,12 +16,18 @@ import gleam/order.{type Order} as ord
 // Public:
 
 /// Location type definition.
+/// It is two dimensional.
 pub type Location {
   Location(x: Int, y: Int)
 }
 
 /// Compares two locations.
-/// It is from top to bottom, left to right.
+/// It is from bottom to top primairly an then left to right.
+/// If the y coordinates are equal, x coordinates are compared.
 pub fn compare(location_1: Location, location_2: Location) -> Order {
-  todo
+  case location_1.x, location_1.y, location_2.x, location_2.y {
+    x_1, y_1, x_2, y_2 if y_1 > y_2 || y_1 == y_2 && x_1 > x_2 -> ord.Gt
+    x_1, y_1, x_2, y_2 if y_1 < y_2 || y_1 == y_2 && x_1 < x_2 -> ord.Lt
+    _, _, _, _ -> ord.Eq
+  }
 }
