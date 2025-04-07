@@ -51,6 +51,8 @@ I referred to [this wiki](https://conwaylife.com/wiki) to review some of the kno
 :pushpin: Complete the test modules:
 
 - [X] Complete cell_test
+- [ ] Complete definitions_test
+- [ ] Complete gol_test
 - [ ] Complete grid_test
 - [X] Complete location_test
 - [ ] Complete neighbourhood_test
