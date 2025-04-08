@@ -16,6 +16,7 @@
 //// - GridError: InvalidMaxAliveCellCount | MaxAliveCellCountExceeded
 //// - GridState: List(Cell)
 //// - Grid: Grid(GridState, Int) (Opaque)
+//// - default_max_alive_cell_count: Int
 //// - new(Option(GridState), Option(Int)) -> Result(Grid, GridError)
 //// - get_state(Grid) -> GridState
 //// - get_max_alive_cell_count(Grid) -> Int
@@ -25,7 +26,6 @@
 //// - get_transient_state_sorted(Grid) -> GridState
 //// - add_cell(Grid, Cell) -> Result(Grid, GridError)
 //// Internal:
-//// - default_max_alive_cell_count: Int
 //// - get_cell_inner(GridState, Location) -> Cell
 //// - get_neighbours_inner(GridState, Location) -> GridState
 //// - get_transient_state_inner(GridState, GridState, GridState) -> GridState
@@ -69,6 +69,10 @@ pub opaque type Grid {
   Grid(state: GridState, max_alive_cell_count: Int)
 }
 
+/// Default max_alive_cell_count value.
+/// Not having one seems dangerous.
+pub const default_max_alive_cell_count: Int = 100_000
+
 /// Creates a new Grid with the given GridState and max_alive_cell_count.
 /// If a GridState is not given, it will be an empty list.
 /// If the max_alive_cell_count is not given, it will be the default max_alive_cell_count defined by the module.
@@ -91,9 +95,15 @@ pub fn new(
       }
     opt.None -> Ok(default_max_alive_cell_count)
   }
+  let length_of_proper_state: Int = lis.length(proper_state)
   case max_alive_cell_count_or_error {
     Ok(valid_max_alive_cell_count) ->
-      Ok(Grid(proper_state, valid_max_alive_cell_count))
+      case valid_max_alive_cell_count {
+        -1 -> Ok(Grid(proper_state, valid_max_alive_cell_count))
+        number if number >= length_of_proper_state ->
+          Ok(Grid(proper_state, valid_max_alive_cell_count))
+        _ -> Error(MaxAliveCellCountExceeded)
+      }
     Error(error) -> Error(error)
   }
 }
@@ -148,10 +158,6 @@ pub fn add_cell(grid: Grid, cell: Cell) -> Result(Grid, GridError) {
 }
 
 // Private:
-
-/// Default max_alive_cell_count value.
-/// Not having one seems dangerous.
-const default_max_alive_cell_count: Int = 100_000
 
 /// Inner function to get a Cell in a GridState.
 fn get_cell_inner(state: GridState, location: Location) -> Cell {

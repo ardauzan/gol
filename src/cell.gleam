@@ -44,8 +44,8 @@ pub fn compare(cell_1: Cell, cell_2: Cell) -> Order {
   case cell_1, cell_2 {
     Alive(location_1), Alive(location_2) -> loc.compare(location_1, location_2)
     Dead(location_1), Dead(location_2) -> loc.compare(location_1, location_2)
-    Alive(_), Dead(_) -> ord.Gt
-    Dead(_), Alive(_) -> ord.Lt
+    Alive(_), Dead(_) -> ord.Lt
+    Dead(_), Alive(_) -> ord.Gt
   }
 }
 
