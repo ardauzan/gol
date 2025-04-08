@@ -41,7 +41,7 @@ I referred to [this wiki](https://conwaylife.com/wiki) to review some of the kno
 - [X] Complete cell
 - [ ] Complete definitions
 - [ ] Complete gol (Main)
-- [ ] Complete grid
+- [X] Complete grid
 - [X] Complete location
 - [ ] Complete neighbourhood
 - [ ] Complete rule
@@ -53,7 +53,7 @@ I referred to [this wiki](https://conwaylife.com/wiki) to review some of the kno
 - [X] Complete cell_test
 - [ ] Complete definitions_test
 - [ ] Complete gol_test
-- [ ] Complete grid_test
+- [X] Complete grid_test
 - [X] Complete location_test
 - [ ] Complete neighbourhood_test
 - [ ] Complete rule_test
