@@ -99,9 +99,9 @@ pub fn new(
   case max_alive_cell_count_or_error {
     Ok(valid_max_alive_cell_count) ->
       case valid_max_alive_cell_count {
-        -1 -> Ok(Grid(proper_state, valid_max_alive_cell_count))
+        -1 -> Ok(Grid(proper_state, -1))
         number if number >= length_of_proper_state ->
-          Ok(Grid(proper_state, valid_max_alive_cell_count))
+          Ok(Grid(proper_state, number))
         _ -> Error(MaxAliveCellCountExceeded)
       }
     Error(error) -> Error(error)
