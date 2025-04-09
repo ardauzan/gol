@@ -144,7 +144,7 @@ pub fn get_transient_state_unsorted(grid: Grid) -> GridState {
 /// The transient GridState is the list of cells that has a chance of getting toggled after a tick.
 /// If for some reason you want this sorted, this is the function to use.
 pub fn get_transient_state_sorted(grid: Grid) -> GridState {
-  sort(get_transient_state_inner(grid.state, grid.state, []))
+  sort(get_transient_state_unsorted(grid))
 }
 
 /// Adds a Cell to the Grid and returns the resulting Grid.

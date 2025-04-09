@@ -38,14 +38,28 @@ pub fn main() -> Nil {
 pub fn new_test() -> Nil {
   gri.new(opt.None, opt.None)
   |> sho.be_ok()
-  gri.new(opt.Some([]), opt.None)
+
+  gri.new(
+    opt.Some([cel.Dead(loc.Location(6, 6)), cel.Alive(loc.Location(7, 7))]),
+    opt.None,
+  )
   |> sho.be_ok()
+
   gri.new(opt.None, opt.Some(0))
   |> sho.be_ok()
+
   gri.new(opt.Some([]), opt.Some(-1))
   |> sho.be_ok()
+
   gri.new(opt.Some([]), opt.Some(-2))
   |> sho.be_error()
+
+  gri.new(
+    opt.Some([cel.Alive(loc.Location(8, 0)), cel.Dead(loc.Location(-5, 1))]),
+    opt.Some(1),
+  )
+  |> sho.be_ok()
+
   gri.new(
     opt.Some([cel.Alive(loc.Location(0, 0)), cel.Alive(loc.Location(0, 1))]),
     opt.Some(1),
@@ -60,13 +74,14 @@ pub fn get_state_test() -> Nil {
   |> sho.be_ok()
   |> gri.get_state()
   |> sho.equal([])
+
   gri.new(
     opt.Some([
+      cel.Alive(loc.Location(2, 2)),
       cel.Alive(loc.Location(0, 0)),
       cel.Dead(loc.Location(0, 1)),
       cel.Alive(loc.Location(0, 0)),
       cel.Alive(loc.Location(0, 1)),
-      cel.Alive(loc.Location(2, 2)),
     ]),
     opt.None,
   )
@@ -85,6 +100,7 @@ pub fn get_max_alive_cell_count_test() -> Nil {
   |> sho.be_ok()
   |> gri.get_max_alive_cell_count()
   |> sho.equal(gri.default_max_alive_cell_count)
+
   gri.new(opt.None, opt.Some(250))
   |> sho.be_ok()
   |> gri.get_max_alive_cell_count()
@@ -97,6 +113,7 @@ pub fn get_cell_test() -> Nil {
   |> sho.be_ok()
   |> gri.get_cell(loc.Location(0, 0))
   |> sho.equal(cel.Dead(loc.Location(0, 0)))
+
   gri.new(opt.Some([cel.Alive(loc.Location(0, 0))]), opt.None)
   |> sho.be_ok()
   |> gri.get_cell(loc.Location(0, 0))
@@ -185,17 +202,13 @@ pub fn get_transient_state_sorted_test() -> Nil {
       cel.Alive(loc.Location(2, 2)),
       cel.Alive(loc.Location(3, 3)),
       cel.Alive(loc.Location(-1, -1)),
+      cel.Dead(loc.Location(-200, 300)),
     ]),
     opt.None,
   )
   |> sho.be_ok()
   |> gri.get_transient_state_sorted()
   |> sho.equal([
-    cel.Alive(loc.Location(-1, -1)),
-    cel.Alive(loc.Location(0, 0)),
-    cel.Alive(loc.Location(1, 1)),
-    cel.Alive(loc.Location(2, 2)),
-    cel.Alive(loc.Location(3, 3)),
     cel.Dead(loc.Location(-2, -2)),
     cel.Dead(loc.Location(-1, -2)),
     cel.Dead(loc.Location(0, -2)),
@@ -220,6 +233,11 @@ pub fn get_transient_state_sorted_test() -> Nil {
     cel.Dead(loc.Location(2, 4)),
     cel.Dead(loc.Location(3, 4)),
     cel.Dead(loc.Location(4, 4)),
+    cel.Alive(loc.Location(-1, -1)),
+    cel.Alive(loc.Location(0, 0)),
+    cel.Alive(loc.Location(1, 1)),
+    cel.Alive(loc.Location(2, 2)),
+    cel.Alive(loc.Location(3, 3)),
   ])
 }
 
@@ -227,33 +245,33 @@ pub fn get_transient_state_sorted_test() -> Nil {
 pub fn add_cell_test() -> Nil {
   gri.new(opt.None, opt.None)
   |> sho.be_ok()
-  |> gri.add_cell(cel.Alive(loc.Location(0, 0)))
+  |> gri.add_cell(cel.Alive(loc.Location(1, 0)))
   |> sho.be_ok()
   |> gri.get_state()
-  |> sho.equal([cel.Alive(loc.Location(0, 0))])
+  |> sho.equal([cel.Alive(loc.Location(1, 0))])
+
   gri.new(opt.None, opt.None)
   |> sho.be_ok()
   |> gri.add_cell(cel.Dead(loc.Location(0, 0)))
   |> sho.be_ok()
   |> gri.get_state()
   |> sho.equal([])
-  gri.new(opt.Some([cel.Alive(loc.Location(0, 0))]), opt.None)
+
+  gri.new(opt.Some([cel.Alive(loc.Location(3, 6))]), opt.None)
   |> sho.be_ok()
-  |> gri.add_cell(cel.Dead(loc.Location(0, 0)))
+  |> gri.add_cell(cel.Dead(loc.Location(3, 6)))
   |> sho.be_ok()
   |> gri.get_state()
   |> sho.equal([])
-  gri.new(opt.Some([cel.Alive(loc.Location(0, 0))]), opt.Some(1))
+
+  gri.new(opt.Some([cel.Alive(loc.Location(43, 0))]), opt.Some(1))
   |> sho.be_ok()
-  |> gri.add_cell(cel.Alive(loc.Location(0, 0)))
+  |> gri.add_cell(cel.Alive(loc.Location(43, 0)))
   |> sho.be_ok()
   |> gri.get_state()
-  |> sho.equal([cel.Alive(loc.Location(0, 0))])
-  gri.new(opt.Some([cel.Alive(loc.Location(0, 0))]), opt.Some(1))
-  |> sho.be_ok()
-  |> gri.add_cell(cel.Alive(loc.Location(0, 0)))
-  |> sho.be_ok()
-  gri.new(opt.Some([cel.Alive(loc.Location(0, 0))]), opt.Some(1))
+  |> sho.equal([cel.Alive(loc.Location(43, 0))])
+
+  gri.new(opt.Some([cel.Alive(loc.Location(14, 5))]), opt.Some(1))
   |> sho.be_ok()
   |> gri.add_cell(cel.Alive(loc.Location(0, 1)))
   |> sho.be_error()
