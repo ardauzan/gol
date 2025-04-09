@@ -2,18 +2,21 @@
 ////
 //// Module: ruleset
 ////
-//// In this module, the Ruleset type and its functions are defined.
-//// This turned out to be quite complex, for me at least.
-//// Rules are applied in order and the first valid result is returned.
-//// None means that the cell should not change state.
+//// In this module, Rule object and its functions are defined.
+//// A Ruleset is a list of Rules.
+//// The Rules are checked in the order they are in the list.
+//// If a Rule returns None, the state does not change.
+//// If a Rule returns a Cell, that Cell will replace the current Cell in the next state.
+//// Rules might be overlapping, meaning that more than one Rule can apply to the same state.
+//// If more than one Rule applies to the same state, the first one that returns a Cell will be used.
 ////
 //// API:
-//// - Ruleset
+//// - Ruleset: List(Rule)
 //// - apply(Ruleset, Neighbourhood) -> Cell
 //// Internal:
-//// - apply_inner(?) -> Cell
+//// - apply_inner(Ruleset, Neighbourhood, Option(Cell)) -> Cell
 
-// External imports:
+// Non-local imports:
 import gleam/option.{type Option} as opt
 
 // Local imports:
@@ -23,13 +26,17 @@ import rule.{type Rule}
 
 // Public:
 
-/// The Ruleset type alias.
 /// A Ruleset is a list of Rules.
+/// The Rules are checked in the order they are in the list.
+/// If a Rule returns None, the state does not change.
+/// If a Rule returns a Cell, that Cell will replace the current Cell in the next state.
+/// Rules might be overlapping, meaning that more than one Rule can apply to the same state.
+/// If more than one Rule applies to the same state, the first one that returns a Cell will be used.
 pub type Ruleset =
   List(Rule)
 
-/// Apply a Ruleset to a Neighbourhood.
-/// When a rule matches the input state that rule is applied, even if there are more rules that match later in the list.
+/// Applies a Ruleset to a Neighbourhood.
+/// When a Rule matches the input state that Rule is applied, even if there are more rules that match later in the list.
 pub fn apply(ruleset: Ruleset, neighbourhood: Neighbourhood) -> Cell {
   apply_inner(ruleset, neighbourhood, opt.None)
 }
