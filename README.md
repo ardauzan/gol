@@ -43,7 +43,7 @@ I referred to [this wiki](https://conwaylife.com/wiki) to review some of the kno
 - [ ] Complete gol (Main)
 - [X] Complete grid
 - [X] Complete location
-- [ ] Complete neighbourhood
+- [X] Complete neighbourhood
 - [ ] Complete rule
 - [ ] Complete ruleset
 - [ ] Complete tick
@@ -55,7 +55,7 @@ I referred to [this wiki](https://conwaylife.com/wiki) to review some of the kno
 - [ ] Complete gol_test
 - [X] Complete grid_test
 - [X] Complete location_test
-- [ ] Complete neighbourhood_test
+- [X] Complete neighbourhood_test
 - [ ] Complete rule_test
 - [ ] Complete ruleset_test
 - [ ] Complete tick_test
