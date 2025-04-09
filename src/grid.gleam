@@ -209,7 +209,6 @@ fn sort(state: GridState) -> GridState {
 fn revive(grid: Grid, location: Location) -> Result(Grid, GridError) {
   let alive_version: Cell = cel.Alive(location)
   let current_alive_count: Int = lis.length(grid.state)
-  // This is computed here because functions can't be called in guards.
   case lis.contains(grid.state, alive_version) {
     True -> Ok(grid)
     False
