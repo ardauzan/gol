@@ -49,7 +49,7 @@ pub fn compare(cell_1: Cell, cell_2: Cell) -> Order {
   }
 }
 
-/// Toggles the state of the Cell, keeping the Location the same.
+/// Toggles the state of the Cell, keeping the same Location.
 pub fn toggle(cell: Cell) -> Cell {
   case cell {
     Alive(location) -> Dead(location)

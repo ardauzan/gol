@@ -109,7 +109,7 @@ pub fn new(
 }
 
 /// Gets the GridState of the Grid.
-/// As the Grid type is opaque, this is the only way to get the GridState.
+/// As the Grid type is opaque, this is the only way to get the state of the Grid.
 pub fn get_state(grid: Grid) -> GridState {
   grid.state
 }

@@ -24,8 +24,8 @@ pub type Location {
 }
 
 /// Compares two locations.
-/// It is from bottom to top primairly and then left to right.
-/// If the y coordinates are equal, x coordinates are compared.
+/// The result is based on the Locations's y coordinate primarily and then its x coordinate.
+/// Y coordinates are compared first and if they are equal, the x coordinates are compared.
 pub fn compare(location_1: Location, location_2: Location) -> Order {
   case location_1.x, location_1.y, location_2.x, location_2.y {
     x_1, y_1, x_2, y_2 if y_1 > y_2 || y_1 == y_2 && x_1 > x_2 -> ord.Gt
