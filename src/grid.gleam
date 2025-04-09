@@ -213,12 +213,14 @@ fn sort(state: GridState) -> GridState {
 fn revive(grid: Grid, location: Location) -> Result(Grid, GridError) {
   let state: GridState = grid.state
   let alive_version: Cell = cel.Alive(location)
-  let current_alive_count: Int = lis.length(state)
-  let max_alive_count: Int = grid.max_alive_cell_count
+  let current_alive_cell_count: Int = lis.length(state)
+  let max_alive_cell_count: Int = grid.max_alive_cell_count
   case lis.contains(state, alive_version) {
     True -> Ok(grid)
-    False if max_alive_count == -1 || current_alive_count < max_alive_count ->
-      Ok(Grid(..grid, state: sort([alive_version, ..state])))
+    False
+      if max_alive_cell_count == -1
+      || current_alive_cell_count < max_alive_cell_count
+    -> Ok(Grid(..grid, state: sort([alive_version, ..state])))
     _ -> Error(MaxAliveCellCountExceeded)
   }
 }
