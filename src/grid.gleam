@@ -71,7 +71,7 @@ pub opaque type Grid {
 
 /// Default max_alive_cell_count value.
 /// Not having one seems dangerous.
-pub const default_max_alive_cell_count: Int = 100_000
+pub const default_max_alive_cell_count: Int = 10_000_000
 
 /// Creates a new Grid with the given GridState and max_alive_cell_count.
 /// If a GridState is not given, it will be an empty list.
