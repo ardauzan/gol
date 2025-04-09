@@ -11,7 +11,6 @@
 //// If it is set to any integer greater than -1, the Grid will be capped at that number of alive cells.
 //// It is defined as an opaque type to prevent direct access to the state so that it can be safely managed and kept in the proper form.
 //// 
-////
 //// API:
 //// - GridError: InvalidMaxAliveCellCount | MaxAliveCellCountExceeded
 //// - GridState: List(Cell)
@@ -210,6 +209,7 @@ fn sort(state: GridState) -> GridState {
 
 /// Inner function for reviving a Cell.
 /// Revives are increasing the element count of the GridState, newly revived Cell is sorted to an index at the time of revival.
+/// If the max_alive_cell_count has been reached, the function returns an error.
 fn revive(grid: Grid, location: Location) -> Result(Grid, GridError) {
   let state: GridState = grid.state
   let alive_version: Cell = cel.Alive(location)

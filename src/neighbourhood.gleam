@@ -3,9 +3,11 @@
 //// Module: neighbourhood
 ////
 //// In this module, the Neighbourhood object and its functions are defined.
+//// A Neighbourhood is a 3x3 matrix of Cells.
+//// It is used to derive the next state of the center Cell.
 ////
 //// API:
-//// - Neighbourhood
+//// - Neighbourhood: Neighbourhood(Cell, Cell, Cell, Cell, Cell, Cell, Cell, Cell, Cell)
 //// - get_neighbourhood(Grid, Location) -> Neighbourhood
 //// - get_center_state(Neighbourhood) -> Bool
 //// - get_alive_neighbour_count(Neighbourhood) -> Int
@@ -19,18 +21,18 @@ import location.{type Location}
 
 // Public:
 
-/// Neighbourhood definition.
-/// It is a 3x3 matrix.
+/// A Neighbourhood is a 3x3 matrix of Cells.
+/// It is used to derive the next state of the center Cell.
 pub type Neighbourhood {
   Neighbourhood(
     bottom_left: Cell,
-    bottom: Cell,
+    bottom_center: Cell,
     bottom_right: Cell,
     left: Cell,
     center: Cell,
     right: Cell,
     top_left: Cell,
-    top: Cell,
+    top_center: Cell,
     top_right: Cell,
   )
 }
@@ -39,16 +41,25 @@ pub type Neighbourhood {
 /// We know the shape of the returned neighbours array so there is no need to account for different shapes.
 pub fn get_neighbourhood(grid: Grid, location: Location) -> Neighbourhood {
   case gri.get_neighbours(grid, location) {
-    [bottom_left, bottom, bottom_right, left, right, top_left, top, top_right] ->
+    [
+      bottom_left,
+      bottom_center,
+      bottom_right,
+      left,
+      right,
+      top_left,
+      top_center,
+      top_right,
+    ] ->
       Neighbourhood(
         bottom_left,
-        bottom,
+        bottom_center,
         bottom_right,
         left,
         gri.get_cell(grid, location),
         right,
         top_left,
-        top,
+        top_center,
         top_right,
       )
     _ -> panic as "Impossible state"
@@ -63,12 +74,12 @@ pub fn get_center_state(neighbourhood: Neighbourhood) -> Bool {
 /// Gets the number of alive neighbours in the Neighbourhood.
 pub fn get_alive_neighbour_count(neighbourhood: Neighbourhood) -> Int {
   count_cell(neighbourhood.bottom_left)
-  + count_cell(neighbourhood.bottom)
+  + count_cell(neighbourhood.bottom_center)
   + count_cell(neighbourhood.bottom_right)
   + count_cell(neighbourhood.left)
   + count_cell(neighbourhood.right)
   + count_cell(neighbourhood.top_left)
-  + count_cell(neighbourhood.top)
+  + count_cell(neighbourhood.top_center)
   + count_cell(neighbourhood.top_right)
 }
 
