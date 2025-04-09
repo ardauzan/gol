@@ -2,10 +2,11 @@
 ////
 //// Module: rule
 ////
-//// In this module, the Rule type and its functions are defined.
+//// In this module, Rule object is defined.
 //// A Rule is a function that takes a Neighbourhood and returns a Cell.
 //// The return can be either a valid Cell or None.
 //// None means that the cell should not change state.
+//// If the return is a Cell, that Cell will replace the current Cell in the next state.
 ////
 //// API:
 //// - Rule
@@ -21,6 +22,9 @@ import neighbourhood.{type Neighbourhood}
 
 // Public:
 
-/// Rule type alias.
+/// A Rule is a function that takes a Neighbourhood and returns a Cell.
+/// The return can be either a valid Cell or None.
+/// None means that the cell should not change state.
+/// If the return is a Cell, that Cell will replace the current Cell in the next state.
 pub type Rule =
   fn(Neighbourhood) -> Option(Cell)

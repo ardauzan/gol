@@ -91,8 +91,6 @@ gleam test
 
 - I will be exploring other kinds of cellular automata in future projects, that's the reason for some of the design choices I made in this project.
 - I decided to read the Gleam documentation after writing a lot of code by just trial and error, which led me to rewrite the entire codebase.
-- Memoization has not been implemented yet, but it is planned, as it is highly needed. When implemented, I will update or remove this note.
-- The project will include a web application in the future, which will be accessible at [https://ardauzan.github.io/gol](https://ardauzan.github.io/gol). Once available, I will remove this note.
 
 ##### License
 
