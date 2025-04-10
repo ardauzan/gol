@@ -52,18 +52,21 @@ pub fn apply_test() -> Nil {
   |> rus.apply(neighbourhood)
   |> sho.equal(cel.Dead(loc.Location(1, 1)))
 
-  let conway_survival_rule = fn(neighbourhood: Neighbourhood) -> Option(Cell) {
-    case
-      nei.get_alive_neighbour_count(neighbourhood),
-      nei.get_center_state(neighbourhood)
-    {
-      _, False -> opt.None
-      2, True -> opt.Some(neighbourhood.center)
-      3, True -> opt.Some(neighbourhood.center)
-      _, True -> opt.None
-    }
-  }
-  [conway_survival_rule, top_right_rule]
+  [
+    fn(neighbourhood: Neighbourhood) -> Option(Cell) {
+      let center = neighbourhood.center
+      case
+        nei.get_alive_neighbour_count(neighbourhood),
+        nei.get_center_state(neighbourhood)
+      {
+        _, False -> opt.None
+        2, True -> opt.Some(center)
+        3, True -> opt.Some(center)
+        _, True -> opt.None
+      }
+    },
+    top_right_rule,
+  ]
   |> rus.apply(neighbourhood)
   |> sho.equal(cel.Alive(loc.Location(1, 1)))
 }
