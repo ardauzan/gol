@@ -44,7 +44,7 @@ I referred to [this wiki](https://conwaylife.com/wiki) to review some of the kno
 - [X] Complete grid
 - [X] Complete location
 - [X] Complete neighbourhood
-- [ ] Complete rule
+- [X] Complete rule
 - [ ] Complete ruleset
 - [ ] Complete tick
 
@@ -56,7 +56,7 @@ I referred to [this wiki](https://conwaylife.com/wiki) to review some of the kno
 - [X] Complete grid_test
 - [X] Complete location_test
 - [X] Complete neighbourhood_test
-- [ ] Complete rule_test
+- [X] Complete rule_test
 - [ ] Complete ruleset_test
 - [ ] Complete tick_test
 
