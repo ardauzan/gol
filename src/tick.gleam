@@ -1,17 +1,17 @@
-//// src/gol.gleam
+//// src/tick.gleam
 ////
-//// Module: gol (Main)
+//// Module: tick
 ////
-//// This is the main module of the project.
-//// It contains the main function.
-////
+//// In this module, the tick logic and related errors are defined.
+//// The tick function takes a Grid and a Ruleset and returns the next Grid after the Ruleset is applied to it a single time.
+//// The tick_to function takes a Grid, a Ruleset and a number of times to apply the Ruleset to the Grid and returns the final Grid.
+//// 
 //// API:
-//// - main() -> Nil
+//// - TickError: NegativeSteps | GridError(GridError)
+//// - tick(Grid, Ruleset) -> Result(Grid, TickError)
+//// - tick_to(Grid, Ruleset, Int) -> Result(Grid, TickError)
 //// Internal:
-//// * None
-
-// Non-local imports:
-import gleam/io
+//// - tick_inner(Ruleset, Grid, GridState, Result(Grid, GridError)) -> Result(Grid, TickError)
 
 // Local imports:
 import grid.{type Grid, type GridError, type GridState} as gri
@@ -21,21 +21,22 @@ import ruleset.{type Ruleset} as rus
 // Public:
 
 /// Errors for the tick module.
+/// NegativeSteps means that the number of steps given to the tick_to function is negative which is not allowed as we lose information about the previous states as we tick.
+/// GridError means that the tick_inner function encountered an error while ticking the Grid.
 pub type TickError {
   NegativeSteps
   GridError(GridError)
 }
 
-/// Tick function.
-/// This function takes a grid and a ruleset and returns the next state of the grid after one tick.
+/// This function takes a Grid and a Ruleset and returns the next Grid after the Ruleset is applied to it a single time.
+/// If the Grid reaches the max_alive_cell_count during the tick, it will return an error.
 pub fn tick(grid: Grid, ruleset: Ruleset) -> Result(Grid, TickError) {
   tick_inner(ruleset, grid, gri.get_transient_state_unsorted(grid), Ok(grid))
 }
 
-/// Tick to function.
-/// It takes a grid, a ruleset and the number of steps, if the number is negative or 0 it returns the grid.
-/// Normally the steps will not go to negative unless the function is called with a negative number;
-/// In that case we return the grid as is, same as if the number was 0.
+/// This function takes a Grid, a Ruleset and a number of times to apply the Ruleset to the Grid and returns the final Grid.
+/// If the number of times is negative, it will return an error.
+/// If the Grid reaches the max_alive_cell_count during the ticks, it will return an error.
 pub fn tick_to(
   grid: Grid,
   ruleset: Ruleset,
@@ -45,8 +46,7 @@ pub fn tick_to(
     number if number < 0 -> Error(NegativeSteps)
     0 -> Ok(grid)
     number -> {
-      let next_grid: Result(Grid, TickError) = tick(grid, ruleset)
-      case next_grid {
+      case tick(grid, ruleset) {
         Ok(valid_next_grid) -> tick_to(valid_next_grid, ruleset, number - 1)
         error -> error
       }
@@ -54,14 +54,9 @@ pub fn tick_to(
   }
 }
 
-/// Entry point of the program.
-pub fn main() -> Nil {
-  io.println("Todo")
-}
-
 // Private:
 
-/// Tick functions inner function.
+/// Inner function for ticking a Grid.
 pub fn tick_inner(
   ruleset: Ruleset,
   original_grid: Grid,

@@ -43,8 +43,8 @@ import location.{type Location} as loc
 // Public:
 
 /// Errors for the grid module.
-/// InvalidMaxAliveCellCount means that the max_alive_cell_count value is invalid.
-/// MaxAliveCellCountExceeded means that the max_alive_cell_count value has been exceeded.
+/// InvalidMaxAliveCellCount means that the max_alive_cell_count value given to the new function is invalid.
+/// MaxAliveCellCountExceeded means that the max_alive_cell_count value has been exceeded, either in the new function or in the add_cell function.
 pub type GridError {
   InvalidMaxAliveCellCount
   MaxAliveCellCountExceeded
