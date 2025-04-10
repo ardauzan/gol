@@ -45,7 +45,7 @@ I referred to [this wiki](https://conwaylife.com/wiki) to review some of the kno
 - [X] Complete location
 - [X] Complete neighbourhood
 - [X] Complete rule
-- [ ] Complete ruleset
+- [X] Complete ruleset
 - [ ] Complete tick
 
 :pushpin: Complete the test modules:
@@ -57,7 +57,7 @@ I referred to [this wiki](https://conwaylife.com/wiki) to review some of the kno
 - [X] Complete location_test
 - [X] Complete neighbourhood_test
 - [X] Complete rule_test
-- [ ] Complete ruleset_test
+- [X] Complete ruleset_test
 - [ ] Complete tick_test
 
 :pushpin: Complete the documentation:
