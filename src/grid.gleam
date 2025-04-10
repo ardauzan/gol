@@ -43,6 +43,8 @@ import location.{type Location} as loc
 // Public:
 
 /// Errors for the grid module.
+/// InvalidMaxAliveCellCount means that the max_alive_cell_count value is invalid.
+/// MaxAliveCellCountExceeded means that the max_alive_cell_count value has been exceeded.
 pub type GridError {
   InvalidMaxAliveCellCount
   MaxAliveCellCountExceeded
@@ -69,13 +71,14 @@ pub opaque type Grid {
 }
 
 /// Default max_alive_cell_count value.
-/// Not having one seems dangerous.
+/// Not having one seems dangerous...
 pub const default_max_alive_cell_count: Int = 10_000_000
 
 /// Creates a new Grid with the given GridState and max_alive_cell_count.
 /// If a GridState is not given, it will be an empty list.
 /// If the max_alive_cell_count is not given, it will be the default max_alive_cell_count defined by the module.
-/// If the max_alive_cell_count is invalid, it will return an error.
+/// If the max_alive_cell_count is invalid, which means it is less than -1, it will return an error.
+/// If the given GridState's proper forms length is greater than the max_alive_cell_count, it will return an error.
 pub fn new(
   state: Option(GridState),
   max_alive_cell_count: Option(Int),
@@ -126,7 +129,7 @@ pub fn get_cell(grid: Grid, location: Location) -> Cell {
 
 /// Gets neighbours of a Cell in a Grid.
 /// The result does not include the Cell itself only its neighbours!
-/// The result is sorted from bottom to top and then left to right.
+/// The result is sorted from bottom to top and then left to right but not by state.
 pub fn get_neighbours(grid: Grid, location: Location) -> GridState {
   get_neighbours_inner(grid.state, location)
 }
@@ -150,6 +153,7 @@ pub fn get_transient_state_sorted(grid: Grid) -> GridState {
 /// Adds a Cell to the Grid and returns the resulting Grid.
 /// If the Cell is already in the Grid, it will get overwritten.
 /// This will preserve the proper form of the state by keeping the sort order.
+/// If the Grid state is full, and this function tries to add a Cell, it will return an error.
 pub fn add_cell(grid: Grid, cell: Cell) -> Result(Grid, GridError) {
   let location: Location = cell.location
   case cel.is_alive(cell) {
@@ -208,8 +212,6 @@ fn sort(state: GridState) -> GridState {
 }
 
 /// Inner function for reviving a Cell.
-/// Revives are increasing the element count of the GridState, newly revived Cell is sorted to an index at the time of revival.
-/// If the max_alive_cell_count has been reached, the function returns an error.
 fn revive(grid: Grid, location: Location) -> Result(Grid, GridError) {
   let state: GridState = grid.state
   let alive_version: Cell = cel.Alive(location)

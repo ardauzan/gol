@@ -6,6 +6,7 @@
 ////
 //// API:
 //// - main() -> Nil
+//// - apply_test() -> Nil
 //// Internal:
 //// * None
 

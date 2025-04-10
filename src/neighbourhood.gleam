@@ -22,7 +22,7 @@ import location.{type Location}
 // Public:
 
 /// A Neighbourhood is a 3x3 matrix of Cells.
-/// It is used to derive the next state of the center Cell.
+/// It is used to derive the next state of the center Cell after a Rule is applied to it (ticked).
 pub type Neighbourhood {
   Neighbourhood(
     bottom_left: Cell,
@@ -37,8 +37,7 @@ pub type Neighbourhood {
   )
 }
 
-/// Gets the Neighbourhood of a Cell in the Grid.
-/// We know the shape of the returned neighbours array so there is no need to account for different shapes.
+/// Gets the Neighbourhood of a Cell in a Grid.
 pub fn get_neighbourhood(grid: Grid, location: Location) -> Neighbourhood {
   case gri.get_neighbours(grid, location) {
     [
@@ -66,12 +65,14 @@ pub fn get_neighbourhood(grid: Grid, location: Location) -> Neighbourhood {
   }
 }
 
-/// Gets the center Cell's state in the Neighbourhood.
+/// Gets the center Cell's state in the Neighbourhood as a bool.
+/// True means alive, false means dead.
 pub fn get_center_state(neighbourhood: Neighbourhood) -> Bool {
   cel.is_alive(neighbourhood.center)
 }
 
 /// Gets the number of alive neighbours in the Neighbourhood.
+/// Only the center Cell is not counted.
 pub fn get_alive_neighbour_count(neighbourhood: Neighbourhood) -> Int {
   count_cell(neighbourhood.bottom_left)
   + count_cell(neighbourhood.bottom_center)

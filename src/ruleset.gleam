@@ -2,13 +2,13 @@
 ////
 //// Module: ruleset
 ////
-//// In this module, Rule object and its functions are defined.
+//// In this module, Ruleset object and its functions are defined.
 //// A Ruleset is a list of Rules.
 //// The Rules are checked in the order they are in the list.
-//// If a Rule returns None, the state does not change.
-//// If a Rule returns a Cell, that Cell will replace the current Cell in the next state.
-//// Rules might be overlapping, meaning that more than one Rule can apply to the same state.
-//// If more than one Rule applies to the same state, the first one that returns a Cell will be used.
+//// If a Rule returns None, we apply the next Rule.
+//// If a Rule returns a Some(Cell), that Cell will replace the center Cell after a tick.
+//// Rules might be overlapping, meaning that more than one Rule might match the same Neighbourhood.
+//// If more than one Rule matches to the same Neighbourhood, the first one in the Ruleset will be used.
 ////
 //// API:
 //// - Ruleset: List(Rule)
@@ -28,15 +28,15 @@ import rule.{type Rule}
 
 /// A Ruleset is a list of Rules.
 /// The Rules are checked in the order they are in the list.
-/// If a Rule returns None, the state does not change.
-/// If a Rule returns a Cell, that Cell will replace the current Cell in the next state.
-/// Rules might be overlapping, meaning that more than one Rule can apply to the same state.
-/// If more than one Rule applies to the same state, the first one that returns a Cell will be used.
+/// If a Rule returns None, we apply the next Rule.
+/// If a Rule returns a Some(Cell), that Cell will replace the center Cell after a tick.
+/// Rules might be overlapping, meaning that more than one Rule might match the same Neighbourhood.
+/// If more than one Rule matches to the same Neighbourhood, the first one in the Ruleset will be used.
 pub type Ruleset =
   List(Rule)
 
 /// Applies a Ruleset to a Neighbourhood.
-/// When a Rule matches the input state that Rule is applied, even if there are more rules that match later in the list.
+/// When a Rule matches the input, that Rule is applied and the result is returned, even if there are more rules that match later in the Ruleset.
 pub fn apply(ruleset: Ruleset, neighbourhood: Neighbourhood) -> Cell {
   apply_inner(ruleset, neighbourhood, opt.None)
 }
@@ -52,7 +52,6 @@ fn apply_inner(
   case ruleset, temp {
     _, opt.Some(next_state) -> next_state
     [], opt.None -> neighbourhood.center
-    // no more rules so state does not change.
     [head, ..tail], opt.None ->
       apply_inner(tail, neighbourhood, head(neighbourhood))
   }

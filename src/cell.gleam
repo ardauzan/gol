@@ -30,6 +30,7 @@ pub type Cell {
 }
 
 /// Checks if the Cell is alive.
+/// Returns True if the Cell is alive, False otherwise.
 pub fn is_alive(cell: Cell) -> Bool {
   case cell {
     Alive(_) -> True
@@ -50,6 +51,7 @@ pub fn compare(cell_1: Cell, cell_2: Cell) -> Order {
 }
 
 /// Toggles the state of the Cell, keeping the same Location.
+/// If the Cell is alive, it becomes dead and vice versa.
 pub fn toggle(cell: Cell) -> Cell {
   case cell {
     Alive(location) -> Dead(location)
