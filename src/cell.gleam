@@ -9,6 +9,7 @@
 //// API:
 //// - Cell: Alive(Location) | Dead(Location)
 //// - is_alive(Cell) -> Bool
+//// - count(Cell) -> Int
 //// - compare(Cell, Cell) -> Order
 //// - toggle(Cell) -> Cell
 //// Internal:
@@ -35,6 +36,15 @@ pub fn is_alive(cell: Cell) -> Bool {
   case cell {
     Alive(_) -> True
     Dead(_) -> False
+  }
+}
+
+/// Counts the Cell.
+/// Returns 1 if the Cell is alive, 0 otherwise.
+pub fn count(cell: Cell) -> Int {
+  case is_alive(cell) {
+    True -> 1
+    False -> 0
   }
 }
 

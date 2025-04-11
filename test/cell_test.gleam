@@ -7,6 +7,7 @@
 //// API:
 //// - main() -> Nil
 //// - is_alive_test() -> Nil
+//// - count_test() -> Nil
 //// - compare_test() -> Nil
 //// - toggle_test() -> Nil
 //// Internal:
@@ -37,6 +38,17 @@ pub fn is_alive_test() -> Nil {
   cel.Dead(loc.Location(8, 2))
   |> cel.is_alive
   |> sho.be_false
+}
+
+/// Tests the count function.
+pub fn count_test() -> Nil {
+  cel.Alive(loc.Location(5, 5))
+  |> cel.count
+  |> sho.equal(1)
+
+  cel.Dead(loc.Location(8, 2))
+  |> cel.count
+  |> sho.equal(0)
 }
 
 /// Tests the compare function.

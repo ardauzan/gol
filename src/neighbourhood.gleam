@@ -9,13 +9,11 @@
 //// API:
 //// - Neighbourhood: Neighbourhood(Cell, Cell, Cell, Cell, Cell, Cell, Cell, Cell, Cell)
 //// - get_neighbourhood(Grid, Location) -> Neighbourhood
-//// - get_center_state(Neighbourhood) -> Bool
-//// - get_alive_neighbour_count(Neighbourhood) -> Int
 //// Internal:
-//// - count_cell(Cell) -> Int
+//// * None
 
 // Local imports:
-import cell.{type Cell} as cel
+import cell.{type Cell}
 import grid.{type Grid} as gri
 import location.{type Location}
 
@@ -62,34 +60,5 @@ pub fn get_neighbourhood(grid: Grid, location: Location) -> Neighbourhood {
         top_right,
       )
     _ -> panic as "Impossible state"
-  }
-}
-
-/// Gets the center Cell's state in the Neighbourhood as a bool.
-/// True means alive, false means dead.
-pub fn get_center_state(neighbourhood: Neighbourhood) -> Bool {
-  cel.is_alive(neighbourhood.center)
-}
-
-/// Gets the number of alive neighbours in the Neighbourhood.
-/// Only the center Cell is not counted.
-pub fn get_alive_neighbour_count(neighbourhood: Neighbourhood) -> Int {
-  count_cell(neighbourhood.bottom_left)
-  + count_cell(neighbourhood.bottom_center)
-  + count_cell(neighbourhood.bottom_right)
-  + count_cell(neighbourhood.left)
-  + count_cell(neighbourhood.right)
-  + count_cell(neighbourhood.top_left)
-  + count_cell(neighbourhood.top_center)
-  + count_cell(neighbourhood.top_right)
-}
-
-// Private:
-
-/// Counts a Cell.
-fn count_cell(cell: Cell) -> Int {
-  case cell {
-    cel.Alive(_) -> 1
-    cel.Dead(_) -> 0
   }
 }

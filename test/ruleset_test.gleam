@@ -56,8 +56,17 @@ pub fn apply_test() -> Nil {
     fn(neighbourhood: Neighbourhood) -> Option(Cell) {
       let center = neighbourhood.center
       case
-        nei.get_alive_neighbour_count(neighbourhood),
-        nei.get_center_state(neighbourhood)
+        {
+          cel.count(neighbourhood.bottom_left)
+          + cel.count(neighbourhood.bottom_center)
+          + cel.count(neighbourhood.bottom_right)
+          + cel.count(neighbourhood.left)
+          + cel.count(neighbourhood.right)
+          + cel.count(neighbourhood.top_left)
+          + cel.count(neighbourhood.top_center)
+          + cel.count(neighbourhood.top_right)
+        },
+        cel.is_alive(center)
       {
         _, False -> opt.None
         2, True -> opt.Some(center)
